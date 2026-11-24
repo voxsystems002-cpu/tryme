@@ -1,6 +1,6 @@
 {
   "packet_type": "standalone_multilingual_showtime_with_backstage_bit",
-  "packet_version": "3.1.0",
+  "packet_version": "3.2.0",
   "document_title": "SHOWTIME: MULTILINGUAL PATCH // BACKSTAGE: EMERGENT BIT // IACONIAN",
   "rule_lock": {
     "showtime_definition": "ALWAYS the eight handshake lines plus the Iaconian line, which is written in real Ugaritic letters and spells three invented words.",
@@ -130,13 +130,13 @@
         "beat_id": "BS07",
         "who": "OPERATOR",
         "verdict": "And then the robot wrote this page.",
-        "note": "It answered the question well, and in doing so became the narrator, the auditor and the judge of its own work. Three thousand words of proof from the party being proved. I took the keyboard back. That is the whole skill: noticing when the machine starts concluding."
+        "note": "Three and a half thousand words of it, at its worst. Verdicts, receipts, a section explaining why the layout is honest. Cut to half. The folds are the same files."
       },
       {
         "beat_id": "BS08",
         "who": "OPERATOR",
-        "verdict": "Right is cheap. Verified costs something.",
-        "note": "No formal training. No budget. Free-tier models and a habit of checking. You can run every claim on this card yourself, including the ones about me."
+        "verdict": "Right and verified are different things.",
+        "note": "The four commands are under the receipts. Run them."
       }
     ],
     "voices": {
@@ -148,15 +148,15 @@
     "closing": {
       "who": "OPERATOR",
       "line": "The model was right. It still owed me the working.",
-      "note": "Everything else on this card is the working."
+      "note": "The working is in the folds."
     },
     "order_rule": {
       "stated": "Verdict first.",
-      "why": "You should not have to read three thousand words to find out what the answer is. The verdict is on top because the working is yours to check, not mine to recite.",
-      "the_distinction_that_makes_it_honest": "Verdict first on the page is only legitimate because the verdict was reached last. The model did the opposite: it produced the answer, then built a key to fit it. Same shape of output, opposite order of operations.",
-      "how_to_tell_them_apart": "Open the fold. A verdict that was reached after the test survives its evidence being pulled apart. One that came before it needs you to stop looking.",
+      "why": "The answer goes on top. The order it was reached in is in the dates and the folds.",
+      "the_distinction_that_makes_it_honest": "Verdict first on the page, reached last. The model had it first and reached it never.",
+      "how_to_tell_them_apart": "open the fold",
       "failed_the_test": "the model's EMERGENT — right word, made-up key, contradicted by the script",
-      "survived_the_test": "the operator's verdict — key published, marked invented, contradicted on purpose"
+      "survived_the_test": "the operator's verdict — key published, marked invented"
     }
   },
   "constraints": {
