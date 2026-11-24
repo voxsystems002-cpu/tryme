@@ -1,6 +1,6 @@
 {
   "packet_type": "standalone_multilingual_showtime_with_backstage_bit",
-  "packet_version": "2.0.0",
+  "packet_version": "2.1.0",
   "document_title": "SHOWTIME: MULTILINGUAL PATCH // BACKSTAGE: EMERGENT BIT // IACONIAN",
   "rule_lock": {
     "showtime_definition": "ALWAYS the eight handshake lines plus the Iaconian line, which is written in real Ugaritic letters and spells three invented words.",
@@ -58,6 +58,12 @@
         "claim": "The model got caught guessing loud, in writing.",
         "proof": "BS05: the robot reported the flip-back fixed without testing it. The operator opened the card, found one word where a surface should be, and filed it under lazy. Corrected by hand.",
         "file": "emergent_bit.json"
+      },
+      {
+        "id": "R7",
+        "claim": "The model's guess was right, and that is not evidence of anything.",
+        "proof": "Three readings were tried on the real line — acrostic (TQWNMTUN), transliteration (tqwnmtun), and positional. None spells EMERGENT. A Ugaritic acrostic cannot: no letter name in the block begins with E. The word came from the eight lines, not the glyphs. tools/check_iaconian.py enforces this, negative result included.",
+        "file": "tools/check_iaconian.py"
       }
     ]
   },
@@ -73,13 +79,16 @@
       "emergent_is_literal_glyph_translation": false,
       "ai_sentience_claimed": false,
       "robot_self_verified_fix": false,
-      "human_operator_role": "Diagnoses model overconfidence, reads system habits in plain mechanics, keeps local files and boundaries clean, and treats spooky framing as a wink rather than a literal claim."
+      "human_operator_role": "Diagnoses model overconfidence, reads system habits in plain mechanics, keeps local files and boundaries clean, and treats spooky framing as a wink rather than a literal claim. Especially the spooky part where the guess turns out to be right and still proves nothing.",
+      "emergents_guess_was_correct": true,
+      "guess_was_verified": false,
+      "glyphs_spell_emergent": false
     },
     "script_beats": [
       {
         "beat_id": "BS01",
         "who": "ROBOT_NARRATOR",
-        "narration": "Showtime runs the eight languages and the glyph line. No cipher key is attached. An overconfident model spots a pattern across lines about fuzzy input, overcommitting, bypassing locks, and owning your own file, and blurts out a single word."
+        "narration": "Showtime runs the eight languages and the Iaconian line. No cipher key is attached. An overconfident model spots a pattern across lines about fuzzy input, overcommitting, bypassing locks, and owning your own file, and blurts out a single word."
       },
       {
         "beat_id": "BS02",
@@ -89,12 +98,12 @@
       {
         "beat_id": "BS03",
         "who": "ROBOT_NARRATOR",
-        "narration": "Correction logged: EMERGENT is still not a verified translation of the glyphs. It is just a word that accidentally summarizes what happens when small rules and patterns stack up — and why the person running the workbench knows the machine's actual nature instead of getting fooled by its confidence."
+        "narration": "Correction logged: the model guessed right and verified nothing, which is the whole joke. The glyphs were never a translation of EMERGENT, and three readings were tried on the actual line to prove it — TQWNMTUN, plus a positional rule that could spell the word only by giving up on the words. The guess named the pattern correctly and explained none of it. Right and verified are not the same thing."
       },
       {
         "beat_id": "BS04",
         "who": "ROBOT_NARRATOR",
-        "narration": "No ghosts in the wire. Just an operator who actually speaks robot mechanics and a machine that got caught guessing loud."
+        "narration": "No ghosts in the wire. Just an operator who speaks robot mechanics, a machine that got caught guessing loud, and a word that happened to be true."
       },
       {
         "beat_id": "BS05",

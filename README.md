@@ -26,6 +26,21 @@ Unicode in 2006 at `U+10380–U+1039F`.
 
 The sentence reads *"the hold, the walked path, carry it back."*
 
+It does **not** spell EMERGENT, and that is load-bearing. The backstage bit has a
+model guess that word; three readings were tried on the real line, and the
+negative results are committed:
+
+| rule | gives |
+|---|---|
+| acrostic (first letter of each Unicode name) | `TQWNMTUN` |
+| transliteration | `tqwnmtun` |
+| positional (nth Ugaritic letter = nth Latin) | spells EMERGENT only by abandoning the words entirely |
+
+A Ugaritic acrostic *cannot* spell it: no letter name in the block begins with
+E. So the model was right by pattern and had verified nothing — which is the
+joke, and the reason the operator role exists. `tools/check_iaconian.py`
+enforces the negative result, so nobody can quietly "discover" a cipher later.
+
 The point of the design: **the words cannot be verified and the letters can.**
 You can open the Unicode chart and confirm every character. You cannot look up
 `nemtun` anywhere, because it was invented today, and

@@ -69,6 +69,25 @@ check("single-code-point word exists and is named for its letter",
       any(len(e["code_points"]) == 1 and unicodedata.name(chr(int(e["code_points"][0][2:], 16))) ==
           f"UGARITIC LETTER {e['token']}" for e in SPEC["lexicon"]))
 
+# 5b: the recorded readings must stay honest ------------------------------
+# The card had a model guess EMERGENT. The tempting story is that the glyphs
+# spell it. They do not, and the negative result is what makes the bit work,
+# so it gets enforced like any other claim.
+rt = SPEC.get("readings_tried")
+check("recorded readings exist", bool(rt and rt.get("rules")), "negative results kept on purpose")
+if rt:
+    for rule in rt["rules"]:
+        check(f"reading '{rule['rule'].split(' — ')[0]}' does not produce EMERGENT",
+              rule["produces_emergent"] is False,
+              f"got {rule['result']!r}")
+    initials = sorted({unicodedata.name(chr(cp)).split()[-1][0] for cp in range(LO, HI + 1)
+                       if unicodedata.name(chr(cp), None)})
+    check("no Ugaritic letter name begins with E, so an acrostic cannot spell EMERGENT",
+          "E" not in initials, "".join(initials))
+    check("the real line is not a positional spelling of EMERGENT",
+          rt["rules"][2]["produces_emergent"] is False)
+    check("verdict states what did spell it", "handshake" in rt["verdict"])
+
 # 6: honesty surface present and non-empty
 check("spec states what it is not", len(SPEC["not_claimed"]) >= 3)
 check("spec points outside itself", len(SPEC["provenance"]) >= 2)

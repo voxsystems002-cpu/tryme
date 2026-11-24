@@ -119,7 +119,9 @@
     "no native speakers, no community, no authority. it is three words made today",
     "the romanisation is ours and the vowels are an editorial choice",
     "no claim that the sentence has been found anywhere outside this repository",
-    "no claim that Ugaritic relates to Cybertronian, Iacon, or any fiction. the name on the card is a joke"
+    "no claim that Ugaritic relates to Cybertronian, Iacon, or any fiction. the name on the card is a joke",
+    "not a spelling of EMERGENT in any cipher. the readings were tried and are recorded in readings_tried, including the negative results",
+    "the model's guess being right is a coincidence of pattern, not evidence of decoding"
   ],
   "provenance": [
     {
@@ -148,5 +150,29 @@
     "open the Unicode chart for U+10380-1039F and confirm each letter's name",
     "or run tools/check_iaconian.py, which reads Python's own unicodedata, offline",
     "or install any font that covers the block and see the same shapes the page embeds"
-  ]
+  ],
+  "readings_tried": {
+    "why": "The backstage bit has a model blurting out EMERGENT. Before claiming that guess was a translation, three readings were tried on the actual line. None of them produces the word. The record is kept so the claim stays honest.",
+    "rules": [
+      {
+        "rule": "acrostic — first letter of each Unicode character name",
+        "result": "TQWNMTUN",
+        "produces_emergent": false,
+        "note": "TQWNMTUN. It cannot produce EMERGENT under any key: no Ugaritic letter name begins with E."
+      },
+      {
+        "rule": "transliteration — the consonantal values of the letters",
+        "result": "tqwnmtun",
+        "produces_emergent": false
+      },
+      {
+        "rule": "positional — nth Ugaritic letter stands for the nth Latin letter",
+        "result": "U+10384 U+1038C U+10384 U+10391 U+10386 U+10384 U+1038D U+10393",
+        "produces_emergent": false,
+        "note": "This rule CAN spell EMERGENT, but only by giving up on the words: it needs U+10384 U+1038C U+10384 U+10391 U+10386 U+10384 U+1038D U+10393, which is not a sentence in any language."
+      }
+    ],
+    "verdict": "The glyphs do not spell EMERGENT and are not a translation of it. What spells EMERGENT is the eight handshake lines: fuzzy input, over-promising, a bypassed lock, a file you keep. The model read the pattern and skipped the proof.",
+    "where_the_model_was_right": "The behaviour described across the eight lines is emergent: small rules stacked until something larger than any one line showed up. The guess named the pattern correctly and verifiably explained nothing. Right and verified are not the same thing."
+  }
 }
