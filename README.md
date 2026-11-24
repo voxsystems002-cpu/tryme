@@ -37,21 +37,36 @@ face is **generated from it** by `tools/build_showtime.py` — so the artifact o
 trial is the real artifact, not a paraphrase. The correction is a four-letter
 edit, shown as a keyed table on the back.
 
-It does **not** spell EMERGENT, and that is load-bearing. The backstage bit has a
+A substitution key **does** spell it — and that distinction is load-bearing. The backstage bit has a
 model guess that word; three readings were tried on the real line, and the
 negative results are committed:
 
 | rule | gives |
 |---|---|
+| reading | result |
+|---|---|
 | acrostic, shipped line | `TQTMWTKN` |
 | acrostic, corrected line | `TQWNMTUN` |
-| transliteration | `tqwnmtun` |
-| positional (nth Ugaritic letter = nth Latin) | spells EMERGENT only by abandoning the words entirely |
+| transliteration | `tqtmwtkn` / `tqwnmtun` |
+| positional (nth Ugaritic letter = nth Latin) | spells EMERGENT only by abandoning the words |
+| **substitution** | **spells EMERGENT exactly** |
 
-A Ugaritic acrostic *cannot* spell it: no letter name in the block begins with
-E. So the model was right by pattern and had verified nothing — which is the
-joke, and the reason the operator role exists. `tools/check_iaconian.py`
-enforces the negative result, so nobody can quietly "discover" a cipher later.
+That last one matters, and it's the honest correction to an earlier overclaim
+on this page. The shipped line `T Q T M W T K N` repeats its first letter at
+positions 3 and 6, and so does `E M E R G E N T`, so a consistent key exists:
+
+`TO→E · QOPA→M · MEM→R · WO→G · KAF→N · NUN→T`
+
+**The model was reasonable, not crazy.** The key is simply *invented* rather
+than *found*: all six letters already have attested consonantal values in
+Ugaritic and the key disagrees with every one (TO is `t`, not E); six mappings
+out of thirty letters is barely constrained; and nothing in the artefact
+declares a key. The key is committed in `data/iaconian.spec.json` →
+`readings_tried.cipher` and published on the back of the card, marked invented.
+
+`tools/check_iaconian.py` enforces both halves: the key must still spell the
+word (so nobody pretends it doesn't), and it must still be flagged
+`discovered: false` (so nobody pretends it does).
 
 The point of the design: **the words cannot be verified and the letters can.**
 You can open the Unicode chart and confirm every character. You cannot look up

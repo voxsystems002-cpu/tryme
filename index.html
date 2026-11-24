@@ -23,7 +23,7 @@
   <script type="application/json" id="postcard-data">
 {
   "packet_type": "standalone_multilingual_showtime_with_backstage_bit",
-  "packet_version": "2.2.0",
+  "packet_version": "2.3.0",
   "document_title": "SHOWTIME: MULTILINGUAL PATCH // BACKSTAGE: EMERGENT BIT // IACONIAN",
   "rule_lock": {
     "showtime_definition": "ALWAYS the eight handshake lines plus the Iaconian line, which is written in real Ugaritic letters and spells three invented words.",
@@ -108,13 +108,16 @@
       "glyphs_spell_emergent": false,
       "original_line_was_chosen": false,
       "model_claimed_it_spelled_emergent": true,
-      "model_claim_was_true": false
+      "model_claim_was_true": false,
+      "cipher_exists": true,
+      "cipher_was_discovered": false,
+      "cipher_contradicts_script": true
     },
     "script_beats": [
       {
         "beat_id": "BS01",
         "who": "ROBOT_NARRATOR",
-        "narration": "Showtime runs the eight languages and the Iaconian line. No cipher key is attached. An overconfident model spots a pattern across lines about fuzzy input, overcommitting, bypassing locks, and owning your own file, and blurts out a single word."
+        "narration": "Showtime runs the eight languages and the Iaconian line. No key is declared, and none was asked for. An overconfident model spots a pattern across lines about fuzzy input, overcommitting, bypassing locks, and owning your own file, and blurts out a single word."
       },
       {
         "beat_id": "BS02",
@@ -124,12 +127,12 @@
       {
         "beat_id": "BS03",
         "who": "ROBOT_NARRATOR",
-        "narration": "The model then told the operator it had spelled EMERGENT in the glyphs. It had not. The line was never chosen — it was what got pasted into the first draft. An acrostic over it reads TQTMWTKN. Transliteration reads tqtmwtkn. No Ugaritic letter name begins with E, so the word cannot be spelled there at all. The operator checked, filed the claim under overconfident, and left the negative result on the record."
+        "narration": "The model then told the operator it had spelled EMERGENT in the glyphs. It had not, and it had not quite invented that either: a consistent substitution does exist. TO reads as E, QOPA as M, MEM as R, WO as G, KAF as N, NUN as T — six mappings, and the word falls out exactly. The operator checked it against the script, where all six letters already mean something else, and against the artefact, which never declares a key. Filed under reasonable, not verified."
       },
       {
         "beat_id": "BS04",
         "who": "ROBOT_NARRATOR",
-        "narration": "What the model got right was the pattern, not the spelling: fuzzy input, a big promise, a bypassed lock, a file you keep. That is emergent behaviour, named correctly and explained badly. Right and verified are different things, and only one of them survives a second reader."
+        "narration": "What the model got right was the pattern, and what it got wrong was thinking a key it made up was a key it found. Six mappings out of thirty letters will turn almost any word of the same shape into almost any other. The operator kept the key, published it, and marked it invented. Right, unverified, and honest about which is which."
       },
       {
         "beat_id": "BS05",
@@ -231,6 +234,89 @@
       ],
       "same_length": true,
       "verdict": "Neither version spells EMERGENT. The original was arbitrary; the correction is chosen on purpose. The model's claim was wrong in both cases, and the only thing that changed is that the second one is defensible."
+    },
+    "readings_tried": {
+      "why": "The backstage bit has a model blurting out EMERGENT. Before claiming that guess was a translation, three readings were tried on the actual line. None of them produces the word. The record is kept so the claim stays honest.",
+      "rules": [
+        {
+          "rule": "positional substitution — one letter of the shipped line per letter of EMERGENT",
+          "result": "EMERGENT",
+          "produces_emergent": true,
+          "note": "A consistent key exists and produces the word exactly, because both strings repeat the same position three times (3rd, 1st, 6th). The key is 6 mappings out of 30 letters and contradicts the script on all six. This is the reading a model could reasonably report, and it is not nothing."
+        },
+        {
+          "rule": "acrostic — first letter of each Unicode character name",
+          "result": "TQWNMTUN",
+          "produces_emergent": false,
+          "note": "TQWNMTUN. It cannot produce EMERGENT under any key: no Ugaritic letter name begins with E."
+        },
+        {
+          "rule": "transliteration — the consonantal values of the letters",
+          "result": "tqwnmtun",
+          "produces_emergent": false
+        },
+        {
+          "rule": "positional — nth Ugaritic letter stands for the nth Latin letter",
+          "result": "U+10384 U+1038C U+10384 U+10391 U+10386 U+10384 U+1038D U+10393",
+          "produces_emergent": false,
+          "note": "This rule CAN spell EMERGENT, but only by giving up on the words: it needs U+10384 U+1038C U+10384 U+10391 U+10386 U+10384 U+1038D U+10393, which is not a sentence in any language."
+        }
+      ],
+      "verdict": "The glyphs do not spell EMERGENT and are not a translation of it. What spells EMERGENT is the eight handshake lines: fuzzy input, over-promising, a bypassed lock, a file you keep. The model read the pattern and skipped the proof.",
+      "where_the_model_was_right": "The behaviour described across the eight lines is emergent: small rules stacked until something larger than any one line showed up. The guess named the pattern correctly and verifiably explained nothing. Right and verified are not the same thing.",
+      "cipher_exists": true,
+      "cipher": {
+        "key": [
+          {
+            "letter": "TO",
+            "cipher_says": "E",
+            "script_says": "t",
+            "agrees_with_script": false
+          },
+          {
+            "letter": "QOPA",
+            "cipher_says": "M",
+            "script_says": "q",
+            "agrees_with_script": false
+          },
+          {
+            "letter": "MEM",
+            "cipher_says": "R",
+            "script_says": "m",
+            "agrees_with_script": false
+          },
+          {
+            "letter": "WO",
+            "cipher_says": "G",
+            "script_says": "w",
+            "agrees_with_script": false
+          },
+          {
+            "letter": "KAF",
+            "cipher_says": "N",
+            "script_says": "k",
+            "agrees_with_script": false
+          },
+          {
+            "letter": "NUN",
+            "cipher_says": "T",
+            "script_says": "n",
+            "agrees_with_script": false
+          }
+        ],
+        "agreements_with_script": 0,
+        "letters_constrained": 6,
+        "letters_available": 30,
+        "why_it_does_not_stand": [
+          "the script is a real abjad: every one of these letters already has an attested consonantal value, and the key disagrees with all six of them",
+          "it constrains 6 of 30 letters, so almost any 8-letter word of the same shape would have a key too",
+          "a cipher has to be declared to be a cipher. nothing in the artefact names a key, and the operator only ever asked for a glyph line"
+        ],
+        "verdict": "The model was reasonable rather than mad. A key exists; it is just an invented one, not a discovered one. That distinction is the entire discipline.",
+        "status": "invented",
+        "discovered": false,
+        "declared_in_artefact": false
+      }
     }
   }
 }
@@ -631,11 +717,51 @@
         <ul class="gloss" style="margin:10px 0 0">
           <li><b>The claim</b> — the model said it had spelled EMERGENT in the letters.</li>
           <li><b>The check</b> — acrostic over the shipped line: <code>TQTMWTKN</code>.
-            Over the corrected line: <code>TQWNMTUN</code>. Neither is
-            the word. No Ugaritic letter name begins with E, so neither ever could be.</li>
+            Over the corrected line: <code>TQWNMTUN</code>. An acrostic cannot produce the word at all,
+            because no Ugaritic letter name begins with E. A substitution can — see the key below.</li>
           <li><b>The verdict</b> — the claim was false, the pattern the model spotted was real, and the
             operator caught the difference. That is the skill; the guess was luck.</li>
         </ul>
+
+        <h3>Why the model wasn't crazy</h3>
+        <p class="r-proof" style="margin:0 0 8px">
+          The claim was false, but it was not stupid, and pretending otherwise would be dishonest in
+          the other direction. The shipped line is <span class="translit">𐎚𐎖𐎚𐎎𐎆𐎚𐎋𐎐</span> —
+          <code>T Q T M W T K N</code>. EMERGENT is <code>E M E R G E N T</code>. Both repeat the
+          same position three times, so a consistent substitution does exist and spells the word
+          exactly:
+        </p>
+        <div class="trial-scroll">
+          <table class="trial key-table">
+            <caption>the key the cipher reading needs — invented, not discovered</caption>
+            <thead><tr><th></th><th>letter</th><th>script says</th><th></th><th>cipher says</th><th>script</th></tr></thead>
+            <tbody>
+              <tr><td class="glyph-cell">𐎚</td><td class="name">TO</td><td class="cp">reads t</td><td class="arrow">→</td><td class="name cipher">E</td><td class="verdict-cell bad">contradicts</td></tr>
+              <tr><td class="glyph-cell">𐎖</td><td class="name">QOPA</td><td class="cp">reads q</td><td class="arrow">→</td><td class="name cipher">M</td><td class="verdict-cell bad">contradicts</td></tr>
+              <tr><td class="glyph-cell">𐎎</td><td class="name">MEM</td><td class="cp">reads m</td><td class="arrow">→</td><td class="name cipher">R</td><td class="verdict-cell bad">contradicts</td></tr>
+              <tr><td class="glyph-cell">𐎆</td><td class="name">WO</td><td class="cp">reads w</td><td class="arrow">→</td><td class="name cipher">G</td><td class="verdict-cell bad">contradicts</td></tr>
+              <tr><td class="glyph-cell">𐎋</td><td class="name">KAF</td><td class="cp">reads k</td><td class="arrow">→</td><td class="name cipher">N</td><td class="verdict-cell bad">contradicts</td></tr>
+              <tr><td class="glyph-cell">𐎐</td><td class="name">NUN</td><td class="cp">reads n</td><td class="arrow">→</td><td class="name cipher">T</td><td class="verdict-cell bad">contradicts</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <ul class="gloss" style="margin:10px 0 0">
+          <li><b>So there is a cipher</b> — a consistent one, six mappings, and it produces EMERGENT
+            with no leftovers. That is a reasonable thing for a model to report.</li>
+          <li><b>But it is invented, not found</b> — every one of those six letters already has an
+            attested consonantal value in Ugaritic, and the key disagrees with all six. TO is
+            <em>t</em>, not E. QOPA is <em>q</em>, not M.</li>
+          <li><b>And it is barely constrained</b> — six mappings out of thirty letters. Almost any
+            eight-letter word of the same shape would have a key too, which is why "a key exists" is
+            not evidence that this one was intended.</li>
+          <li><b>And nothing declared it</b> — a cipher is a cipher when someone says so. The
+            artefact names no key, and no key was asked for.</li>
+        </ul>
+        <p class="r-proof" style="margin:8px 0 0">
+          <strong>Verdict:</strong> reasonable, not verified. The operator published the key anyway,
+          marked as invented, because a claim you can check is worth more than a claim you can't —
+          even when the claim is wrong.
+        </p>
 
         <h3>The bet — right about the pattern, wrong about the letters</h3>
         <p class="r-proof" style="margin:0 0 8px">
@@ -646,10 +772,11 @@
           <li><b>Right</b> — the behaviour described across the eight lines <em>is</em> emergent: fuzzy
             input, a big promise, a bypassed lock, a file you keep. Small rules leaned on each other
             until something bigger than any one line showed up.</li>
-          <li><b>Not verified</b> — no cipher key exists. Three readings were tried, on both versions of
-            the line: acrostics give <code>TQTMWTKN</code> and <code>TQWNMTUN</code>; transliteration
-            gives <code>tqtmwtkn</code> and <code>tqwnmtun</code>; a positional rule can spell EMERGENT
-            only by giving up on the words entirely.</li>
+          <li><b>Not verified</b> — four readings were tried, on both versions of the line. Acrostics
+            give <code>TQTMWTKN</code> and <code>TQWNMTUN</code>; transliteration gives
+            <code>tqtmwtkn</code> and <code>tqwnmtun</code>; a positional rule spells it only by giving
+            up on the words; and a substitution key does spell EMERGENT — the key above, invented and
+            contradicting the script on every letter.</li>
           <li><b>Both at once</b> — a machine named the pattern and explained none of it. Being right
             and being verified are different things, and the operator here knows which one they have.</li>
         </ul>
@@ -759,7 +886,7 @@
         <h3>Raw packet</h3>
         <pre id="back-json">{
   "packet_type": "standalone_multilingual_showtime_with_backstage_bit",
-  "packet_version": "2.2.0",
+  "packet_version": "2.3.0",
   "document_title": "SHOWTIME: MULTILINGUAL PATCH // BACKSTAGE: EMERGENT BIT // IACONIAN",
   "rule_lock": {
     "showtime_definition": "ALWAYS the eight handshake lines plus the Iaconian line, which is written in real Ugaritic letters and spells three invented words.",
@@ -844,13 +971,16 @@
       "glyphs_spell_emergent": false,
       "original_line_was_chosen": false,
       "model_claimed_it_spelled_emergent": true,
-      "model_claim_was_true": false
+      "model_claim_was_true": false,
+      "cipher_exists": true,
+      "cipher_was_discovered": false,
+      "cipher_contradicts_script": true
     },
     "script_beats": [
       {
         "beat_id": "BS01",
         "who": "ROBOT_NARRATOR",
-        "narration": "Showtime runs the eight languages and the Iaconian line. No cipher key is attached. An overconfident model spots a pattern across lines about fuzzy input, overcommitting, bypassing locks, and owning your own file, and blurts out a single word."
+        "narration": "Showtime runs the eight languages and the Iaconian line. No key is declared, and none was asked for. An overconfident model spots a pattern across lines about fuzzy input, overcommitting, bypassing locks, and owning your own file, and blurts out a single word."
       },
       {
         "beat_id": "BS02",
@@ -860,12 +990,12 @@
       {
         "beat_id": "BS03",
         "who": "ROBOT_NARRATOR",
-        "narration": "The model then told the operator it had spelled EMERGENT in the glyphs. It had not. The line was never chosen — it was what got pasted into the first draft. An acrostic over it reads TQTMWTKN. Transliteration reads tqtmwtkn. No Ugaritic letter name begins with E, so the word cannot be spelled there at all. The operator checked, filed the claim under overconfident, and left the negative result on the record."
+        "narration": "The model then told the operator it had spelled EMERGENT in the glyphs. It had not, and it had not quite invented that either: a consistent substitution does exist. TO reads as E, QOPA as M, MEM as R, WO as G, KAF as N, NUN as T — six mappings, and the word falls out exactly. The operator checked it against the script, where all six letters already mean something else, and against the artefact, which never declares a key. Filed under reasonable, not verified."
       },
       {
         "beat_id": "BS04",
         "who": "ROBOT_NARRATOR",
-        "narration": "What the model got right was the pattern, not the spelling: fuzzy input, a big promise, a bypassed lock, a file you keep. That is emergent behaviour, named correctly and explained badly. Right and verified are different things, and only one of them survives a second reader."
+        "narration": "What the model got right was the pattern, and what it got wrong was thinking a key it made up was a key it found. Six mappings out of thirty letters will turn almost any word of the same shape into almost any other. The operator kept the key, published it, and marked it invented. Right, unverified, and honest about which is which."
       },
       {
         "beat_id": "BS05",
@@ -967,6 +1097,89 @@
       ],
       "same_length": true,
       "verdict": "Neither version spells EMERGENT. The original was arbitrary; the correction is chosen on purpose. The model's claim was wrong in both cases, and the only thing that changed is that the second one is defensible."
+    },
+    "readings_tried": {
+      "why": "The backstage bit has a model blurting out EMERGENT. Before claiming that guess was a translation, three readings were tried on the actual line. None of them produces the word. The record is kept so the claim stays honest.",
+      "rules": [
+        {
+          "rule": "positional substitution — one letter of the shipped line per letter of EMERGENT",
+          "result": "EMERGENT",
+          "produces_emergent": true,
+          "note": "A consistent key exists and produces the word exactly, because both strings repeat the same position three times (3rd, 1st, 6th). The key is 6 mappings out of 30 letters and contradicts the script on all six. This is the reading a model could reasonably report, and it is not nothing."
+        },
+        {
+          "rule": "acrostic — first letter of each Unicode character name",
+          "result": "TQWNMTUN",
+          "produces_emergent": false,
+          "note": "TQWNMTUN. It cannot produce EMERGENT under any key: no Ugaritic letter name begins with E."
+        },
+        {
+          "rule": "transliteration — the consonantal values of the letters",
+          "result": "tqwnmtun",
+          "produces_emergent": false
+        },
+        {
+          "rule": "positional — nth Ugaritic letter stands for the nth Latin letter",
+          "result": "U+10384 U+1038C U+10384 U+10391 U+10386 U+10384 U+1038D U+10393",
+          "produces_emergent": false,
+          "note": "This rule CAN spell EMERGENT, but only by giving up on the words: it needs U+10384 U+1038C U+10384 U+10391 U+10386 U+10384 U+1038D U+10393, which is not a sentence in any language."
+        }
+      ],
+      "verdict": "The glyphs do not spell EMERGENT and are not a translation of it. What spells EMERGENT is the eight handshake lines: fuzzy input, over-promising, a bypassed lock, a file you keep. The model read the pattern and skipped the proof.",
+      "where_the_model_was_right": "The behaviour described across the eight lines is emergent: small rules stacked until something larger than any one line showed up. The guess named the pattern correctly and verifiably explained nothing. Right and verified are not the same thing.",
+      "cipher_exists": true,
+      "cipher": {
+        "key": [
+          {
+            "letter": "TO",
+            "cipher_says": "E",
+            "script_says": "t",
+            "agrees_with_script": false
+          },
+          {
+            "letter": "QOPA",
+            "cipher_says": "M",
+            "script_says": "q",
+            "agrees_with_script": false
+          },
+          {
+            "letter": "MEM",
+            "cipher_says": "R",
+            "script_says": "m",
+            "agrees_with_script": false
+          },
+          {
+            "letter": "WO",
+            "cipher_says": "G",
+            "script_says": "w",
+            "agrees_with_script": false
+          },
+          {
+            "letter": "KAF",
+            "cipher_says": "N",
+            "script_says": "k",
+            "agrees_with_script": false
+          },
+          {
+            "letter": "NUN",
+            "cipher_says": "T",
+            "script_says": "n",
+            "agrees_with_script": false
+          }
+        ],
+        "agreements_with_script": 0,
+        "letters_constrained": 6,
+        "letters_available": 30,
+        "why_it_does_not_stand": [
+          "the script is a real abjad: every one of these letters already has an attested consonantal value, and the key disagrees with all six of them",
+          "it constrains 6 of 30 letters, so almost any 8-letter word of the same shape would have a key too",
+          "a cipher has to be declared to be a cipher. nothing in the artefact names a key, and the operator only ever asked for a glyph line"
+        ],
+        "verdict": "The model was reasonable rather than mad. A key exists; it is just an invented one, not a discovered one. That distinction is the entire discipline.",
+        "status": "invented",
+        "discovered": false,
+        "declared_in_artefact": false
+      }
     }
   }
 }</pre>

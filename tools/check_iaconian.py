@@ -76,17 +76,51 @@ check("single-code-point word exists and is named for its letter",
 rt = SPEC.get("readings_tried")
 check("recorded readings exist", bool(rt and rt.get("rules")), "negative results kept on purpose")
 if rt:
+    # Negative results are recorded, and so is the one positive result: a
+    # substitution key does spell the word. Denying it was the overclaim we had
+    # to correct, so the checker asserts the truth, not a convenient story.
+    positive = [r for r in rt["rules"] if r["produces_emergent"]]
+    check("exactly one reading produces EMERGENT", len(positive) == 1,
+          "; ".join(r["rule"].split(" — ")[0] for r in positive))
     for rule in rt["rules"]:
-        check(f"reading '{rule['rule'].split(' — ')[0]}' does not produce EMERGENT",
-              rule["produces_emergent"] is False,
-              f"got {rule['result']!r}")
+        name = rule["rule"].split(" — ")[0]
+        if rule["produces_emergent"]:
+            check(f"reading '{name}' is documented as invented, not a decoding",
+                  "contradicts the script" in rule["note"])
+        else:
+            check(f"reading '{name}' does not produce EMERGENT", rule["produces_emergent"] is False,
+                  f"got {rule['result']!r}")
     initials = sorted({unicodedata.name(chr(cp)).split()[-1][0] for cp in range(LO, HI + 1)
                        if unicodedata.name(chr(cp), None)})
     check("no Ugaritic letter name begins with E, so an acrostic cannot spell EMERGENT",
           "E" not in initials, "".join(initials))
-    check("the real line is not a positional spelling of EMERGENT",
-          rt["rules"][2]["produces_emergent"] is False)
     check("verdict states what did spell it", "handshake" in rt["verdict"])
+
+    # a substitution key genuinely exists; the claim that it does must be true,
+    # and the claim that it was discovered must stay false
+    check("spec records that a cipher exists", rt.get("cipher_exists") is True,
+          "denying it would be the overclaim we corrected")
+    cipher = rt.get("cipher") or {}
+    key = {m["letter"]: m["cipher_says"] for m in cipher.get("key", [])}
+    if key:
+        art = ROOT / "data" / "original_showtime.log"
+        shipped = [l for l in art.read_text(encoding="utf-8").split("\n")
+                   if l.startswith("\U0001f6e1")][0].split("Iaconian): ")[1].strip()
+        letters = [unicodedata.name(c).replace("UGARITIC LETTER ", "") for c in shipped]
+        check("the recorded key actually spells EMERGENT",
+              "".join(key.get(l, "?") for l in letters) == "EMERGENT",
+              "".join(key.get(l, "?") for l in letters))
+        check("the key contradicts the script on every letter",
+              cipher.get("agreements_with_script") == 0,
+              f"{cipher.get('agreements_with_script')} agreements")
+        check("the key is under-constrained, not a decoding",
+              cipher.get("letters_constrained", 99) < cipher.get("letters_available", 0) / 2,
+              f"{cipher.get('letters_constrained')} of {cipher.get('letters_available')} letters")
+        check("the key is marked invented, not discovered",
+              cipher.get("status") == "invented" and cipher.get("discovered") is False,
+              f"status={cipher.get('status')} discovered={cipher.get('discovered')}")
+        check("the key is not declared anywhere in the artefact",
+              cipher.get("declared_in_artefact") is False)
 
 # 5c: the artefact and the correction must both be real ---------------------
 art = ROOT / "data" / "original_showtime.log"

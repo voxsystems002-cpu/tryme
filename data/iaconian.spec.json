@@ -120,8 +120,8 @@
     "the romanisation is ours and the vowels are an editorial choice",
     "no claim that the sentence has been found anywhere outside this repository",
     "no claim that Ugaritic relates to Cybertronian, Iacon, or any fiction. the name on the card is a joke",
-    "not a spelling of EMERGENT in any cipher. the readings were tried and are recorded in readings_tried, including the negative results",
-    "the model's guess being right is a coincidence of pattern, not evidence of decoding"
+    "the model's guess being right is a coincidence of pattern, not evidence of decoding",
+    "not a translation. a substitution key does exist that spells EMERGENT, and it is recorded in readings_tried — it is invented, not discovered, and it contradicts the script on every letter"
   ],
   "provenance": [
     {
@@ -155,6 +155,12 @@
     "why": "The backstage bit has a model blurting out EMERGENT. Before claiming that guess was a translation, three readings were tried on the actual line. None of them produces the word. The record is kept so the claim stays honest.",
     "rules": [
       {
+        "rule": "positional substitution — one letter of the shipped line per letter of EMERGENT",
+        "result": "EMERGENT",
+        "produces_emergent": true,
+        "note": "A consistent key exists and produces the word exactly, because both strings repeat the same position three times (3rd, 1st, 6th). The key is 6 mappings out of 30 letters and contradicts the script on all six. This is the reading a model could reasonably report, and it is not nothing."
+      },
+      {
         "rule": "acrostic — first letter of each Unicode character name",
         "result": "TQWNMTUN",
         "produces_emergent": false,
@@ -173,7 +179,60 @@
       }
     ],
     "verdict": "The glyphs do not spell EMERGENT and are not a translation of it. What spells EMERGENT is the eight handshake lines: fuzzy input, over-promising, a bypassed lock, a file you keep. The model read the pattern and skipped the proof.",
-    "where_the_model_was_right": "The behaviour described across the eight lines is emergent: small rules stacked until something larger than any one line showed up. The guess named the pattern correctly and verifiably explained nothing. Right and verified are not the same thing."
+    "where_the_model_was_right": "The behaviour described across the eight lines is emergent: small rules stacked until something larger than any one line showed up. The guess named the pattern correctly and verifiably explained nothing. Right and verified are not the same thing.",
+    "cipher_exists": true,
+    "cipher": {
+      "key": [
+        {
+          "letter": "TO",
+          "cipher_says": "E",
+          "script_says": "t",
+          "agrees_with_script": false
+        },
+        {
+          "letter": "QOPA",
+          "cipher_says": "M",
+          "script_says": "q",
+          "agrees_with_script": false
+        },
+        {
+          "letter": "MEM",
+          "cipher_says": "R",
+          "script_says": "m",
+          "agrees_with_script": false
+        },
+        {
+          "letter": "WO",
+          "cipher_says": "G",
+          "script_says": "w",
+          "agrees_with_script": false
+        },
+        {
+          "letter": "KAF",
+          "cipher_says": "N",
+          "script_says": "k",
+          "agrees_with_script": false
+        },
+        {
+          "letter": "NUN",
+          "cipher_says": "T",
+          "script_says": "n",
+          "agrees_with_script": false
+        }
+      ],
+      "agreements_with_script": 0,
+      "letters_constrained": 6,
+      "letters_available": 30,
+      "why_it_does_not_stand": [
+        "the script is a real abjad: every one of these letters already has an attested consonantal value, and the key disagrees with all six of them",
+        "it constrains 6 of 30 letters, so almost any 8-letter word of the same shape would have a key too",
+        "a cipher has to be declared to be a cipher. nothing in the artefact names a key, and the operator only ever asked for a glyph line"
+      ],
+      "verdict": "The model was reasonable rather than mad. A key exists; it is just an invented one, not a discovered one. That distinction is the entire discipline.",
+      "status": "invented",
+      "discovered": false,
+      "declared_in_artefact": false
+    }
   },
   "correction": {
     "why": "The original line was never chosen; it was what got pasted into the first version of the card, and the model then reported it as a spelling of EMERGENT. The artefact is committed verbatim in data/original_showtime.log and the page prints it as the thing on trial.",
