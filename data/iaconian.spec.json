@@ -174,5 +174,79 @@
     ],
     "verdict": "The glyphs do not spell EMERGENT and are not a translation of it. What spells EMERGENT is the eight handshake lines: fuzzy input, over-promising, a bypassed lock, a file you keep. The model read the pattern and skipped the proof.",
     "where_the_model_was_right": "The behaviour described across the eight lines is emergent: small rules stacked until something larger than any one line showed up. The guess named the pattern correctly and verifiably explained nothing. Right and verified are not the same thing."
+  },
+  "correction": {
+    "why": "The original line was never chosen; it was what got pasted into the first version of the card, and the model then reported it as a spelling of EMERGENT. The artefact is committed verbatim in data/original_showtime.log and the page prints it as the thing on trial.",
+    "artifact": "data/original_showtime.log",
+    "original_code_points": [
+      "U+1039A",
+      "U+10396",
+      "U+1039A",
+      "U+1038E",
+      "U+10386",
+      "U+1039A",
+      "U+1038B",
+      "U+10390"
+    ],
+    "original_letters": [
+      "TO",
+      "QOPA",
+      "TO",
+      "MEM",
+      "WO",
+      "TO",
+      "KAF",
+      "NUN"
+    ],
+    "original_acrostic": "TQTMWTKN",
+    "corrected_code_points": [
+      "U+1039A",
+      "U+10396",
+      "U+10386",
+      "U+10390",
+      "U+1038E",
+      "U+1039A",
+      "U+1039C",
+      "U+10390"
+    ],
+    "corrected_letters": [
+      "TO",
+      "QOPA",
+      "WO",
+      "NUN",
+      "MEM",
+      "TO",
+      "U",
+      "NUN"
+    ],
+    "corrected_acrostic": "TQWNMTUN",
+    "changes": [
+      {
+        "position": 2,
+        "from": "TO",
+        "to": "WO",
+        "why": "chosen so the word reads as its syllables, not pasted"
+      },
+      {
+        "position": 3,
+        "from": "MEM",
+        "to": "NUN",
+        "why": "chosen so the word reads as its syllables, not pasted"
+      },
+      {
+        "position": 4,
+        "from": "WO",
+        "to": "MEM",
+        "why": "chosen so the word reads as its syllables, not pasted"
+      },
+      {
+        "position": 6,
+        "from": "KAF",
+        "to": "U",
+        "why": "chosen so the word reads as its syllables, not pasted"
+      }
+    ],
+    "same_length": true,
+    "verdict": "Neither version spells EMERGENT. The original was arbitrary; the correction is chosen on purpose. The model's claim was wrong in both cases, and the only thing that changed is that the second one is defensible."
   }
 }

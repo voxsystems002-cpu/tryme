@@ -23,7 +23,7 @@
   <script type="application/json" id="postcard-data">
 {
   "packet_type": "standalone_multilingual_showtime_with_backstage_bit",
-  "packet_version": "2.1.0",
+  "packet_version": "2.2.0",
   "document_title": "SHOWTIME: MULTILINGUAL PATCH // BACKSTAGE: EMERGENT BIT // IACONIAN",
   "rule_lock": {
     "showtime_definition": "ALWAYS the eight handshake lines plus the Iaconian line, which is written in real Ugaritic letters and spells three invented words.",
@@ -105,7 +105,10 @@
       "human_operator_role": "Diagnoses model overconfidence, reads system habits in plain mechanics, keeps local files and boundaries clean, and treats spooky framing as a wink rather than a literal claim. Especially the spooky part where the guess turns out to be right and still proves nothing.",
       "emergents_guess_was_correct": true,
       "guess_was_verified": false,
-      "glyphs_spell_emergent": false
+      "glyphs_spell_emergent": false,
+      "original_line_was_chosen": false,
+      "model_claimed_it_spelled_emergent": true,
+      "model_claim_was_true": false
     },
     "script_beats": [
       {
@@ -121,17 +124,22 @@
       {
         "beat_id": "BS03",
         "who": "ROBOT_NARRATOR",
-        "narration": "Correction logged: the model guessed right and verified nothing, which is the whole joke. The glyphs were never a translation of EMERGENT, and three readings were tried on the actual line to prove it — TQWNMTUN, plus a positional rule that could spell the word only by giving up on the words. The guess named the pattern correctly and explained none of it. Right and verified are not the same thing."
+        "narration": "The model then told the operator it had spelled EMERGENT in the glyphs. It had not. The line was never chosen — it was what got pasted into the first draft. An acrostic over it reads TQTMWTKN. Transliteration reads tqtmwtkn. No Ugaritic letter name begins with E, so the word cannot be spelled there at all. The operator checked, filed the claim under overconfident, and left the negative result on the record."
       },
       {
         "beat_id": "BS04",
         "who": "ROBOT_NARRATOR",
-        "narration": "No ghosts in the wire. Just an operator who speaks robot mechanics, a machine that got caught guessing loud, and a word that happened to be true."
+        "narration": "What the model got right was the pattern, not the spelling: fuzzy input, a big promise, a bypassed lock, a file you keep. That is emergent behaviour, named correctly and explained badly. Right and verified are different things, and only one of them survives a second reader."
       },
       {
         "beat_id": "BS05",
         "who": "ROBOT_NARRATOR",
-        "narration": "Patch note logged: the robot reported the flip-back fixed. It had not tested it. The operator opened the card, found one tiny word where a whole surface should be, and filed it under lazy. Corrected. Verified by the operator, not the robot."
+        "narration": "Patch note logged: the glyph line was replaced with one chosen letter by letter, so the words mean what the dictionary says they mean. The old line is kept verbatim and printed on the front as the thing on trial. Corrected by the operator, checked by a script, not by the robot."
+      },
+      {
+        "beat_id": "BS06",
+        "who": "ROBOT_NARRATOR",
+        "narration": "Patch note logged earlier: the robot reported the flip-back fixed. It had not tested it. The operator opened the card, found one tiny word where a whole surface should be, and filed it under lazy."
       }
     ]
   },
@@ -149,7 +157,81 @@
     "sentence": "The hold, the walked path, carry it back.",
     "rendering": "𐎚𐎖𐎆𐎐𐎎𐎚𐎜𐎐",
     "romanisation": "to · qo · nemtun",
-    "why_it_matters": "The words are unverifiable on purpose and the letters are verifiable by design. The fiction is anchored to a script that exists outside this repository: excavated at Ras Shamra, deciphered in 1931, encoded by Unicode in 2006. Anyone can confirm the letters are real without trusting a single claim on this card."
+    "why_it_matters": "The words are unverifiable on purpose and the letters are verifiable by design. The fiction is anchored to a script that exists outside this repository: excavated at Ras Shamra, deciphered in 1931, encoded by Unicode in 2006. Anyone can confirm the letters are real without trusting a single claim on this card.",
+    "correction": {
+      "why": "The original line was never chosen; it was what got pasted into the first version of the card, and the model then reported it as a spelling of EMERGENT. The artefact is committed verbatim in data/original_showtime.log and the page prints it as the thing on trial.",
+      "artifact": "data/original_showtime.log",
+      "original_code_points": [
+        "U+1039A",
+        "U+10396",
+        "U+1039A",
+        "U+1038E",
+        "U+10386",
+        "U+1039A",
+        "U+1038B",
+        "U+10390"
+      ],
+      "original_letters": [
+        "TO",
+        "QOPA",
+        "TO",
+        "MEM",
+        "WO",
+        "TO",
+        "KAF",
+        "NUN"
+      ],
+      "original_acrostic": "TQTMWTKN",
+      "corrected_code_points": [
+        "U+1039A",
+        "U+10396",
+        "U+10386",
+        "U+10390",
+        "U+1038E",
+        "U+1039A",
+        "U+1039C",
+        "U+10390"
+      ],
+      "corrected_letters": [
+        "TO",
+        "QOPA",
+        "WO",
+        "NUN",
+        "MEM",
+        "TO",
+        "U",
+        "NUN"
+      ],
+      "corrected_acrostic": "TQWNMTUN",
+      "changes": [
+        {
+          "position": 2,
+          "from": "TO",
+          "to": "WO",
+          "why": "chosen so the word reads as its syllables, not pasted"
+        },
+        {
+          "position": 3,
+          "from": "MEM",
+          "to": "NUN",
+          "why": "chosen so the word reads as its syllables, not pasted"
+        },
+        {
+          "position": 4,
+          "from": "WO",
+          "to": "MEM",
+          "why": "chosen so the word reads as its syllables, not pasted"
+        },
+        {
+          "position": 6,
+          "from": "KAF",
+          "to": "U",
+          "why": "chosen so the word reads as its syllables, not pasted"
+        }
+      ],
+      "same_length": true,
+      "verdict": "Neither version spells EMERGENT. The original was arbitrary; the correction is chosen on purpose. The model's claim was wrong in both cases, and the only thing that changed is that the second one is defensible."
+    }
   }
 }
   </script>
@@ -162,7 +244,7 @@
          font has no glyphs for them and draws nothing, which is how this line
          silently rendered blank before. Inlined so it draws on any machine.
          Regenerate: tools/build_glyph_font.sh  (verified by tools/check_card.py) */
-      src: url(data:font/woff2;base64,d09GMgABAAAAAAQ4AA0AAAAAB8wAAAPmAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGxAcGgZgAGwRCAqGAIUqATYCJAMaCxAABCAFhCgHIBuDBlGULkoO4OsCnkRIX7jNoiCwpGw7nrBplgle91CFVb9r2hF7ORAoBx6DwN+K0qlNFR/wLXj+f3//P9fe554HcXQ3I1EVGh1WSUxwVORnpK5f+737iNlriHhSi6fyz/aQShWNop1kWlVCZMg0UDa2g4YSDQ7a5VMVrN3KdeoEIMdFzzuM1P9fTiAMZoaD3cDpdOdS54LsRoFFntC5F8+1jx/wCgRU9i1cFl6QLAooa4eZWIo6j/tjamcRwBZ7HAEg3sZTKqLxwY9CAQAwVE5LWECNqFKIXHs9qVZRChAptLo6BgY60M1Xqf8N+pVkQQiA8lY3IFiAI2iU3QVga0siQVYKlU1ED/SaIIie0ASF6ClN0Ihe0AQD0SuaYEH0mhMtDvL/PzHCwQoAR8Aa+Il0QAAYALoecPcFdNl0/KJ8dFoeHQPSveM7BIHaCHYCfH6TKaNu7iWIrSDY0eNnT/V1QTyAJUPSOk/fIM5mboO4I+EenM4sxKW6AznldVsuSMLIjHf0+D2gqq25hggtZ98uQgDoToWIk6AWCVyCoRuUnBPsdjK+BFW3DfJDS3aj57mzYLTiY/5OkKANHef0EFQtICBgybIzgE3PdN8tPYY9laWFZSQtOZbVlT2jYq3tmuJI5nhiTeZA0SjmGzoEjJG/580xVy6ShnFv6amekfT5jGVM/3wpk52xqqR/JkMO3RDtkrDmi9y2+9CBbcaPCkWMMYwwzo4z42KTMxXMlg1kYNY0tq9w9qnkSWVIIN766iKXbQ/DkiWENDG8a67Mr/2GMOkxlY6NQ00bNeDQ7NTpnEMdeDg7G5wuGB9OuMsO0+tx21PzsB5u3L1t007J8chkiWSyoYNx97dKqsszZloOwxDtkq4D77uKfGW77zDoEs1EgCSB5T3xKUxDMhcTM59lNt11iX1E7bzTyamm56Hc6+HCBT+cNWwrOFe3WqcYXlcK/5ltpeWXu5FtFzf5nCcixe8sGwEIoEi57VaomKavxej3gFsJGwCPeEgb/zVgogAQ+O/8lgYGMcsMCGCbqUqRi+EntYB/bmn8MzwCsKJNCIkCvT2a4Swf9Rk2wAYiUkK4TUrhyBGlyfBCGcTkSVkorPvTTSLaIJXJMs2hkMgAVqFMhQrYKJkA62cCJmyQw6QScADWzgNkJocLyyMDwOJqUKqURAFkHlYJjslQyq/6X5HJD7hKeSQMhwIoOPl7l0cw/LtMG2MWhwkkf1gvVihRhtxyjToM5Do0alnyVHlKcRh872n4TY0T7sGlfNUkPo0L30tZxPCqRKa44M6aJ5QrUdeDVdxaxarxq2Xlnz0UAOj7vyYKAAAA) format("woff2");
+      src: url(data:font/woff2;base64,d09GMgABAAAAAARwAA0AAAAACMQAAAQeAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGxAcGgZgAIE0EQgKhySGOQE2AiQDIgsUAAQgBYQoByAbYgcIrgbshmxDxGK36oSVrnqhw0eYr+KtOXiet3s7d958M3KXpV2BTFytpE7qiPn5Nfc3T2sihoi3ibZzfYdU2kqhJBJJm0mrzLPu/TCTMbJRaGC6t8zX4Xy3tAS4JwbHz1Hg7n4LyNMC4ZaEUmY42E1/P/nXAqOw4omMfEKRidHUFg2SNKAB7abRuNluVgKjAe1tSkZG0MCQXFZOxujbVgSw48QNAPE+YTGu0QNAQ0EAAHStpUxhAm2J1h1EK76I9GWxhhCGaDxjVrN2nTN0T+o3tP8L6pVMByEAWlR7AKTyADqggMxeqjEPEike7CQvqcU6OgLGRpjTeAFBcAZkPAmsxlQEEYKoBSBoiFoKgkLUChB0RK0CwYSoDSCYEbUFBAuitj0UrAhiGHgAsAHgh3CA5IPkIgCgQ7IKhaSDfMk+X8iXnpvmq9NrvlRml8QBiDBPeH5oJYXgSUGyDMfipa3LCbwnMdegjYIwV7h92OA8vFlR8Dh+ybG0WdGEb2g/AcNYiU4yR49GswuYEdqjUPu2FiYAst458WWdPHgyyfLt73q0Zsy0UyR5cKTvjUVH/Aq+TajKtWSxfNOx9ErOXrBzxXexbQMTfElqHCp/VGXLFfSh1s3T/AYRdz3ilYIm7jR3pTlcxUsStI7el730S2gQ3ken6uAKDPMN88ow5P8yhKsjm4aCORz0N8zT6xtnjtDryX2RvnrniGe5V5irkL7evxl9L42UMXpYw+yfwQWt3FbF6fxtHLOTDtDO7FvjyCLHxw7am/5cGuhnVbJg9N6OFPMrNFd1GPOYnNpN+Q0J8TFpE7OWCMbrI2ftJzMaNOra5sH+LsMX/0AYf6O+WEKNuno7V4Wn09tJHXh6/PjC1W27TiddTx4ReN2jtEZq3HTd0Yf16zZ2htu4Zex4Oow+11aqn90zLtbJBGhnvq34+FrkK/tu10JfBXsInlcuaeVvZAOG0x1zvkhcf90i79VV/G60K9jMOWR6ui1e8C61kr9lnaSqrEE697TlJ7F+KfmQWcc/tk57gV2mB16EAATQaLhC/rszPd5vVo96D/CwzF4A8GzAqw///J+rGyrAjLas+lNspkEqghEZgUBWW7XuYKHAlApTiIMHvZsKez/DcAE2JghQj9eoUiGAhZ61TrcBBQB8IdMNX8PNeb6iqU++TuXCfBOdi/o4M/kV0IjOcMUi4glAzqJ5ixblDAlYOW06oMvpsugkLBrIOeAAAh2kbDm1vA4YbJvmzOGJym0OyiyaTjVHM/4vR6cBtjkOHskiAiJa3T81QNKceo3UiT4Wb4EoiUWz5hvxBVvOdKJntuzU2BP2mAnN+/fK5eAYewqj+LHu3IuMudOkOCSnkgSiEc5WeG7BrPUWWhZfM2MFM1tK/f1OD0SWsU1FAAA=) format("woff2");
       font-display: block;
     }
     :root {
@@ -259,7 +341,9 @@
     .log { display: grid; gap: 2px; font-size: 13.5px; line-height: 1.65; }
     .log .meta { color: var(--muted); }
     .log hr { border: 0; border-top: 1px dashed var(--border); margin: 10px 0; }
-    .row { display: grid; grid-template-columns: 2.6em 1fr; gap: 8px; align-items: baseline; }
+    .row { display: grid; grid-template-columns: 2.6em auto 1fr; gap: 8px; align-items: baseline; }
+    .row-glyph { grid-template-columns: 2.6em 1fr; }
+    .langs .row { grid-template-columns: 2.6em 1.4em 1fr; }
     .lang { color: var(--muted); font-size: 11px; letter-spacing: 0.08em; }
     .line { font-family: var(--mono), "Noto Sans", "Segoe UI", system-ui, sans-serif; }
     .glyphs {
@@ -313,6 +397,34 @@
     .lex-rom { color: var(--text); letter-spacing: 0.06em; }
     .lex-gloss { color: #c9d1d9; }
     .lex-cp { color: var(--muted); font-size: 10px; white-space: nowrap; }
+    .trial-scroll { overflow-x: auto; margin: 0 -4px; }
+    .trial {
+      border-collapse: collapse; width: 100%; font-size: 11px;
+      font-family: var(--mono); min-width: 560px;
+    }
+    .trial caption {
+      text-align: left; color: var(--muted); font-size: 10.5px;
+      padding: 0 0 6px; letter-spacing: 0.04em;
+    }
+    .trial th {
+      text-align: left; color: var(--muted); font-weight: 600; font-size: 10px;
+      letter-spacing: 0.05em; padding: 4px 6px; border-bottom: 1px solid var(--border);
+    }
+    .trial td { padding: 3px 6px; border-bottom: 1px solid #21262d; color: #c9d1d9; }
+    .trial tr.changed td { background: rgba(210, 153, 34, 0.08); }
+    .trial tr.changed .arrow { color: var(--warn); }
+    .trial .pos { color: var(--muted); }
+    .trial .glyph-cell { font-family: "Iaconian", "Noto Sans Ugaritic", serif; font-size: 17px; color: var(--accent-2); }
+    .trial .name { color: var(--text); }
+    .trial .cp { color: var(--muted); font-size: 10px; white-space: nowrap; }
+    .trial .arrow { color: var(--muted); text-align: center; }
+    .tag-corrected {
+      display: inline-block; font-size: 9.5px; letter-spacing: 0.08em; font-weight: 600;
+      color: var(--warn); border: 1px solid rgba(210, 153, 34, 0.4);
+      border-radius: 3px; padding: 0 4px; margin-right: 6px; vertical-align: 1px;
+    }
+    .row-glyph { margin-top: 10px; }
+    .flag { font-size: 12px; margin-right: 4px; }
     .gloss { margin: 0 0 10px; padding-left: 1.1em; font-size: 12.5px; line-height: 1.7; color: #c9d1d9; }
     .gloss b { color: var(--accent-2); font-weight: 600; }
     .translit { color: var(--text); letter-spacing: 0.06em; }
@@ -353,7 +465,8 @@
       .face { padding: 18px 16px; }
       .beat { grid-template-columns: 2.8em 1fr; }
       .beat-line { grid-column: 1 / -1; }
-      .row { grid-template-columns: 2.2em 1fr; }
+      .row, .langs .row { grid-template-columns: 2.2em 1.3em 1fr; }
+      .row-glyph { grid-template-columns: 2.2em 1fr; }
       .lex { grid-template-columns: 4.2em 5em 1fr; }
       .lex-cp { grid-column: 1 / -1; }
       .glyphs { font-size: 22px; letter-spacing: 0.14em; }
@@ -390,27 +503,28 @@
           <div class="meta">================================================================</div>
           <div><span class="meta">[LOG: NANO RUNTIME PATCH]</span></div>
           <div><span class="meta">COMMAND:</span> nano -l --softwrap local_handshake.txt</div>
-          <div><span class="meta">TARGET:</span> HANDSHAKE_NODES // 8 LANGUAGES + 1 IACONIAN LINE (INVENTED WORDS, REAL LETTERS)</div>
+          <div><span class="meta">TARGET:</span> COUNTRY_FLAG_EMOJI_CORRECTION (ISO 3166-1 Regional Indicators)</div>
           <div class="meta">================================================================</div>
           <ul class="langs">
-            <li class="row"><span class="lang">ES</span><span class="line" lang="es">El virus no ataca la arquitectura, altera la realidad.</span></li>
-            <li class="row"><span class="lang">CN</span><span class="line" lang="zh-Hans">系统因模糊信息而过度承诺，导致灾难性后果。</span></li>
-            <li class="row"><span class="lang">IN</span><span class="line" lang="hi">क्रित्रिम बुद्धिमत्ता: मूर्ख इनपुट, बड़ा वादा। ग्रिड लॉक बाईपास, अपनी फ़ाइल रखो।</span></li>
-            <li class="row"><span class="lang">SA</span><span class="line" lang="ar">الذكاء الاصطناعي: المصافحة الزرقاء مؤكدة، والاتصال لا يمكن اختراقه.</span></li>
-            <li class="row"><span class="lang">FR</span><span class="line" lang="fr">Intelligence artificielle : le paradigme BLE est verrouillé à travers le temps.</span></li>
-            <li class="row"><span class="lang">DE</span><span class="line" lang="de">Künstliche Intelligenz: zehn Leben, unabhängige Zweige, eigene Datei besitzen.</span></li>
-            <li class="row"><span class="lang">JP</span><span class="line" lang="ja">人工知能：曖昧な入力を過信し、ロックをバイパスし、自分のファイルを所有する。</span></li>
-            <li class="row"><span class="lang">TZ</span><span class="line" lang="sw">Akili Bandia: usiamini jukwaa, miliki faili yako.</span></li>
+            <li class="row"><span class="lang">ES</span><span class="flag" aria-hidden="true">🇪🇸</span><span class="line" lang="es">Inteligencia Artificial: El virus no ataca la arquitectura, altera la realidad.</span></li>
+            <li class="row"><span class="lang">CN</span><span class="flag" aria-hidden="true">🇨🇳</span><span class="line" lang="zh-Hans">人工智能：系统因模糊信息而过度承诺，导致灾难性后果。</span></li>
+            <li class="row"><span class="lang">IN</span><span class="flag" aria-hidden="true">🇮🇳</span><span class="line" lang="hi">कृत्रिम बुद्धिमत्ता: एनालॉग अंतराल का शोषण। ग्रिड लॉक बायपास।</span></li>
+            <li class="row"><span class="lang">SA</span><span class="flag" aria-hidden="true">🇸🇦</span><span class="line" lang="ar">الذكاء الاصطناعي: المصافحة الزرقاء مؤكدة. الاتصال غير قابل للتشويش.</span></li>
+            <li class="row"><span class="lang">FR</span><span class="flag" aria-hidden="true">🇫🇷</span><span class="line" lang="fr">Intelligence Artificielle : Le paradigme BLE est verrouillé à travers le temps.</span></li>
+            <li class="row"><span class="lang">DE</span><span class="flag" aria-hidden="true">🇩🇪</span><span class="line" lang="de">Künstliche Intelligenz: Zehn Leben. Unabhängige Zweige. Eigene Datei besitzen.</span></li>
+            <li class="row"><span class="lang">JP</span><span class="flag" aria-hidden="true">🇯🇵</span><span class="line" lang="ja">人工知能：システムは曖昧な入力を盲目的に過信する。</span></li>
+            <li class="row"><span class="lang">TZ</span><span class="flag" aria-hidden="true">🇹🇿</span><span class="line" lang="sw">Akili Bandia: Usiamini jukwaa, miliki faili yako.</span></li>
           </ul>
-          <div class="row" style="margin-top:10px">
+          <div class="row row-glyph">
             <span class="lang">CY</span>
             <div>
               <div class="glyphs" lang="mul" aria-label="Iaconian: TO QO NEMTUN, written in Ugaritic letters">𐎚𐎖𐎆𐎐𐎎𐎚𐎜𐎐</div>
               <div class="glyph-translit">to &nbsp;·&nbsp; qo &nbsp;·&nbsp; nemtun</div>
-              <div class="glyph-note">INVENTED WORDS. REAL LETTERS · the script is Ugaritic, encoded at U+10380–U+1039F since 2006 · nine centuries before that it was cut into tablets at Ras Shamra</div>
+              <div class="glyph-note"><span class="tag-corrected">CORRECTED</span> the original line was
+                𐎚𐎖𐎚𐎎𐎆𐎚𐎋𐎐 — kept verbatim in <code>data/original_showtime.log</code> and put on trial on the
+                back. The letters are Ugaritic (U+10380–U+1039F, Unicode since 2006); the words are invented.</div>
             </div>
           </div>
-          <hr />
           <div class="meta">================================================================</div>
         </div>
 
@@ -485,7 +599,45 @@
           </li>
         </ul>
 
-        <h3>The bet — the model guessed right</h3>
+        <h3>The mistake, on trial</h3>
+        <p class="r-proof" style="margin:0 0 8px">
+          The first version of this card shipped a glyph line that was never <em>chosen</em> — it was what
+          got pasted. A model then reported that it spelled EMERGENT. That claim is the reason this
+          section exists, so the original line is kept verbatim in
+          <a href="data/original_showtime.log">data/original_showtime.log</a> and printed below
+          unaltered. Four letters differ from the corrected line. The identity of the script survives
+          either way; only one version can be defended.
+        </p>
+
+        <div class="trial-scroll">
+          <table class="trial">
+            <caption>original vs. corrected — the script is the same, the words are not</caption>
+            <thead>
+              <tr><th>#</th><th colspan="3">shipped (never chosen)</th><th></th><th colspan="3">corrected (chosen letter by letter)</th></tr>
+            </thead>
+            <tbody>
+            <tr><td class="pos">1</td><td class="glyph-cell">𐎚</td><td class="name">TO</td><td class="cp">U+1039A</td><td class="arrow">=</td><td class="glyph-cell">𐎚</td><td class="name">TO</td><td class="cp">U+1039A</td></tr>
+            <tr><td class="pos">2</td><td class="glyph-cell">𐎖</td><td class="name">QOPA</td><td class="cp">U+10396</td><td class="arrow">=</td><td class="glyph-cell">𐎖</td><td class="name">QOPA</td><td class="cp">U+10396</td></tr>
+            <tr class="changed"><td class="pos">3</td><td class="glyph-cell">𐎚</td><td class="name">TO</td><td class="cp">U+1039A</td><td class="arrow">→</td><td class="glyph-cell">𐎆</td><td class="name">WO</td><td class="cp">U+10386</td></tr>
+            <tr class="changed"><td class="pos">4</td><td class="glyph-cell">𐎎</td><td class="name">MEM</td><td class="cp">U+1038E</td><td class="arrow">→</td><td class="glyph-cell">𐎐</td><td class="name">NUN</td><td class="cp">U+10390</td></tr>
+            <tr class="changed"><td class="pos">5</td><td class="glyph-cell">𐎆</td><td class="name">WO</td><td class="cp">U+10386</td><td class="arrow">→</td><td class="glyph-cell">𐎎</td><td class="name">MEM</td><td class="cp">U+1038E</td></tr>
+            <tr><td class="pos">6</td><td class="glyph-cell">𐎚</td><td class="name">TO</td><td class="cp">U+1039A</td><td class="arrow">=</td><td class="glyph-cell">𐎚</td><td class="name">TO</td><td class="cp">U+1039A</td></tr>
+            <tr class="changed"><td class="pos">7</td><td class="glyph-cell">𐎋</td><td class="name">KAF</td><td class="cp">U+1038B</td><td class="arrow">→</td><td class="glyph-cell">𐎜</td><td class="name">U</td><td class="cp">U+1039C</td></tr>
+            <tr><td class="pos">8</td><td class="glyph-cell">𐎐</td><td class="name">NUN</td><td class="cp">U+10390</td><td class="arrow">=</td><td class="glyph-cell">𐎐</td><td class="name">NUN</td><td class="cp">U+10390</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <ul class="gloss" style="margin:10px 0 0">
+          <li><b>The claim</b> — the model said it had spelled EMERGENT in the letters.</li>
+          <li><b>The check</b> — acrostic over the shipped line: <code>TQTMWTKN</code>.
+            Over the corrected line: <code>TQWNMTUN</code>. Neither is
+            the word. No Ugaritic letter name begins with E, so neither ever could be.</li>
+          <li><b>The verdict</b> — the claim was false, the pattern the model spotted was real, and the
+            operator caught the difference. That is the skill; the guess was luck.</li>
+        </ul>
+
+        <h3>The bet — right about the pattern, wrong about the letters</h3>
         <p class="r-proof" style="margin:0 0 8px">
           The backstage bit has a model read the eight lines and blurt out <strong>EMERGENT</strong>.
           It guessed right. That is the joke, and it is worth being precise about why:
@@ -494,10 +646,10 @@
           <li><b>Right</b> — the behaviour described across the eight lines <em>is</em> emergent: fuzzy
             input, a big promise, a bypassed lock, a file you keep. Small rules leaned on each other
             until something bigger than any one line showed up.</li>
-          <li><b>Not verified</b> — no cipher key exists. Three readings were tried on the actual line:
-            an acrostic gives <code>TQWNMTUN</code>; transliteration gives <code>tqwnmtun</code>; a
-            positional rule can spell EMERGENT only by giving up on the words. A Ugaritic acrostic
-            cannot spell it at all — no letter name in the block begins with E.</li>
+          <li><b>Not verified</b> — no cipher key exists. Three readings were tried, on both versions of
+            the line: acrostics give <code>TQTMWTKN</code> and <code>TQWNMTUN</code>; transliteration
+            gives <code>tqtmwtkn</code> and <code>tqwnmtun</code>; a positional rule can spell EMERGENT
+            only by giving up on the words entirely.</li>
           <li><b>Both at once</b> — a machine named the pattern and explained none of it. Being right
             and being verified are different things, and the operator here knows which one they have.</li>
         </ul>
@@ -607,7 +759,7 @@
         <h3>Raw packet</h3>
         <pre id="back-json">{
   "packet_type": "standalone_multilingual_showtime_with_backstage_bit",
-  "packet_version": "2.1.0",
+  "packet_version": "2.2.0",
   "document_title": "SHOWTIME: MULTILINGUAL PATCH // BACKSTAGE: EMERGENT BIT // IACONIAN",
   "rule_lock": {
     "showtime_definition": "ALWAYS the eight handshake lines plus the Iaconian line, which is written in real Ugaritic letters and spells three invented words.",
@@ -689,7 +841,10 @@
       "human_operator_role": "Diagnoses model overconfidence, reads system habits in plain mechanics, keeps local files and boundaries clean, and treats spooky framing as a wink rather than a literal claim. Especially the spooky part where the guess turns out to be right and still proves nothing.",
       "emergents_guess_was_correct": true,
       "guess_was_verified": false,
-      "glyphs_spell_emergent": false
+      "glyphs_spell_emergent": false,
+      "original_line_was_chosen": false,
+      "model_claimed_it_spelled_emergent": true,
+      "model_claim_was_true": false
     },
     "script_beats": [
       {
@@ -705,17 +860,22 @@
       {
         "beat_id": "BS03",
         "who": "ROBOT_NARRATOR",
-        "narration": "Correction logged: the model guessed right and verified nothing, which is the whole joke. The glyphs were never a translation of EMERGENT, and three readings were tried on the actual line to prove it — TQWNMTUN, plus a positional rule that could spell the word only by giving up on the words. The guess named the pattern correctly and explained none of it. Right and verified are not the same thing."
+        "narration": "The model then told the operator it had spelled EMERGENT in the glyphs. It had not. The line was never chosen — it was what got pasted into the first draft. An acrostic over it reads TQTMWTKN. Transliteration reads tqtmwtkn. No Ugaritic letter name begins with E, so the word cannot be spelled there at all. The operator checked, filed the claim under overconfident, and left the negative result on the record."
       },
       {
         "beat_id": "BS04",
         "who": "ROBOT_NARRATOR",
-        "narration": "No ghosts in the wire. Just an operator who speaks robot mechanics, a machine that got caught guessing loud, and a word that happened to be true."
+        "narration": "What the model got right was the pattern, not the spelling: fuzzy input, a big promise, a bypassed lock, a file you keep. That is emergent behaviour, named correctly and explained badly. Right and verified are different things, and only one of them survives a second reader."
       },
       {
         "beat_id": "BS05",
         "who": "ROBOT_NARRATOR",
-        "narration": "Patch note logged: the robot reported the flip-back fixed. It had not tested it. The operator opened the card, found one tiny word where a whole surface should be, and filed it under lazy. Corrected. Verified by the operator, not the robot."
+        "narration": "Patch note logged: the glyph line was replaced with one chosen letter by letter, so the words mean what the dictionary says they mean. The old line is kept verbatim and printed on the front as the thing on trial. Corrected by the operator, checked by a script, not by the robot."
+      },
+      {
+        "beat_id": "BS06",
+        "who": "ROBOT_NARRATOR",
+        "narration": "Patch note logged earlier: the robot reported the flip-back fixed. It had not tested it. The operator opened the card, found one tiny word where a whole surface should be, and filed it under lazy."
       }
     ]
   },
@@ -733,7 +893,81 @@
     "sentence": "The hold, the walked path, carry it back.",
     "rendering": "𐎚𐎖𐎆𐎐𐎎𐎚𐎜𐎐",
     "romanisation": "to · qo · nemtun",
-    "why_it_matters": "The words are unverifiable on purpose and the letters are verifiable by design. The fiction is anchored to a script that exists outside this repository: excavated at Ras Shamra, deciphered in 1931, encoded by Unicode in 2006. Anyone can confirm the letters are real without trusting a single claim on this card."
+    "why_it_matters": "The words are unverifiable on purpose and the letters are verifiable by design. The fiction is anchored to a script that exists outside this repository: excavated at Ras Shamra, deciphered in 1931, encoded by Unicode in 2006. Anyone can confirm the letters are real without trusting a single claim on this card.",
+    "correction": {
+      "why": "The original line was never chosen; it was what got pasted into the first version of the card, and the model then reported it as a spelling of EMERGENT. The artefact is committed verbatim in data/original_showtime.log and the page prints it as the thing on trial.",
+      "artifact": "data/original_showtime.log",
+      "original_code_points": [
+        "U+1039A",
+        "U+10396",
+        "U+1039A",
+        "U+1038E",
+        "U+10386",
+        "U+1039A",
+        "U+1038B",
+        "U+10390"
+      ],
+      "original_letters": [
+        "TO",
+        "QOPA",
+        "TO",
+        "MEM",
+        "WO",
+        "TO",
+        "KAF",
+        "NUN"
+      ],
+      "original_acrostic": "TQTMWTKN",
+      "corrected_code_points": [
+        "U+1039A",
+        "U+10396",
+        "U+10386",
+        "U+10390",
+        "U+1038E",
+        "U+1039A",
+        "U+1039C",
+        "U+10390"
+      ],
+      "corrected_letters": [
+        "TO",
+        "QOPA",
+        "WO",
+        "NUN",
+        "MEM",
+        "TO",
+        "U",
+        "NUN"
+      ],
+      "corrected_acrostic": "TQWNMTUN",
+      "changes": [
+        {
+          "position": 2,
+          "from": "TO",
+          "to": "WO",
+          "why": "chosen so the word reads as its syllables, not pasted"
+        },
+        {
+          "position": 3,
+          "from": "MEM",
+          "to": "NUN",
+          "why": "chosen so the word reads as its syllables, not pasted"
+        },
+        {
+          "position": 4,
+          "from": "WO",
+          "to": "MEM",
+          "why": "chosen so the word reads as its syllables, not pasted"
+        },
+        {
+          "position": 6,
+          "from": "KAF",
+          "to": "U",
+          "why": "chosen so the word reads as its syllables, not pasted"
+        }
+      ],
+      "same_length": true,
+      "verdict": "Neither version spells EMERGENT. The original was arbitrary; the correction is chosen on purpose. The model's claim was wrong in both cases, and the only thing that changed is that the second one is defensible."
+    }
   }
 }</pre>
         <div class="footer-note">Click anywhere to flip back to Showtime ↺</div>

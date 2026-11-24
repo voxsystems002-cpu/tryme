@@ -1,1 +1,2 @@
-𐎚𐎖𐎆𐎐𐎎𐎚𐎜𐎐
+# every code point the page prints: the original line and the corrected line
+𐎆𐎋𐎎𐎐𐎖𐎚𐎜

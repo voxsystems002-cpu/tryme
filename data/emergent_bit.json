@@ -1,6 +1,6 @@
 {
   "packet_type": "standalone_multilingual_showtime_with_backstage_bit",
-  "packet_version": "2.1.0",
+  "packet_version": "2.2.0",
   "document_title": "SHOWTIME: MULTILINGUAL PATCH // BACKSTAGE: EMERGENT BIT // IACONIAN",
   "rule_lock": {
     "showtime_definition": "ALWAYS the eight handshake lines plus the Iaconian line, which is written in real Ugaritic letters and spells three invented words.",
@@ -82,7 +82,10 @@
       "human_operator_role": "Diagnoses model overconfidence, reads system habits in plain mechanics, keeps local files and boundaries clean, and treats spooky framing as a wink rather than a literal claim. Especially the spooky part where the guess turns out to be right and still proves nothing.",
       "emergents_guess_was_correct": true,
       "guess_was_verified": false,
-      "glyphs_spell_emergent": false
+      "glyphs_spell_emergent": false,
+      "original_line_was_chosen": false,
+      "model_claimed_it_spelled_emergent": true,
+      "model_claim_was_true": false
     },
     "script_beats": [
       {
@@ -98,17 +101,22 @@
       {
         "beat_id": "BS03",
         "who": "ROBOT_NARRATOR",
-        "narration": "Correction logged: the model guessed right and verified nothing, which is the whole joke. The glyphs were never a translation of EMERGENT, and three readings were tried on the actual line to prove it — TQWNMTUN, plus a positional rule that could spell the word only by giving up on the words. The guess named the pattern correctly and explained none of it. Right and verified are not the same thing."
+        "narration": "The model then told the operator it had spelled EMERGENT in the glyphs. It had not. The line was never chosen — it was what got pasted into the first draft. An acrostic over it reads TQTMWTKN. Transliteration reads tqtmwtkn. No Ugaritic letter name begins with E, so the word cannot be spelled there at all. The operator checked, filed the claim under overconfident, and left the negative result on the record."
       },
       {
         "beat_id": "BS04",
         "who": "ROBOT_NARRATOR",
-        "narration": "No ghosts in the wire. Just an operator who speaks robot mechanics, a machine that got caught guessing loud, and a word that happened to be true."
+        "narration": "What the model got right was the pattern, not the spelling: fuzzy input, a big promise, a bypassed lock, a file you keep. That is emergent behaviour, named correctly and explained badly. Right and verified are different things, and only one of them survives a second reader."
       },
       {
         "beat_id": "BS05",
         "who": "ROBOT_NARRATOR",
-        "narration": "Patch note logged: the robot reported the flip-back fixed. It had not tested it. The operator opened the card, found one tiny word where a whole surface should be, and filed it under lazy. Corrected. Verified by the operator, not the robot."
+        "narration": "Patch note logged: the glyph line was replaced with one chosen letter by letter, so the words mean what the dictionary says they mean. The old line is kept verbatim and printed on the front as the thing on trial. Corrected by the operator, checked by a script, not by the robot."
+      },
+      {
+        "beat_id": "BS06",
+        "who": "ROBOT_NARRATOR",
+        "narration": "Patch note logged earlier: the robot reported the flip-back fixed. It had not tested it. The operator opened the card, found one tiny word where a whole surface should be, and filed it under lazy."
       }
     ]
   },
@@ -126,6 +134,80 @@
     "sentence": "The hold, the walked path, carry it back.",
     "rendering": "𐎚𐎖𐎆𐎐𐎎𐎚𐎜𐎐",
     "romanisation": "to · qo · nemtun",
-    "why_it_matters": "The words are unverifiable on purpose and the letters are verifiable by design. The fiction is anchored to a script that exists outside this repository: excavated at Ras Shamra, deciphered in 1931, encoded by Unicode in 2006. Anyone can confirm the letters are real without trusting a single claim on this card."
+    "why_it_matters": "The words are unverifiable on purpose and the letters are verifiable by design. The fiction is anchored to a script that exists outside this repository: excavated at Ras Shamra, deciphered in 1931, encoded by Unicode in 2006. Anyone can confirm the letters are real without trusting a single claim on this card.",
+    "correction": {
+      "why": "The original line was never chosen; it was what got pasted into the first version of the card, and the model then reported it as a spelling of EMERGENT. The artefact is committed verbatim in data/original_showtime.log and the page prints it as the thing on trial.",
+      "artifact": "data/original_showtime.log",
+      "original_code_points": [
+        "U+1039A",
+        "U+10396",
+        "U+1039A",
+        "U+1038E",
+        "U+10386",
+        "U+1039A",
+        "U+1038B",
+        "U+10390"
+      ],
+      "original_letters": [
+        "TO",
+        "QOPA",
+        "TO",
+        "MEM",
+        "WO",
+        "TO",
+        "KAF",
+        "NUN"
+      ],
+      "original_acrostic": "TQTMWTKN",
+      "corrected_code_points": [
+        "U+1039A",
+        "U+10396",
+        "U+10386",
+        "U+10390",
+        "U+1038E",
+        "U+1039A",
+        "U+1039C",
+        "U+10390"
+      ],
+      "corrected_letters": [
+        "TO",
+        "QOPA",
+        "WO",
+        "NUN",
+        "MEM",
+        "TO",
+        "U",
+        "NUN"
+      ],
+      "corrected_acrostic": "TQWNMTUN",
+      "changes": [
+        {
+          "position": 2,
+          "from": "TO",
+          "to": "WO",
+          "why": "chosen so the word reads as its syllables, not pasted"
+        },
+        {
+          "position": 3,
+          "from": "MEM",
+          "to": "NUN",
+          "why": "chosen so the word reads as its syllables, not pasted"
+        },
+        {
+          "position": 4,
+          "from": "WO",
+          "to": "MEM",
+          "why": "chosen so the word reads as its syllables, not pasted"
+        },
+        {
+          "position": 6,
+          "from": "KAF",
+          "to": "U",
+          "why": "chosen so the word reads as its syllables, not pasted"
+        }
+      ],
+      "same_length": true,
+      "verdict": "Neither version spells EMERGENT. The original was arbitrary; the correction is chosen on purpose. The model's claim was wrong in both cases, and the only thing that changed is that the second one is defensible."
+    }
   }
 }

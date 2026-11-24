@@ -66,6 +66,24 @@ if spec_file.exists():
     check("romanisation on the page matches the spec",
           all(e["romanisation"] in HTML for e in spec["lexicon"]))
 
+# 2c. the front must derive from the committed artefact ---------------------
+art = ROOT / "data" / "original_showtime.log"
+if art.exists():
+    log = art.read_text(encoding="utf-8")
+    shipped = [l for l in log.split("\n") if l.startswith("\U0001f6e1")][0]
+    orig_line = shipped.split("Iaconian): ")[1].strip()
+    check("the original line is printed on the page as the thing on trial",
+          orig_line in HTML, "kept verbatim, not paraphrased")
+    check("the page marks the corrected line as corrected", "CORRECTED" in HTML)
+    langs = [l for l in log.split("\n") if " * " in l and l[0] != "\U0001f6e1"]
+    check("every handshake line from the artefact appears on the page",
+          all(l.split(" * ", 1)[1] in HTML for l in langs),
+          f"{len(langs)} lines")
+    header = [k.replace("COMMAND: ", "").replace("TARGET: ", "")
+              for k in log.split("\n") if k.startswith(("COMMAND:", "TARGET:"))]
+    check("front's log header comes from the artefact",
+          all(h in HTML for h in header), " / ".join(header))
+
 # 3. accessibility state ---------------------------------------------------
 check("card exposes aria-expanded", 'aria-expanded="false"' in HTML)
 check("hidden face removed from a11y tree", 'aria-hidden="true"' in HTML)

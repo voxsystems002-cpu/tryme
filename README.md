@@ -26,13 +26,25 @@ Unicode in 2006 at `U+10380–U+1039F`.
 
 The sentence reads *"the hold, the walked path, carry it back."*
 
+### The original mistake
+
+The first version shipped a glyph line nobody chose — it was what got pasted:
+`𐎚𐎖𐎚𐎎𐎆𐎚𐎋𐎐` (`TO QOPA TO MEM WO TO KAF NUN`, acrostic `TQTMWTKN`).
+A model then reported that it spelled EMERGENT.
+
+That block is committed verbatim as `data/original_showtime.log`, and the front
+face is **generated from it** by `tools/build_showtime.py` — so the artifact on
+trial is the real artifact, not a paraphrase. The correction is a four-letter
+edit, shown as a keyed table on the back.
+
 It does **not** spell EMERGENT, and that is load-bearing. The backstage bit has a
 model guess that word; three readings were tried on the real line, and the
 negative results are committed:
 
 | rule | gives |
 |---|---|
-| acrostic (first letter of each Unicode name) | `TQWNMTUN` |
+| acrostic, shipped line | `TQTMWTKN` |
+| acrostic, corrected line | `TQWNMTUN` |
 | transliteration | `tqwnmtun` |
 | positional (nth Ugaritic letter = nth Latin) | spells EMERGENT only by abandoning the words entirely |
 

@@ -88,6 +88,28 @@ if rt:
           rt["rules"][2]["produces_emergent"] is False)
     check("verdict states what did spell it", "handshake" in rt["verdict"])
 
+# 5c: the artefact and the correction must both be real ---------------------
+art = ROOT / "data" / "original_showtime.log"
+check("the original artefact is committed", art.exists(),
+      "the line the model called EMERGENT has to exist somewhere other than memory")
+if art.exists():
+    log = art.read_text(encoding="utf-8")
+    shipped = [l for l in log.split("\n") if l.startswith("\U0001f6e1")]
+    check("artefact has exactly one glyph line", len(shipped) == 1)
+    if shipped:
+        shipped_line = shipped[0].split("Iaconian): ")[1].strip()
+        corr = SPEC.get("correction", {})
+        check("correction records the shipped line", corr.get("original_code_points") ==
+              [f"U+{ord(c):04X}" for c in shipped_line])
+        check("the shipped line did NOT spell EMERGENT either",
+              corr.get("original_acrostic") != "EMERGENT", corr.get("original_acrostic", "?"))
+        check("both lines are the same length", len(shipped_line) == len(render))
+        changed = [(i, a, b) for i, (a, b) in enumerate(zip(shipped_line, render)) if a != b]
+        check("the correction is a real edit, not a no-op", len(changed) > 0,
+              f"{len(changed)} letters changed")
+        check("every printed glyph of both lines has a shape in the font",
+              all(unicodedata.name(c, "") for c in shipped_line + render))
+
 # 6: honesty surface present and non-empty
 check("spec states what it is not", len(SPEC["not_claimed"]) >= 3)
 check("spec points outside itself", len(SPEC["provenance"]) >= 2)
