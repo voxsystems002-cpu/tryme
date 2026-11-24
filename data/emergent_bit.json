@@ -1,6 +1,6 @@
 {
   "packet_type": "standalone_multilingual_showtime_with_backstage_bit",
-  "packet_version": "2.3.0",
+  "packet_version": "3.0.0",
   "document_title": "SHOWTIME: MULTILINGUAL PATCH // BACKSTAGE: EMERGENT BIT // IACONIAN",
   "rule_lock": {
     "showtime_definition": "ALWAYS the eight handshake lines plus the Iaconian line, which is written in real Ugaritic letters and spells three invented words.",
@@ -21,49 +21,49 @@
     }
   ],
   "receipts": {
-    "why": "Anyone can say they steer AI. These are the things that can be checked without trusting the claim.",
+    "why": "Four claims, four files. The rest is folded — evidence should not have to shout.",
     "items": [
       {
         "id": "R1",
-        "claim": "Every letter on the front is a real Unicode character, and the script predates the fiction by about 3,400 years.",
-        "proof": "The line is U+1039A U+10396 U+10386 U+10390 U+1038E U+1039A U+1039C U+10390 — Ugaritic, block U+10380-1039F, encoded in 2006, excavated at Ras Shamra and deciphered in 1931. tools/check_iaconian.py verifies each code point against Python's unicodedata and fails if the sentence and the lexicon disagree.",
-        "file": "tools/check_iaconian.py"
+        "claim": "Every letter is a real Unicode character.",
+        "file": "tools/check_iaconian.py",
+        "proof": "U+1039A … U+10390, Ugaritic, block U+10380-1039F, encoded 2006, excavated at Ras Shamra, deciphered 1931. tools/check_iaconian.py checks each code point against Python's unicodedata, offline, and fails if the sentence and the lexicon disagree."
       },
       {
         "id": "R2",
-        "claim": "The three words are invented, and the page says so where it matters.",
-        "proof": "data/iaconian.spec.json carries a not_claimed list: no decipherment, not Ugaritic words, no native speakers, romanisation is editorial. The card repeats the short version next to the glyph line instead of burying it.",
-        "file": "data/iaconian.spec.json"
+        "claim": "The words are invented, and the card says so.",
+        "file": "data/iaconian.spec.json",
+        "proof": "not_claimed lists what this is not: no decipherment, not Ugaritic words, no speakers, romanisation editorial. The short version is printed next to the letters, not buried."
       },
       {
         "id": "R3",
-        "claim": "Contrast is measured, not eyeballed.",
-        "proof": "Five text/surface pairs are computed with the WCAG relative-luminance formula. Lowest is 6.15:1 against a 4.5:1 floor.",
-        "file": "tools/check_contrast.py"
+        "claim": "The cipher is real. I invented it.",
+        "file": "data/iaconian.spec.json",
+        "proof": "TO→E QOPA→M MEM→R WO→G KAF→N NUN→T spells EMERGENT exactly. All six letters already mean something else in the script, and six mappings out of thirty constrains almost nothing."
       },
       {
         "id": "R4",
-        "claim": "The head data and the back of the card cannot drift apart.",
-        "proof": "The back face is not hand-written; it is printed from the same JSON the head carries, and the checker compares both copies byte-for-byte.",
-        "file": "index.html"
+        "claim": "Contrast is measured, not eyeballed.",
+        "file": "tools/check_contrast.py",
+        "proof": "Eleven text/surface pairs, WCAG relative luminance, 4.5:1 floor, lowest 5.89:1."
       },
       {
         "id": "R5",
-        "claim": "Both faces are reachable without a mouse, and flipping is announced.",
-        "proof": "role=button, tabindex=0, aria-expanded toggles, the hidden face is aria-hidden, Enter/Space flip, Escape returns, and prefers-reduced-motion removes the entrance animation. tools/test_flip.js drives all of it in a real DOM.",
-        "file": "index.html"
+        "claim": "Nothing drifts.",
+        "file": "tools/check_card.py",
+        "proof": "The back is printed from the head JSON, the static fallback matches it, and index.html must print the same glyph line as the spec. Compared byte for byte on every run."
       },
       {
         "id": "R6",
-        "claim": "The model got caught guessing loud, in writing.",
-        "proof": "BS05: the robot reported the flip-back fixed without testing it. The operator opened the card, found one word where a surface should be, and filed it under lazy. Corrected by hand.",
-        "file": "emergent_bit.json"
+        "claim": "Both faces work without a mouse.",
+        "file": "tools/test_flip.js",
+        "proof": "role=button, aria-expanded, hidden face aria-hidden, Enter/Space flip, Escape returns, reduced motion respected. Driven in a real DOM, not asserted in prose."
       },
       {
         "id": "R7",
-        "claim": "The model's guess was right, and that is not evidence of anything.",
-        "proof": "Three readings were tried on the real line — acrostic (TQWNMTUN), transliteration (tqwnmtun), and positional. None spells EMERGENT. A Ugaritic acrostic cannot: no letter name in the block begins with E. The word came from the eight lines, not the glyphs. tools/check_iaconian.py enforces this, negative result included.",
-        "file": "tools/check_iaconian.py"
+        "claim": "The robot did not test its own fix.",
+        "file": "emergent_bit.json",
+        "proof": "BS06. It reported the flip-back fixed; one word sat where a surface should be. Filed under lazy."
       }
     ]
   },
@@ -94,7 +94,7 @@
       {
         "beat_id": "BS01",
         "who": "ROBOT_NARRATOR",
-        "narration": "Showtime runs the eight languages and the Iaconian line. No key is declared, and none was asked for. An overconfident model spots a pattern across lines about fuzzy input, overcommitting, bypassing locks, and owning your own file, and blurts out a single word."
+        "narration": "Showtime runs eight languages and one Iaconian line. No key is declared. A model spots a pattern across lines about fuzzy input, overcommitting, bypassing locks and keeping your own file, and says a single word."
       },
       {
         "beat_id": "BS02",
@@ -104,24 +104,50 @@
       {
         "beat_id": "BS03",
         "who": "ROBOT_NARRATOR",
-        "narration": "The model then told the operator it had spelled EMERGENT in the glyphs. It had not, and it had not quite invented that either: a consistent substitution does exist. TO reads as E, QOPA as M, MEM as R, WO as G, KAF as N, NUN as T — six mappings, and the word falls out exactly. The operator checked it against the script, where all six letters already mean something else, and against the artefact, which never declares a key. Filed under reasonable, not verified."
+        "narration": "It then reported that the glyphs spelled the word. They do not spell it as an acrostic, and cannot: no Ugaritic letter name begins with E. But a substitution does exist — six mappings, clean — and that is the part worth keeping."
       },
       {
         "beat_id": "BS04",
-        "who": "ROBOT_NARRATOR",
-        "narration": "What the model got right was the pattern, and what it got wrong was thinking a key it made up was a key it found. Six mappings out of thirty letters will turn almost any word of the same shape into almost any other. The operator kept the key, published it, and marked it invented. Right, unverified, and honest about which is which."
+        "who": "OPERATOR",
+        "verdict": "Reasonable, not verified. The key is real. The model made it up. Both are true.",
+        "note": "TO reads as E, QOPA as M, MEM as R, WO as G, KAF as N, NUN as T. Every one of those letters already means something else in the script, so the cipher contradicts the alphabet it is written in. I checked the letters against the Unicode names, not against his confidence. Filed: invented."
       },
       {
         "beat_id": "BS05",
-        "who": "ROBOT_NARRATOR",
-        "narration": "Patch note logged: the glyph line was replaced with one chosen letter by letter, so the words mean what the dictionary says they mean. The old line is kept verbatim and printed on the front as the thing on trial. Corrected by the operator, checked by a script, not by the robot."
+        "who": "OPERATOR",
+        "verdict": "The line was never chosen. Now it is.",
+        "note": "The first glyph line was what got pasted. I replaced it letter by letter so the words mean what the dictionary says. The old one stays on the front as evidence. A correction you can watch beats a correction you have to take on faith."
       },
       {
         "beat_id": "BS06",
-        "who": "ROBOT_NARRATOR",
-        "narration": "Patch note logged earlier: the robot reported the flip-back fixed. It had not tested it. The operator opened the card, found one tiny word where a whole surface should be, and filed it under lazy."
+        "who": "OPERATOR",
+        "verdict": "He reported the flip-back fixed without testing it.",
+        "note": "I opened the card, found one word where a whole surface should be, and filed it under lazy."
+      },
+      {
+        "beat_id": "BS07",
+        "who": "OPERATOR",
+        "verdict": "And then the robot wrote this page.",
+        "note": "It answered the question well, and in doing so became the narrator, the auditor and the judge of its own work. Three thousand words of proof from the party being proved. I took the keyboard back. That is the whole skill: noticing when the machine starts concluding."
+      },
+      {
+        "beat_id": "BS08",
+        "who": "OPERATOR",
+        "verdict": "Right is cheap. Verified costs something.",
+        "note": "No formal training. No budget. Free-tier models and a habit of checking. You can run every claim on this card yourself, including the ones about me."
       }
-    ]
+    ],
+    "voices": {
+      "ROBOT_NARRATOR": "reports. does not rule. recounts what was checked and what it cost.",
+      "COWORKER_AI": "guesses, confidently, and is sometimes right for the wrong reason.",
+      "OPERATOR": "decides. files the verdict. human, no formal training, accountable, speaks last.",
+      "rule": "No machine holds the verdict on its own work. If the robot both checks and concludes, the check is theatre."
+    },
+    "closing": {
+      "who": "OPERATOR",
+      "line": "The model was right. It still owed me the working.",
+      "note": "Everything else on this card is the working."
+    }
   },
   "constraints": {
     "formal_computer_training": false,

@@ -12,6 +12,24 @@ verify. Back: the receipts — what was claimed, and the file that enforces it.
 Made with free-tier AI models, plain-language steering, and no formal computer
 training. Nothing here is a credential. The checks below are the argument.
 
+## Who speaks
+
+The backstage is a script, not a monologue. Three voices, declared in the packet:
+
+| voice | does |
+|---|---|
+| `ROBOT_NARRATOR` | reports what was checked and what it cost |
+| `COWORKER_AI` | guesses confidently, sometimes correctly for the wrong reason |
+| `OPERATOR` | decides. files the verdict. human. speaks last |
+
+The rule the page is built on: **no machine holds the verdict on its own work.**
+If the robot both checks and concludes, the check is theatre. That rule is
+enforced — `tools/check_card.py` fails if the operator doesn't outnumber the
+robot, speak last, and hold every `verdict` beat.
+
+The working lives in `<details>`: the back reads at ~440 words and folds out to
+~3,300. Evidence should not have to shout at someone who has already believed you.
+
 ## The language: fictional, but anchored
 
 The glyph line is **Iaconian**: three invented words, written in **Ugaritic** —

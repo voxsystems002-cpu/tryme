@@ -84,6 +84,31 @@ if art.exists():
     check("front's log header comes from the artefact",
           all(h in HTML for h in header), " / ".join(header))
 
+# 2d. the human must hold the verdict ---------------------------------------
+# The failure mode this page is about: the machine narrates, audits and then
+# concludes on its own work. So the script is checked like any other claim.
+import json as _json
+pkt = _json.loads(re.search(r'<script type="application/json" id="postcard-data">(.*?)</script>',
+                            HTML, re.S).group(1))
+beats = pkt["backstage"]["script_beats"]
+speakers = {}
+for b in beats:
+    speakers[b["who"]] = speakers.get(b["who"], 0) + 1
+check("the operator speaks", speakers.get("OPERATOR", 0) > 0, f"{speakers}")
+check("the operator outnumbers the robot", 
+      speakers.get("OPERATOR", 0) >= speakers.get("ROBOT_NARRATOR", 0),
+      f"operator {speakers.get('OPERATOR',0)} vs robot {speakers.get('ROBOT_NARRATOR',0)}")
+check("the operator speaks last", beats[-1]["who"] == "OPERATOR", beats[-1]["beat_id"])
+check("the operator holds every verdict",
+      all(b["who"] == "OPERATOR" for b in beats if "verdict" in b),
+      "no machine rules on its own work")
+check("the closing statement is the human's", pkt["backstage"]["closing"]["who"] == "OPERATOR")
+check("voices are declared with their powers", "voices" in pkt["backstage"])
+
+# and the working must be foldable, or the verdict drowns in the audit
+check("the audit is folded, not dumped", HTML.count('<details class="audit"') >= 3)
+check("nothing is folded open by default", 'class="audit" open' not in HTML)
+
 # 3. accessibility state ---------------------------------------------------
 check("card exposes aria-expanded", 'aria-expanded="false"' in HTML)
 check("hidden face removed from a11y tree", 'aria-hidden="true"' in HTML)

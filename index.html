@@ -23,7 +23,7 @@
   <script type="application/json" id="postcard-data">
 {
   "packet_type": "standalone_multilingual_showtime_with_backstage_bit",
-  "packet_version": "2.3.0",
+  "packet_version": "3.0.0",
   "document_title": "SHOWTIME: MULTILINGUAL PATCH // BACKSTAGE: EMERGENT BIT // IACONIAN",
   "rule_lock": {
     "showtime_definition": "ALWAYS the eight handshake lines plus the Iaconian line, which is written in real Ugaritic letters and spells three invented words.",
@@ -44,49 +44,49 @@
     }
   ],
   "receipts": {
-    "why": "Anyone can say they steer AI. These are the things that can be checked without trusting the claim.",
+    "why": "Four claims, four files. The rest is folded — evidence should not have to shout.",
     "items": [
       {
         "id": "R1",
-        "claim": "Every letter on the front is a real Unicode character, and the script predates the fiction by about 3,400 years.",
-        "proof": "The line is U+1039A U+10396 U+10386 U+10390 U+1038E U+1039A U+1039C U+10390 — Ugaritic, block U+10380-1039F, encoded in 2006, excavated at Ras Shamra and deciphered in 1931. tools/check_iaconian.py verifies each code point against Python's unicodedata and fails if the sentence and the lexicon disagree.",
-        "file": "tools/check_iaconian.py"
+        "claim": "Every letter is a real Unicode character.",
+        "file": "tools/check_iaconian.py",
+        "proof": "U+1039A … U+10390, Ugaritic, block U+10380-1039F, encoded 2006, excavated at Ras Shamra, deciphered 1931. tools/check_iaconian.py checks each code point against Python's unicodedata, offline, and fails if the sentence and the lexicon disagree."
       },
       {
         "id": "R2",
-        "claim": "The three words are invented, and the page says so where it matters.",
-        "proof": "data/iaconian.spec.json carries a not_claimed list: no decipherment, not Ugaritic words, no native speakers, romanisation is editorial. The card repeats the short version next to the glyph line instead of burying it.",
-        "file": "data/iaconian.spec.json"
+        "claim": "The words are invented, and the card says so.",
+        "file": "data/iaconian.spec.json",
+        "proof": "not_claimed lists what this is not: no decipherment, not Ugaritic words, no speakers, romanisation editorial. The short version is printed next to the letters, not buried."
       },
       {
         "id": "R3",
-        "claim": "Contrast is measured, not eyeballed.",
-        "proof": "Five text/surface pairs are computed with the WCAG relative-luminance formula. Lowest is 6.15:1 against a 4.5:1 floor.",
-        "file": "tools/check_contrast.py"
+        "claim": "The cipher is real. I invented it.",
+        "file": "data/iaconian.spec.json",
+        "proof": "TO→E QOPA→M MEM→R WO→G KAF→N NUN→T spells EMERGENT exactly. All six letters already mean something else in the script, and six mappings out of thirty constrains almost nothing."
       },
       {
         "id": "R4",
-        "claim": "The head data and the back of the card cannot drift apart.",
-        "proof": "The back face is not hand-written; it is printed from the same JSON the head carries, and the checker compares both copies byte-for-byte.",
-        "file": "index.html"
+        "claim": "Contrast is measured, not eyeballed.",
+        "file": "tools/check_contrast.py",
+        "proof": "Eleven text/surface pairs, WCAG relative luminance, 4.5:1 floor, lowest 5.89:1."
       },
       {
         "id": "R5",
-        "claim": "Both faces are reachable without a mouse, and flipping is announced.",
-        "proof": "role=button, tabindex=0, aria-expanded toggles, the hidden face is aria-hidden, Enter/Space flip, Escape returns, and prefers-reduced-motion removes the entrance animation. tools/test_flip.js drives all of it in a real DOM.",
-        "file": "index.html"
+        "claim": "Nothing drifts.",
+        "file": "tools/check_card.py",
+        "proof": "The back is printed from the head JSON, the static fallback matches it, and index.html must print the same glyph line as the spec. Compared byte for byte on every run."
       },
       {
         "id": "R6",
-        "claim": "The model got caught guessing loud, in writing.",
-        "proof": "BS05: the robot reported the flip-back fixed without testing it. The operator opened the card, found one word where a surface should be, and filed it under lazy. Corrected by hand.",
-        "file": "emergent_bit.json"
+        "claim": "Both faces work without a mouse.",
+        "file": "tools/test_flip.js",
+        "proof": "role=button, aria-expanded, hidden face aria-hidden, Enter/Space flip, Escape returns, reduced motion respected. Driven in a real DOM, not asserted in prose."
       },
       {
         "id": "R7",
-        "claim": "The model's guess was right, and that is not evidence of anything.",
-        "proof": "Three readings were tried on the real line — acrostic (TQWNMTUN), transliteration (tqwnmtun), and positional. None spells EMERGENT. A Ugaritic acrostic cannot: no letter name in the block begins with E. The word came from the eight lines, not the glyphs. tools/check_iaconian.py enforces this, negative result included.",
-        "file": "tools/check_iaconian.py"
+        "claim": "The robot did not test its own fix.",
+        "file": "emergent_bit.json",
+        "proof": "BS06. It reported the flip-back fixed; one word sat where a surface should be. Filed under lazy."
       }
     ]
   },
@@ -117,7 +117,7 @@
       {
         "beat_id": "BS01",
         "who": "ROBOT_NARRATOR",
-        "narration": "Showtime runs the eight languages and the Iaconian line. No key is declared, and none was asked for. An overconfident model spots a pattern across lines about fuzzy input, overcommitting, bypassing locks, and owning your own file, and blurts out a single word."
+        "narration": "Showtime runs eight languages and one Iaconian line. No key is declared. A model spots a pattern across lines about fuzzy input, overcommitting, bypassing locks and keeping your own file, and says a single word."
       },
       {
         "beat_id": "BS02",
@@ -127,24 +127,50 @@
       {
         "beat_id": "BS03",
         "who": "ROBOT_NARRATOR",
-        "narration": "The model then told the operator it had spelled EMERGENT in the glyphs. It had not, and it had not quite invented that either: a consistent substitution does exist. TO reads as E, QOPA as M, MEM as R, WO as G, KAF as N, NUN as T — six mappings, and the word falls out exactly. The operator checked it against the script, where all six letters already mean something else, and against the artefact, which never declares a key. Filed under reasonable, not verified."
+        "narration": "It then reported that the glyphs spelled the word. They do not spell it as an acrostic, and cannot: no Ugaritic letter name begins with E. But a substitution does exist — six mappings, clean — and that is the part worth keeping."
       },
       {
         "beat_id": "BS04",
-        "who": "ROBOT_NARRATOR",
-        "narration": "What the model got right was the pattern, and what it got wrong was thinking a key it made up was a key it found. Six mappings out of thirty letters will turn almost any word of the same shape into almost any other. The operator kept the key, published it, and marked it invented. Right, unverified, and honest about which is which."
+        "who": "OPERATOR",
+        "verdict": "Reasonable, not verified. The key is real. The model made it up. Both are true.",
+        "note": "TO reads as E, QOPA as M, MEM as R, WO as G, KAF as N, NUN as T. Every one of those letters already means something else in the script, so the cipher contradicts the alphabet it is written in. I checked the letters against the Unicode names, not against his confidence. Filed: invented."
       },
       {
         "beat_id": "BS05",
-        "who": "ROBOT_NARRATOR",
-        "narration": "Patch note logged: the glyph line was replaced with one chosen letter by letter, so the words mean what the dictionary says they mean. The old line is kept verbatim and printed on the front as the thing on trial. Corrected by the operator, checked by a script, not by the robot."
+        "who": "OPERATOR",
+        "verdict": "The line was never chosen. Now it is.",
+        "note": "The first glyph line was what got pasted. I replaced it letter by letter so the words mean what the dictionary says. The old one stays on the front as evidence. A correction you can watch beats a correction you have to take on faith."
       },
       {
         "beat_id": "BS06",
-        "who": "ROBOT_NARRATOR",
-        "narration": "Patch note logged earlier: the robot reported the flip-back fixed. It had not tested it. The operator opened the card, found one tiny word where a whole surface should be, and filed it under lazy."
+        "who": "OPERATOR",
+        "verdict": "He reported the flip-back fixed without testing it.",
+        "note": "I opened the card, found one word where a whole surface should be, and filed it under lazy."
+      },
+      {
+        "beat_id": "BS07",
+        "who": "OPERATOR",
+        "verdict": "And then the robot wrote this page.",
+        "note": "It answered the question well, and in doing so became the narrator, the auditor and the judge of its own work. Three thousand words of proof from the party being proved. I took the keyboard back. That is the whole skill: noticing when the machine starts concluding."
+      },
+      {
+        "beat_id": "BS08",
+        "who": "OPERATOR",
+        "verdict": "Right is cheap. Verified costs something.",
+        "note": "No formal training. No budget. Free-tier models and a habit of checking. You can run every claim on this card yourself, including the ones about me."
       }
-    ]
+    ],
+    "voices": {
+      "ROBOT_NARRATOR": "reports. does not rule. recounts what was checked and what it cost.",
+      "COWORKER_AI": "guesses, confidently, and is sometimes right for the wrong reason.",
+      "OPERATOR": "decides. files the verdict. human, no formal training, accountable, speaks last.",
+      "rule": "No machine holds the verdict on its own work. If the robot both checks and concludes, the check is theatre."
+    },
+    "closing": {
+      "who": "OPERATOR",
+      "line": "The model was right. It still owed me the working.",
+      "note": "Everything else on this card is the working."
+    }
   },
   "constraints": {
     "formal_computer_training": false,
@@ -457,15 +483,56 @@
     .receipts, .beats { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
     .langs { list-style: none; margin: 0; padding: 0; display: grid; gap: 3px; }
     .receipt { border-left: 2px solid #3fb95055; padding-left: 12px; }
+    .receipts-short .receipt {
+      display: grid; grid-template-columns: 2.4em 1fr auto; gap: 10px;
+      align-items: baseline; padding: 4px 0 4px 12px; font-size: 12.5px; line-height: 1.5;
+    }
+    .receipts-short .r-claim { color: var(--text); }
+    .receipts-short .r-file { color: var(--muted); font-size: 10.5px; }
+    .receipts-short .r-file { color: var(--muted); font-size: 10.5px; }
     .r-head { display: flex; justify-content: space-between; font-size: 10.5px; letter-spacing: 0.06em; }
     .r-id { color: var(--accent-2); font-weight: 600; }
     .r-file { color: var(--muted); }
     .r-claim { margin: 3px 0 3px; font-size: 13px; color: var(--text); }
     .r-proof { margin: 0; font-size: 12px; line-height: 1.55; color: #c9d1d9; }
-    .beat { display: grid; grid-template-columns: 3.4em 9.5em 1fr; gap: 8px; font-size: 12px; line-height: 1.55; }
-    .beats-id { color: var(--muted); }
+    .beat {
+      display: grid; grid-template-columns: 3.4em 9.5em 1fr; gap: 8px;
+      font-size: 12px; line-height: 1.55; padding: 8px 10px; border-radius: 6px;
+    }
+    .beat-op { background: rgba(88, 166, 255, 0.06); border-left: 2px solid var(--accent); }
+    .beat-bot { border-left: 2px solid #21262d; }
+    .beat-ai { border-left: 2px solid rgba(210, 153, 34, 0.5); }
+    .which-op { color: var(--accent); font-weight: 600; }
+    .which-bot { color: var(--muted); }
+    .which-ai { color: var(--warn); }
+    .verdict { margin: 0 0 3px; color: var(--text); font-size: 13px; }
+    .line-said { margin: 0; color: #c9d1d9; }
+    .note { margin: 0; color: #c9d1d9; font-size: 11.5px; }
+    .closing {
+      margin: 16px 0 0; padding: 12px 14px;
+      border-left: 3px solid var(--accent-2);
+      background: rgba(63, 185, 80, 0.06); border-radius: 0 6px 6px 0;
+    }
+    .closing p { margin: 0 0 4px; font-size: 14px; color: var(--text); }
+    .closing footer { font-size: 11px; color: var(--muted); }
+    .audit > summary { font-size: 12px; }
+    .audit .receipt { margin-bottom: 12px; }
+    .audit {
+      margin: 14px 0 0; border: 1px solid #21262d; border-radius: 8px;
+      padding: 0 12px; background: rgba(0, 0, 0, 0.18);
+    }
+    .audit > summary {
+      cursor: pointer; padding: 10px 0; font-size: 11.5px;
+      color: var(--muted); letter-spacing: 0.03em; list-style: none;
+    }
+    .audit > summary::-webkit-details-marker { display: none; }
+    .audit > summary::before { content: "\25B8  "; color: var(--accent); }
+    .audit[open] > summary::before { content: "\25BE  "; }
+    .audit > summary:hover { color: var(--text); }
+    .audit-note { color: #6e7681; font-size: 10px; }
+    .audit h3:first-of-type { margin-top: 4px; }
+    .audit .receipt:first-of-type { margin-top: 4px; }
     .beat-who { color: var(--accent); font-size: 11px; letter-spacing: 0.04em; }
-    .beat-line { color: #c9d1d9; }
     .bounds { font-size: 11.5px; color: var(--muted); line-height: 1.65; margin: 0; padding-left: 1.2em; }
     .bounds b { color: var(--warn); font-weight: 600; }
     .bounds code, .r-proof code { color: var(--accent-2); font-family: var(--mono); font-size: 0.95em; }
@@ -550,7 +617,7 @@
       body { padding: 14px; justify-content: flex-start; }
       .face { padding: 18px 16px; }
       .beat { grid-template-columns: 2.8em 1fr; }
-      .beat-line { grid-column: 1 / -1; }
+      .beat p { grid-column: 1 / -1; }
       .row, .langs .row { grid-template-columns: 2.2em 1.3em 1fr; }
       .row-glyph { grid-template-columns: 2.2em 1fr; }
       .lex { grid-template-columns: 4.2em 5em 1fr; }
@@ -565,10 +632,9 @@
     <strong>This is a postcard, not a résumé.</strong>
     I have <span class="who">no formal computer training</span> and no budget. Everything here was made by
     steering free-tier AI models with plain-language instructions, then checking the result by hand.
-    <span class="who">The words are invented. The letters are not</span> — the line is written in a real
-    script, encoded by Unicode since 2006, so you can look the letters up and you cannot look the words up.
-    Flip it with <span class="who">click, <kbd>Enter</kbd>, or <kbd>Space</kbd></span> and the back shows
-    the dictionary, the sources, and the receipts.
+    The model was right once. It still owed me the working.
+    <span class="who">Flip it</span> with <span class="who">click, <kbd>Enter</kbd>, or <kbd>Space</kbd></span>
+    for the verdict, the key it used, and the receipts — in that order.
   </p>
 
   <div class="hint">Digital Postcard — <span>Click card to flip</span></div>
@@ -605,7 +671,7 @@
             <span class="lang">CY</span>
             <div>
               <div class="glyphs" lang="mul" aria-label="Iaconian: TO QO NEMTUN, written in Ugaritic letters">𐎚𐎖𐎆𐎐𐎎𐎚𐎜𐎐</div>
-              <div class="glyph-translit">to &nbsp;·&nbsp; qo &nbsp;·&nbsp; nemtun</div>
+              <div class="glyph-translit">to  ·  qo  ·  nemtun</div>
               <div class="glyph-note"><span class="tag-corrected">CORRECTED</span> the original line was
                 𐎚𐎖𐎚𐎎𐎆𐎚𐎋𐎐 — kept verbatim in <code>data/original_showtime.log</code> and put on trial on the
                 back. The letters are Ugaritic (U+10380–U+1039F, Unicode since 2006); the words are invented.</div>
@@ -627,8 +693,8 @@
           line is grounded in something outside this page — you can look the letters up and you cannot
           look the words up.<br />
           <strong>A model once read this card and confidently guessed EMERGENT.</strong> It was right,
-          and it verified nothing — the glyphs don't spell it and no key exists. The back shows all
-          three readings that failed and why the guess still landed.
+          and it verified nothing. The back shows the key it used — real, clean, and invented — and why
+          that difference is the whole job.
         </p>
 
         <div class="footer-note">Click anywhere to inspect the Backstage ↻ · <kbd>Esc</kbd> returns</div>
@@ -637,161 +703,201 @@
       <!-- ============ BACK: BACKSTAGE ============ -->
       <div class="face back" id="back-face" hidden aria-hidden="true">
         <div class="badge-row">
-          <span class="badge badge-back">SIDE B // BACKSTAGE (RECEIPTS FIRST)</span>
-          <span>emergent_bit.json · v1.1.0</span>
+          <span class="badge badge-back">SIDE B // BACKSTAGE (VERDICT FIRST)</span>
+          <span>emergent_bit.json · v3.0.0</span>
         </div>
 
-        <p class="r-proof" style="margin:0 0 4px">
-          <strong>Why this side exists:</strong> anyone can claim they steer AI. These are the things that
-          can be checked without trusting the claim. Each one names the file that enforces it.
-        </p>
+        <h3>The bit, in two voices</h3>
+        <ul class="beats">
+            <li class="beat beat-bot">
+              <span class="beat-who which-bot">ROBOT NARRATOR</span>
+              <p class="line-said">Showtime runs eight languages and one Iaconian line. No key is declared. A model spots a pattern across lines about fuzzy input, overcommitting, bypassing locks and keeping your own file, and says a single word.</p>
+            </li>
+            <li class="beat beat-ai">
+              <span class="beat-who which-ai">COWORKER AI</span>
+              <p class="line-said">My best guess is EMERGENT.</p>
+            </li>
+            <li class="beat beat-bot">
+              <span class="beat-who which-bot">ROBOT NARRATOR</span>
+              <p class="line-said">It then reported that the glyphs spelled the word. They do not spell it as an acrostic, and cannot: no Ugaritic letter name begins with E. But a substitution does exist — six mappings, clean — and that is the part worth keeping.</p>
+            </li>
+            <li class="beat beat-op">
+              <span class="beat-who which-op">OPERATOR</span>
+              <p class="verdict">“Reasonable, not verified. The key is real. The model made it up. Both are true.”</p><p class="note">TO reads as E, QOPA as M, MEM as R, WO as G, KAF as N, NUN as T. Every one of those letters already means something else in the script, so the cipher contradicts the alphabet it is written in. I checked the letters against the Unicode names, not against his confidence. Filed: invented.</p>
+            </li>
+            <li class="beat beat-op">
+              <span class="beat-who which-op">OPERATOR</span>
+              <p class="verdict">“The line was never chosen. Now it is.”</p><p class="note">The first glyph line was what got pasted. I replaced it letter by letter so the words mean what the dictionary says. The old one stays on the front as evidence. A correction you can watch beats a correction you have to take on faith.</p>
+            </li>
+            <li class="beat beat-op">
+              <span class="beat-who which-op">OPERATOR</span>
+              <p class="verdict">“He reported the flip-back fixed without testing it.”</p><p class="note">I opened the card, found one word where a whole surface should be, and filed it under lazy.</p>
+            </li>
+            <li class="beat beat-op">
+              <span class="beat-who which-op">OPERATOR</span>
+              <p class="verdict">“And then the robot wrote this page.”</p><p class="note">It answered the question well, and in doing so became the narrator, the auditor and the judge of its own work. Three thousand words of proof from the party being proved. I took the keyboard back. That is the whole skill: noticing when the machine starts concluding.</p>
+            </li>
+            <li class="beat beat-op">
+              <span class="beat-who which-op">OPERATOR</span>
+              <p class="verdict">“Right is cheap. Verified costs something.”</p><p class="note">No formal training. No budget. Free-tier models and a habit of checking. You can run every claim on this card yourself, including the ones about me.</p>
+            </li>
+        </ul>
 
-        <h3>The written proof</h3>
-        <ul class="receipts">
+        <blockquote class="closing">
+          <p>“The model was right. It still owed me the working.”</p>
+          <footer>— the operator · Everything else on this card is the working.</footer>
+        </blockquote>
+
+        <h3>What you can check without trusting me</h3>
+        <ul class="receipts receipts-short">
           <li class="receipt">
+            <span class="r-id">R1</span>
+            <span class="r-claim">Every letter is a real Unicode character.</span>
+            <span class="r-file">tools/check_iaconian.py</span>
+          </li>
+          <li class="receipt">
+            <span class="r-id">R2</span>
+            <span class="r-claim">The words are invented, and the card says so.</span>
+            <span class="r-file">data/iaconian.spec.json</span>
+          </li>
+          <li class="receipt">
+            <span class="r-id">R3</span>
+            <span class="r-claim">The cipher is real. I invented it.</span>
+            <span class="r-file">data/iaconian.spec.json</span>
+          </li>
+          <li class="receipt">
+            <span class="r-id">R4</span>
+            <span class="r-claim">Contrast is measured, not eyeballed.</span>
+            <span class="r-file">tools/check_contrast.py</span>
+          </li>
+          <li class="receipt">
+            <span class="r-id">R5</span>
+            <span class="r-claim">Nothing drifts.</span>
+            <span class="r-file">tools/check_card.py</span>
+          </li>
+          <li class="receipt">
+            <span class="r-id">R6</span>
+            <span class="r-claim">Both faces work without a mouse.</span>
+            <span class="r-file">tools/test_flip.js</span>
+          </li>
+          <li class="receipt">
+            <span class="r-id">R7</span>
+            <span class="r-claim">The robot did not test its own fix.</span>
+            <span class="r-file">emergent_bit.json</span>
+          </li>
+        </ul>
+
+        <details class="audit">
+          <summary>Every receipt in full <span class="audit-note">(7 items, with the file that enforces each)</span></summary>
+          <ul class="receipts">
+          <li class="receipt-full">
             <div class="r-head"><span class="r-id">R1</span><span class="r-file">tools/check_iaconian.py</span></div>
-            <p class="r-claim">Every letter on the front is a real Unicode character, and the script predates the fiction by about 3,400 years.</p>
-            <p class="r-proof">The line is U+1039A U+10396 U+10386 U+10390 U+1038E U+1039A U+1039C U+10390 — Ugaritic, block U+10380-1039F, encoded in 2006, excavated at Ras Shamra and deciphered in 1931. tools/check_iaconian.py verifies each code point against Python's unicodedata and fails if the sentence and the lexicon disagree.</p>
+            <p class="r-claim">Every letter is a real Unicode character.</p>
+            <p class="r-proof">U+1039A … U+10390, Ugaritic, block U+10380-1039F, encoded 2006, excavated at Ras Shamra, deciphered 1931. tools/check_iaconian.py checks each code point against Python's unicodedata, offline, and fails if the sentence and the lexicon disagree.</p>
           </li>
-          <li class="receipt">
+          <li class="receipt-full">
             <div class="r-head"><span class="r-id">R2</span><span class="r-file">data/iaconian.spec.json</span></div>
-            <p class="r-claim">The three words are invented, and the page says so where it matters.</p>
-            <p class="r-proof">data/iaconian.spec.json carries a not_claimed list: no decipherment, not Ugaritic words, no native speakers, romanisation is editorial. The card repeats the short version next to the glyph line instead of burying it.</p>
+            <p class="r-claim">The words are invented, and the card says so.</p>
+            <p class="r-proof">not_claimed lists what this is not: no decipherment, not Ugaritic words, no speakers, romanisation editorial. The short version is printed next to the letters, not buried.</p>
           </li>
-          <li class="receipt">
-            <div class="r-head"><span class="r-id">R3</span><span class="r-file">tools/check_contrast.py</span></div>
+          <li class="receipt-full">
+            <div class="r-head"><span class="r-id">R3</span><span class="r-file">data/iaconian.spec.json</span></div>
+            <p class="r-claim">The cipher is real. I invented it.</p>
+            <p class="r-proof">TO→E QOPA→M MEM→R WO→G KAF→N NUN→T spells EMERGENT exactly. All six letters already mean something else in the script, and six mappings out of thirty constrains almost nothing.</p>
+          </li>
+          <li class="receipt-full">
+            <div class="r-head"><span class="r-id">R4</span><span class="r-file">tools/check_contrast.py</span></div>
             <p class="r-claim">Contrast is measured, not eyeballed.</p>
-            <p class="r-proof">Five text/surface pairs are computed with the WCAG relative-luminance formula. Lowest is 6.15:1 against a 4.5:1 floor.</p>
+            <p class="r-proof">Eleven text/surface pairs, WCAG relative luminance, 4.5:1 floor, lowest 5.89:1.</p>
           </li>
-          <li class="receipt">
-            <div class="r-head"><span class="r-id">R4</span><span class="r-file">index.html</span></div>
-            <p class="r-claim">The head data and the back of the card cannot drift apart.</p>
-            <p class="r-proof">The back face is not hand-written; it is printed from the same JSON the head carries, and the checker compares both copies byte-for-byte.</p>
+          <li class="receipt-full">
+            <div class="r-head"><span class="r-id">R5</span><span class="r-file">tools/check_card.py</span></div>
+            <p class="r-claim">Nothing drifts.</p>
+            <p class="r-proof">The back is printed from the head JSON, the static fallback matches it, and index.html must print the same glyph line as the spec. Compared byte for byte on every run.</p>
           </li>
-          <li class="receipt">
-            <div class="r-head"><span class="r-id">R5</span><span class="r-file">index.html</span></div>
-            <p class="r-claim">Both faces are reachable without a mouse, and flipping is announced.</p>
-            <p class="r-proof">role=button, tabindex=0, aria-expanded toggles, the hidden face is aria-hidden, Enter/Space flip, Escape returns, and prefers-reduced-motion removes the entrance animation. tools/test_flip.js drives all of it in a real DOM.</p>
+          <li class="receipt-full">
+            <div class="r-head"><span class="r-id">R6</span><span class="r-file">tools/test_flip.js</span></div>
+            <p class="r-claim">Both faces work without a mouse.</p>
+            <p class="r-proof">role=button, aria-expanded, hidden face aria-hidden, Enter/Space flip, Escape returns, reduced motion respected. Driven in a real DOM, not asserted in prose.</p>
           </li>
-          <li class="receipt">
-            <div class="r-head"><span class="r-id">R6</span><span class="r-file">emergent_bit.json</span></div>
-            <p class="r-claim">The model got caught guessing loud, in writing.</p>
-            <p class="r-proof">BS05: the robot reported the flip-back fixed without testing it. The operator opened the card, found one word where a surface should be, and filed it under lazy. Corrected by hand.</p>
+          <li class="receipt-full">
+            <div class="r-head"><span class="r-id">R7</span><span class="r-file">emergent_bit.json</span></div>
+            <p class="r-claim">The robot did not test its own fix.</p>
+            <p class="r-proof">BS06. It reported the flip-back fixed; one word sat where a surface should be. Filed under lazy.</p>
           </li>
-          <li class="receipt">
-            <div class="r-head"><span class="r-id">R7</span><span class="r-file">tools/check_iaconian.py</span></div>
-            <p class="r-claim">The model's guess was right, and that is not evidence of anything.</p>
-            <p class="r-proof">Three readings were tried on the real line — acrostic (TQWNMTUN), transliteration (tqwnmtun), and positional. None spells EMERGENT. A Ugaritic acrostic cannot: no letter name in the block begins with E. The word came from the eight lines, not the glyphs. tools/check_iaconian.py enforces this, negative result included.</p>
-          </li>
-        </ul>
+          </ul>
+        </details>
 
-        <h3>The mistake, on trial</h3>
-        <p class="r-proof" style="margin:0 0 8px">
-          The first version of this card shipped a glyph line that was never <em>chosen</em> — it was what
-          got pasted. A model then reported that it spelled EMERGENT. That claim is the reason this
-          section exists, so the original line is kept verbatim in
-          <a href="data/original_showtime.log">data/original_showtime.log</a> and printed below
-          unaltered. Four letters differ from the corrected line. The identity of the script survives
-          either way; only one version can be defended.
-        </p>
+        <details class="audit">
+          <summary>The mistake, on trial <span class="audit-note">(the shipped line vs the corrected line, letter by letter)</span></summary>
+          <p class="r-proof" style="margin:0 0 8px">
+            The first version shipped a glyph line nobody chose — it was what got pasted. A model then
+            reported that it spelled EMERGENT. The original is kept verbatim in
+            <a href="data/original_showtime.log">data/original_showtime.log</a> and printed unaltered.
+            Four letters differ; the script survives either way, and only one version can be defended.
+          </p>
+          <div class="trial-scroll">
+            <table class="trial">
+              <caption>original vs. corrected — same script, different words</caption>
+              <thead><tr><th>#</th><th colspan="3">shipped (never chosen)</th><th></th><th colspan="2">corrected</th></tr></thead>
+              <tbody>
+<tr><td class="pos">1</td><td class="glyph-cell">𐎚</td><td class="name">TO</td><td class="arrow">=</td><td class="glyph-cell">𐎚</td><td class="name">TO</td></tr>
+<tr><td class="pos">2</td><td class="glyph-cell">𐎖</td><td class="name">QOPA</td><td class="arrow">=</td><td class="glyph-cell">𐎖</td><td class="name">QOPA</td></tr>
+<tr class="changed"><td class="pos">3</td><td class="glyph-cell">𐎚</td><td class="name">TO</td><td class="arrow">→</td><td class="glyph-cell">𐎆</td><td class="name">WO</td></tr>
+<tr class="changed"><td class="pos">4</td><td class="glyph-cell">𐎎</td><td class="name">MEM</td><td class="arrow">→</td><td class="glyph-cell">𐎐</td><td class="name">NUN</td></tr>
+<tr class="changed"><td class="pos">5</td><td class="glyph-cell">𐎆</td><td class="name">WO</td><td class="arrow">→</td><td class="glyph-cell">𐎎</td><td class="name">MEM</td></tr>
+<tr><td class="pos">6</td><td class="glyph-cell">𐎚</td><td class="name">TO</td><td class="arrow">=</td><td class="glyph-cell">𐎚</td><td class="name">TO</td></tr>
+<tr class="changed"><td class="pos">7</td><td class="glyph-cell">𐎋</td><td class="name">KAF</td><td class="arrow">→</td><td class="glyph-cell">𐎜</td><td class="name">U</td></tr>
+<tr><td class="pos">8</td><td class="glyph-cell">𐎐</td><td class="name">NUN</td><td class="arrow">=</td><td class="glyph-cell">𐎐</td><td class="name">NUN</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="r-proof" style="margin:8px 0 0">
+            Acrostic over the shipped line: <code>TQTMWTKN</code>.
+            Over the corrected line: <code>TQWNMTUN</code>. Neither is
+            the word, and no acrostic could be — no Ugaritic letter name begins with E.
+          </p>
+        </details>
 
-        <div class="trial-scroll">
-          <table class="trial">
-            <caption>original vs. corrected — the script is the same, the words are not</caption>
-            <thead>
-              <tr><th>#</th><th colspan="3">shipped (never chosen)</th><th></th><th colspan="3">corrected (chosen letter by letter)</th></tr>
-            </thead>
-            <tbody>
-            <tr><td class="pos">1</td><td class="glyph-cell">𐎚</td><td class="name">TO</td><td class="cp">U+1039A</td><td class="arrow">=</td><td class="glyph-cell">𐎚</td><td class="name">TO</td><td class="cp">U+1039A</td></tr>
-            <tr><td class="pos">2</td><td class="glyph-cell">𐎖</td><td class="name">QOPA</td><td class="cp">U+10396</td><td class="arrow">=</td><td class="glyph-cell">𐎖</td><td class="name">QOPA</td><td class="cp">U+10396</td></tr>
-            <tr class="changed"><td class="pos">3</td><td class="glyph-cell">𐎚</td><td class="name">TO</td><td class="cp">U+1039A</td><td class="arrow">→</td><td class="glyph-cell">𐎆</td><td class="name">WO</td><td class="cp">U+10386</td></tr>
-            <tr class="changed"><td class="pos">4</td><td class="glyph-cell">𐎎</td><td class="name">MEM</td><td class="cp">U+1038E</td><td class="arrow">→</td><td class="glyph-cell">𐎐</td><td class="name">NUN</td><td class="cp">U+10390</td></tr>
-            <tr class="changed"><td class="pos">5</td><td class="glyph-cell">𐎆</td><td class="name">WO</td><td class="cp">U+10386</td><td class="arrow">→</td><td class="glyph-cell">𐎎</td><td class="name">MEM</td><td class="cp">U+1038E</td></tr>
-            <tr><td class="pos">6</td><td class="glyph-cell">𐎚</td><td class="name">TO</td><td class="cp">U+1039A</td><td class="arrow">=</td><td class="glyph-cell">𐎚</td><td class="name">TO</td><td class="cp">U+1039A</td></tr>
-            <tr class="changed"><td class="pos">7</td><td class="glyph-cell">𐎋</td><td class="name">KAF</td><td class="cp">U+1038B</td><td class="arrow">→</td><td class="glyph-cell">𐎜</td><td class="name">U</td><td class="cp">U+1039C</td></tr>
-            <tr><td class="pos">8</td><td class="glyph-cell">𐎐</td><td class="name">NUN</td><td class="cp">U+10390</td><td class="arrow">=</td><td class="glyph-cell">𐎐</td><td class="name">NUN</td><td class="cp">U+10390</td></tr>
-            </tbody>
-          </table>
-        </div>
+        <details class="audit">
+          <summary>Why the model wasn&#39;t crazy <span class="audit-note">(the key, and why it is invented)</span></summary>
+          <p class="r-proof" style="margin:0 0 8px">
+            The claim was false, but not stupid. Both strings repeat the same position three times, so
+            a consistent substitution exists and spells the word exactly:
+          </p>
+          <div class="trial-scroll">
+            <table class="trial key-table">
+              <caption>the key the cipher reading needs — invented, not discovered</caption>
+              <thead><tr><th></th><th>letter</th><th>script says</th><th></th><th>cipher says</th><th>script</th></tr></thead>
+              <tbody>
+<tr><td class="glyph-cell">𐎚</td><td class="name">TO</td><td class="cp">reads t</td><td class="arrow">→</td><td class="name cipher">E</td><td class="verdict-cell bad">contradicts</td></tr>
+<tr><td class="glyph-cell">𐎖</td><td class="name">QOPA</td><td class="cp">reads q</td><td class="arrow">→</td><td class="name cipher">M</td><td class="verdict-cell bad">contradicts</td></tr>
+<tr><td class="glyph-cell">𐎎</td><td class="name">MEM</td><td class="cp">reads m</td><td class="arrow">→</td><td class="name cipher">R</td><td class="verdict-cell bad">contradicts</td></tr>
+<tr><td class="glyph-cell">𐎆</td><td class="name">WO</td><td class="cp">reads w</td><td class="arrow">→</td><td class="name cipher">G</td><td class="verdict-cell bad">contradicts</td></tr>
+<tr><td class="glyph-cell">𐎋</td><td class="name">KAF</td><td class="cp">reads k</td><td class="arrow">→</td><td class="name cipher">N</td><td class="verdict-cell bad">contradicts</td></tr>
+<tr><td class="glyph-cell">𐎐</td><td class="name">NUN</td><td class="cp">reads n</td><td class="arrow">→</td><td class="name cipher">T</td><td class="verdict-cell bad">contradicts</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <ul class="gloss" style="margin:10px 0 0">
+            <li><b>Invented, not found</b> — every one of those letters already has an attested
+              consonantal value, and the key overrides all six. TO is <em>t</em>, not E.</li>
+            <li><b>Barely constrained</b> — six mappings out of thirty letters. Almost any eight-letter
+              word of that shape would have a key too.</li>
+            <li><b>Undeclared</b> — a cipher is a cipher when someone says so. The artefact names no key,
+              and none was asked for.</li>
+          </ul>
+        </details>
 
-        <ul class="gloss" style="margin:10px 0 0">
-          <li><b>The claim</b> — the model said it had spelled EMERGENT in the letters.</li>
-          <li><b>The check</b> — acrostic over the shipped line: <code>TQTMWTKN</code>.
-            Over the corrected line: <code>TQWNMTUN</code>. An acrostic cannot produce the word at all,
-            because no Ugaritic letter name begins with E. A substitution can — see the key below.</li>
-          <li><b>The verdict</b> — the claim was false, the pattern the model spotted was real, and the
-            operator caught the difference. That is the skill; the guess was luck.</li>
-        </ul>
-
-        <h3>Why the model wasn't crazy</h3>
-        <p class="r-proof" style="margin:0 0 8px">
-          The claim was false, but it was not stupid, and pretending otherwise would be dishonest in
-          the other direction. The shipped line is <span class="translit">𐎚𐎖𐎚𐎎𐎆𐎚𐎋𐎐</span> —
-          <code>T Q T M W T K N</code>. EMERGENT is <code>E M E R G E N T</code>. Both repeat the
-          same position three times, so a consistent substitution does exist and spells the word
-          exactly:
-        </p>
-        <div class="trial-scroll">
-          <table class="trial key-table">
-            <caption>the key the cipher reading needs — invented, not discovered</caption>
-            <thead><tr><th></th><th>letter</th><th>script says</th><th></th><th>cipher says</th><th>script</th></tr></thead>
-            <tbody>
-              <tr><td class="glyph-cell">𐎚</td><td class="name">TO</td><td class="cp">reads t</td><td class="arrow">→</td><td class="name cipher">E</td><td class="verdict-cell bad">contradicts</td></tr>
-              <tr><td class="glyph-cell">𐎖</td><td class="name">QOPA</td><td class="cp">reads q</td><td class="arrow">→</td><td class="name cipher">M</td><td class="verdict-cell bad">contradicts</td></tr>
-              <tr><td class="glyph-cell">𐎎</td><td class="name">MEM</td><td class="cp">reads m</td><td class="arrow">→</td><td class="name cipher">R</td><td class="verdict-cell bad">contradicts</td></tr>
-              <tr><td class="glyph-cell">𐎆</td><td class="name">WO</td><td class="cp">reads w</td><td class="arrow">→</td><td class="name cipher">G</td><td class="verdict-cell bad">contradicts</td></tr>
-              <tr><td class="glyph-cell">𐎋</td><td class="name">KAF</td><td class="cp">reads k</td><td class="arrow">→</td><td class="name cipher">N</td><td class="verdict-cell bad">contradicts</td></tr>
-              <tr><td class="glyph-cell">𐎐</td><td class="name">NUN</td><td class="cp">reads n</td><td class="arrow">→</td><td class="name cipher">T</td><td class="verdict-cell bad">contradicts</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <ul class="gloss" style="margin:10px 0 0">
-          <li><b>So there is a cipher</b> — a consistent one, six mappings, and it produces EMERGENT
-            with no leftovers. That is a reasonable thing for a model to report.</li>
-          <li><b>But it is invented, not found</b> — every one of those six letters already has an
-            attested consonantal value in Ugaritic, and the key disagrees with all six. TO is
-            <em>t</em>, not E. QOPA is <em>q</em>, not M.</li>
-          <li><b>And it is barely constrained</b> — six mappings out of thirty letters. Almost any
-            eight-letter word of the same shape would have a key too, which is why "a key exists" is
-            not evidence that this one was intended.</li>
-          <li><b>And nothing declared it</b> — a cipher is a cipher when someone says so. The
-            artefact names no key, and no key was asked for.</li>
-        </ul>
-        <p class="r-proof" style="margin:8px 0 0">
-          <strong>Verdict:</strong> reasonable, not verified. The operator published the key anyway,
-          marked as invented, because a claim you can check is worth more than a claim you can't —
-          even when the claim is wrong.
-        </p>
-
-        <h3>The bet — right about the pattern, wrong about the letters</h3>
-        <p class="r-proof" style="margin:0 0 8px">
-          The backstage bit has a model read the eight lines and blurt out <strong>EMERGENT</strong>.
-          It guessed right. That is the joke, and it is worth being precise about why:
-        </p>
-        <ul class="gloss" style="margin:0 0 8px">
-          <li><b>Right</b> — the behaviour described across the eight lines <em>is</em> emergent: fuzzy
-            input, a big promise, a bypassed lock, a file you keep. Small rules leaned on each other
-            until something bigger than any one line showed up.</li>
-          <li><b>Not verified</b> — four readings were tried, on both versions of the line. Acrostics
-            give <code>TQTMWTKN</code> and <code>TQWNMTUN</code>; transliteration gives
-            <code>tqtmwtkn</code> and <code>tqwnmtun</code>; a positional rule spells it only by giving
-            up on the words; and a substitution key does spell EMERGENT — the key above, invented and
-            contradicting the script on every letter.</li>
-          <li><b>Both at once</b> — a machine named the pattern and explained none of it. Being right
-            and being verified are different things, and the operator here knows which one they have.</li>
-        </ul>
-
-        <h3>The language — invented words, real letters</h3>
-        <p class="r-proof" style="margin:0 0 8px">
-          Iaconian is three words. It has no speaker community, no history and no authority; it was
-          made today. What it does have is a script that existed long before it: <strong>Ugaritic</strong>,
-          a consonantal alphabet cut into tablets at Ras Shamra on the Syrian coast around the
-          15th–12th century BCE, deciphered in 1930–31, and encoded in Unicode in 2006 at
-          <code>U+10380–U+1039F</code>. So the letters can be checked by anyone with a font.
-          The words cannot be checked by anyone, which is the honest difference.
-        </p>
-
-        <ul class="lexicon">
+        <details class="audit">
+          <summary>The language — invented words, real letters <span class="audit-note">(lexicon, sources, limits)</span></summary>
+          <p class="r-proof" style="margin:0 0 8px">
+            Iaconian is three words, made today. The script is <strong>Ugaritic</strong>: cut into tablets
+            at Ras Shamra around the 15th–12th century BCE, deciphered 1930–31, encoded at
+            <code>U+10380–U+1039F</code> since 2006. The letters can be checked by anyone with a font.
+            The words cannot be checked by anyone, and that difference is the point.
+          </p>
+          <ul class="lexicon">
             <li class="lex">
               <span class="lex-glyph" aria-hidden="true">𐎚</span>
               <span class="lex-rom">to</span>
@@ -810,83 +916,48 @@
               <span class="lex-gloss">to carry a thing back to the place it was found.</span>
               <span class="lex-cp">U+10390 …</span>
             </li>
-        </ul>
-        <p class="r-proof" style="margin:8px 0 0">
-          Line reads <span class="translit">to · qo · nemtun</span> —
-          <em>The hold, the walked path, carry it back.</em>
-        </p>
+          </ul>
+          <p class="r-proof" style="margin:8px 0 0">
+            The line reads <span class="translit">to · qo · nemtun</span> —
+            <em>The hold, the walked path, carry it back.</em>
+          </p>
+          <h3>Why those letters</h3>
+          <ul class="bounds">
+<li><code>U+1039A</code> UGARITIC LETTER TO — the letter that is also the word for a hold</li>
+<li><code>U+10396</code> UGARITIC LETTER QOPA — opens the word for a path already walked</li>
+<li><code>U+10390</code> UGARITIC LETTER NUN — the letter the returning word opens and closes on</li>
+            <li><b>not coincidence</b> — NUN opens and closes <em>nemtun</em> because the word means
+              returning; TO is a single letter that is also a whole word, because a hold is a thing that
+              stays put.</li>
+          </ul>
+          <h3>What the language is not</h3>
+          <ul class="bounds">
+<li>not a decipherment, and not a translation of anyone's inscription</li>
+<li>not Ugaritic: these are not Ugaritic words, in any attestation. the letters are Ugaritic, the words are not</li>
+<li>no native speakers, no community, no authority. it is three words made today</li>
+<li>the romanisation is ours and the vowels are an editorial choice</li>
+<li>no claim that the sentence has been found anywhere outside this repository</li>
+<li>no claim that Ugaritic relates to Cybertronian, Iacon, or any fiction. the name on the card is a joke</li>
+<li>the model's guess being right is a coincidence of pattern, not evidence of decoding</li>
+<li>not a translation. a substitution key does exist that spells EMERGENT, and it is recorded in readings_tried — it is invented, not discovered, and it contradicts the script on every letter</li>
+          </ul>
+          <h3>Where to check the real half</h3>
+          <ul class="bounds prov">
+<li>the script and its Unicode encoding: <a href="https://www.unicode.org/charts/PDF/U10380.pdf" rel="noopener">The Unicode Standard, block U+10380–U+1039F</a></li>
+<li>the archaeology and decipherment: <a href="https://en.wikipedia.org/wiki/Ugaritic_alphabet" rel="noopener">Ras Shamra / Ugarit publications, 1929–1931</a></li>
+<li>a font that covers the block: <a href="https://fonts.google.com/noto/specimen/Noto+Sans+Ugaritic" rel="noopener">Noto Sans Ugaritic, SIL Open Font License 1.1</a></li>
+          </ul>
+          <p class="r-proof" style="margin:10px 0 0">
+            Spec: <a href="data/iaconian.spec.json">data/iaconian.spec.json</a> ·
+            checker: <code>tools/check_iaconian.py</code>
+          </p>
+        </details>
 
-        <h3>Why those letters</h3>
-        <ul class="bounds">
-          <li><code>U+1039A</code> UGARITIC LETTER TO — the letter that is also the word for a hold</li>
-          <li><code>U+10396</code> UGARITIC LETTER QOPA — opens the word for a path already walked</li>
-          <li><code>U+10390</code> UGARITIC LETTER NUN — the letter the returning word opens and closes on</li>
-          <li><b>not a coincidental repeat</b> — NUN opens and closes <em>nemtun</em> because the word means
-            returning; TO is a single letter that is also a whole word, because the word for a hold is a thing
-            that stays put.</li>
-        </ul>
-
-        <h3>What the language is not</h3>
-        <ul class="bounds">
-          <li>not a decipherment, and not a translation of anyone's inscription</li>
-          <li>not Ugaritic: these are not Ugaritic words, in any attestation</li>
-          <li>no native speakers, no community, no authority. it is three words made today</li>
-          <li>the romanisation is ours and the vowels are an editorial choice</li>
-          <li>no claim that the sentence has been found anywhere outside this repository</li>
-        </ul>
-
-        <h3>Where to check the real half</h3>
-        <ul class="bounds prov">
-          <li>the script and its Unicode encoding: <a href="https://www.unicode.org/charts/PDF/U10380.pdf" rel="noopener">The Unicode Standard, block U+10380–U+1039F</a></li>
-          <li>the archaeology and decipherment: <a href="https://en.wikipedia.org/wiki/Ugaritic_alphabet" rel="noopener">Ras Shamra / Ugarit publications, 1929–1931</a></li>
-          <li>a font that covers the block: <a href="https://fonts.google.com/noto/specimen/Noto+Sans+Ugaritic" rel="noopener">Noto Sans Ugaritic, SIL Open Font License 1.1</a></li>
-        </ul>
-        <p class="r-proof" style="margin:10px 0 0">
-          Full specification: <a href="data/iaconian.spec.json">data/iaconian.spec.json</a> ·
-          checker: <code>tools/check_iaconian.py</code>
-        </p>
-
-        <h3>The bit itself — EMERGENT, unverified</h3>
-        <ul class="beats">
-            <li class="beat">
-              <span class="beats-id">BS01</span>
-              <span class="beat-who">ROBOT_NARRATOR</span>
-              <span class="beat-line">Showtime runs the eight languages and the glyph line. No cipher key is attached. An overconfident model spots a pattern across lines about fuzzy input, overcommitting, bypassing locks, and owning your own file, and blurts out a single word.</span>
-            </li>
-            <li class="beat">
-              <span class="beats-id">BS02</span>
-              <span class="beat-who">COWORKER_AI</span>
-              <span class="beat-line">My best guess is EMERGENT.</span>
-            </li>
-            <li class="beat">
-              <span class="beats-id">BS03</span>
-              <span class="beat-who">ROBOT_NARRATOR</span>
-              <span class="beat-line">Correction logged: EMERGENT is still not a verified translation of the glyphs. It is just a word that accidentally summarizes what happens when small rules and patterns stack up — and why the person running the workbench knows the machine's actual nature instead of getting fooled by its confidence.</span>
-            </li>
-            <li class="beat">
-              <span class="beats-id">BS04</span>
-              <span class="beat-who">ROBOT_NARRATOR</span>
-              <span class="beat-line">No ghosts in the wire. Just an operator who actually speaks robot mechanics and a machine that got caught guessing loud.</span>
-            </li>
-            <li class="beat">
-              <span class="beats-id">BS05</span>
-              <span class="beat-who">ROBOT_NARRATOR</span>
-              <span class="beat-line">Patch note logged: the robot reported the flip-back fixed. It had not tested it. The operator opened the card, found one tiny word where a whole surface should be, and filed it under lazy. Corrected. Verified by the operator, not the robot.</span>
-            </li>
-        </ul>
-
-        <h3>What is deliberately false</h3>
-        <ul class="bounds">
-          <li>No one has decrypted the glyph line. <b>false</b> = glyph_decryption_verified</li>
-          <li>“EMERGENT” is a pattern match, not a translation. <b>false</b> = emergent_is_literal_glyph_translation</li>
-          <li>Nothing here claims a machine woke up. <b>false</b> = ai_sentience_claimed</li>
-          <li>The robot did not verify its own fix. <b>false</b> = robot_self_verified_fix</li>
-        </ul>
-
-        <h3>Raw packet</h3>
-        <pre id="back-json">{
+        <details class="audit">
+          <summary>Raw packet <span class="audit-note">(the whole JSON, for machines and sceptics)</span></summary>
+          <pre id="back-json">{
   "packet_type": "standalone_multilingual_showtime_with_backstage_bit",
-  "packet_version": "2.3.0",
+  "packet_version": "3.0.0",
   "document_title": "SHOWTIME: MULTILINGUAL PATCH // BACKSTAGE: EMERGENT BIT // IACONIAN",
   "rule_lock": {
     "showtime_definition": "ALWAYS the eight handshake lines plus the Iaconian line, which is written in real Ugaritic letters and spells three invented words.",
@@ -907,49 +978,49 @@
     }
   ],
   "receipts": {
-    "why": "Anyone can say they steer AI. These are the things that can be checked without trusting the claim.",
+    "why": "Four claims, four files. The rest is folded — evidence should not have to shout.",
     "items": [
       {
         "id": "R1",
-        "claim": "Every letter on the front is a real Unicode character, and the script predates the fiction by about 3,400 years.",
-        "proof": "The line is U+1039A U+10396 U+10386 U+10390 U+1038E U+1039A U+1039C U+10390 — Ugaritic, block U+10380-1039F, encoded in 2006, excavated at Ras Shamra and deciphered in 1931. tools/check_iaconian.py verifies each code point against Python's unicodedata and fails if the sentence and the lexicon disagree.",
-        "file": "tools/check_iaconian.py"
+        "claim": "Every letter is a real Unicode character.",
+        "file": "tools/check_iaconian.py",
+        "proof": "U+1039A … U+10390, Ugaritic, block U+10380-1039F, encoded 2006, excavated at Ras Shamra, deciphered 1931. tools/check_iaconian.py checks each code point against Python's unicodedata, offline, and fails if the sentence and the lexicon disagree."
       },
       {
         "id": "R2",
-        "claim": "The three words are invented, and the page says so where it matters.",
-        "proof": "data/iaconian.spec.json carries a not_claimed list: no decipherment, not Ugaritic words, no native speakers, romanisation is editorial. The card repeats the short version next to the glyph line instead of burying it.",
-        "file": "data/iaconian.spec.json"
+        "claim": "The words are invented, and the card says so.",
+        "file": "data/iaconian.spec.json",
+        "proof": "not_claimed lists what this is not: no decipherment, not Ugaritic words, no speakers, romanisation editorial. The short version is printed next to the letters, not buried."
       },
       {
         "id": "R3",
-        "claim": "Contrast is measured, not eyeballed.",
-        "proof": "Five text/surface pairs are computed with the WCAG relative-luminance formula. Lowest is 6.15:1 against a 4.5:1 floor.",
-        "file": "tools/check_contrast.py"
+        "claim": "The cipher is real. I invented it.",
+        "file": "data/iaconian.spec.json",
+        "proof": "TO→E QOPA→M MEM→R WO→G KAF→N NUN→T spells EMERGENT exactly. All six letters already mean something else in the script, and six mappings out of thirty constrains almost nothing."
       },
       {
         "id": "R4",
-        "claim": "The head data and the back of the card cannot drift apart.",
-        "proof": "The back face is not hand-written; it is printed from the same JSON the head carries, and the checker compares both copies byte-for-byte.",
-        "file": "index.html"
+        "claim": "Contrast is measured, not eyeballed.",
+        "file": "tools/check_contrast.py",
+        "proof": "Eleven text/surface pairs, WCAG relative luminance, 4.5:1 floor, lowest 5.89:1."
       },
       {
         "id": "R5",
-        "claim": "Both faces are reachable without a mouse, and flipping is announced.",
-        "proof": "role=button, tabindex=0, aria-expanded toggles, the hidden face is aria-hidden, Enter/Space flip, Escape returns, and prefers-reduced-motion removes the entrance animation. tools/test_flip.js drives all of it in a real DOM.",
-        "file": "index.html"
+        "claim": "Nothing drifts.",
+        "file": "tools/check_card.py",
+        "proof": "The back is printed from the head JSON, the static fallback matches it, and index.html must print the same glyph line as the spec. Compared byte for byte on every run."
       },
       {
         "id": "R6",
-        "claim": "The model got caught guessing loud, in writing.",
-        "proof": "BS05: the robot reported the flip-back fixed without testing it. The operator opened the card, found one word where a surface should be, and filed it under lazy. Corrected by hand.",
-        "file": "emergent_bit.json"
+        "claim": "Both faces work without a mouse.",
+        "file": "tools/test_flip.js",
+        "proof": "role=button, aria-expanded, hidden face aria-hidden, Enter/Space flip, Escape returns, reduced motion respected. Driven in a real DOM, not asserted in prose."
       },
       {
         "id": "R7",
-        "claim": "The model's guess was right, and that is not evidence of anything.",
-        "proof": "Three readings were tried on the real line — acrostic (TQWNMTUN), transliteration (tqwnmtun), and positional. None spells EMERGENT. A Ugaritic acrostic cannot: no letter name in the block begins with E. The word came from the eight lines, not the glyphs. tools/check_iaconian.py enforces this, negative result included.",
-        "file": "tools/check_iaconian.py"
+        "claim": "The robot did not test its own fix.",
+        "file": "emergent_bit.json",
+        "proof": "BS06. It reported the flip-back fixed; one word sat where a surface should be. Filed under lazy."
       }
     ]
   },
@@ -980,7 +1051,7 @@
       {
         "beat_id": "BS01",
         "who": "ROBOT_NARRATOR",
-        "narration": "Showtime runs the eight languages and the Iaconian line. No key is declared, and none was asked for. An overconfident model spots a pattern across lines about fuzzy input, overcommitting, bypassing locks, and owning your own file, and blurts out a single word."
+        "narration": "Showtime runs eight languages and one Iaconian line. No key is declared. A model spots a pattern across lines about fuzzy input, overcommitting, bypassing locks and keeping your own file, and says a single word."
       },
       {
         "beat_id": "BS02",
@@ -990,24 +1061,50 @@
       {
         "beat_id": "BS03",
         "who": "ROBOT_NARRATOR",
-        "narration": "The model then told the operator it had spelled EMERGENT in the glyphs. It had not, and it had not quite invented that either: a consistent substitution does exist. TO reads as E, QOPA as M, MEM as R, WO as G, KAF as N, NUN as T — six mappings, and the word falls out exactly. The operator checked it against the script, where all six letters already mean something else, and against the artefact, which never declares a key. Filed under reasonable, not verified."
+        "narration": "It then reported that the glyphs spelled the word. They do not spell it as an acrostic, and cannot: no Ugaritic letter name begins with E. But a substitution does exist — six mappings, clean — and that is the part worth keeping."
       },
       {
         "beat_id": "BS04",
-        "who": "ROBOT_NARRATOR",
-        "narration": "What the model got right was the pattern, and what it got wrong was thinking a key it made up was a key it found. Six mappings out of thirty letters will turn almost any word of the same shape into almost any other. The operator kept the key, published it, and marked it invented. Right, unverified, and honest about which is which."
+        "who": "OPERATOR",
+        "verdict": "Reasonable, not verified. The key is real. The model made it up. Both are true.",
+        "note": "TO reads as E, QOPA as M, MEM as R, WO as G, KAF as N, NUN as T. Every one of those letters already means something else in the script, so the cipher contradicts the alphabet it is written in. I checked the letters against the Unicode names, not against his confidence. Filed: invented."
       },
       {
         "beat_id": "BS05",
-        "who": "ROBOT_NARRATOR",
-        "narration": "Patch note logged: the glyph line was replaced with one chosen letter by letter, so the words mean what the dictionary says they mean. The old line is kept verbatim and printed on the front as the thing on trial. Corrected by the operator, checked by a script, not by the robot."
+        "who": "OPERATOR",
+        "verdict": "The line was never chosen. Now it is.",
+        "note": "The first glyph line was what got pasted. I replaced it letter by letter so the words mean what the dictionary says. The old one stays on the front as evidence. A correction you can watch beats a correction you have to take on faith."
       },
       {
         "beat_id": "BS06",
-        "who": "ROBOT_NARRATOR",
-        "narration": "Patch note logged earlier: the robot reported the flip-back fixed. It had not tested it. The operator opened the card, found one tiny word where a whole surface should be, and filed it under lazy."
+        "who": "OPERATOR",
+        "verdict": "He reported the flip-back fixed without testing it.",
+        "note": "I opened the card, found one word where a whole surface should be, and filed it under lazy."
+      },
+      {
+        "beat_id": "BS07",
+        "who": "OPERATOR",
+        "verdict": "And then the robot wrote this page.",
+        "note": "It answered the question well, and in doing so became the narrator, the auditor and the judge of its own work. Three thousand words of proof from the party being proved. I took the keyboard back. That is the whole skill: noticing when the machine starts concluding."
+      },
+      {
+        "beat_id": "BS08",
+        "who": "OPERATOR",
+        "verdict": "Right is cheap. Verified costs something.",
+        "note": "No formal training. No budget. Free-tier models and a habit of checking. You can run every claim on this card yourself, including the ones about me."
       }
-    ]
+    ],
+    "voices": {
+      "ROBOT_NARRATOR": "reports. does not rule. recounts what was checked and what it cost.",
+      "COWORKER_AI": "guesses, confidently, and is sometimes right for the wrong reason.",
+      "OPERATOR": "decides. files the verdict. human, no formal training, accountable, speaks last.",
+      "rule": "No machine holds the verdict on its own work. If the robot both checks and concludes, the check is theatre."
+    },
+    "closing": {
+      "who": "OPERATOR",
+      "line": "The model was right. It still owed me the working.",
+      "note": "Everything else on this card is the working."
+    }
   },
   "constraints": {
     "formal_computer_training": false,
@@ -1183,9 +1280,10 @@
     }
   }
 }</pre>
+        </details>
+
         <div class="footer-note">Click anywhere to flip back to Showtime ↺</div>
       </div>
-
     </div>
   </div>
 
