@@ -19,6 +19,13 @@ PAIRS = [
     ("front body text",     "#e6edf3", "#0d1117", 4.5),
     ("SIDE A badge (blue)", "#58a6ff", "#0d1117", 4.5),
     ("SIDE B badge (green)","#3fb950", "#11161f", 4.5),
+    # surfaces added with the language section
+    ("glyph note (amber)",  "#d29922", "#0d1117", 4.5),
+    ("disclaimer bold",     "#d29922", "#11161f", 4.5),
+    ("lexicon term/glyph",  "#3fb950", "#11161f", 4.5),
+    ("provenance link",     "#58a6ff", "#11161f", 4.5),
+    ("code point label",    "#8b949e", "#11161f", 4.5),
+    ("lexicon gloss",       "#c9d1d9", "#11161f", 4.5),
 ]
 
 if __name__ == "__main__":

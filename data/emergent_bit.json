@@ -1,11 +1,12 @@
 {
   "packet_type": "standalone_multilingual_showtime_with_backstage_bit",
-  "packet_version": "1.1.0",
-  "document_title": "SHOWTIME: MULTILINGUAL PATCH // BACKSTAGE: EMERGENT BIT",
+  "packet_version": "2.0.0",
+  "document_title": "SHOWTIME: MULTILINGUAL PATCH // BACKSTAGE: EMERGENT BIT // IACONIAN",
   "rule_lock": {
-    "showtime_definition": "ALWAYS the multilingual lines plus the Iaconian glyph line.",
-    "backstage_definition": "ALWAYS the embedded EMERGENT bit — tongue-in-cheek pattern-matching note, unverified translation disclaimer, and grounded proof of steering/diagnosing AI behavior without claiming sentience.",
-    "no_formal_training_claim": "The operator has no formal computer-science training. Nothing on this card is a credential. Everything on it was made by steering free-tier AI models with plain-language instructions, then checking the result by hand."
+    "showtime_definition": "ALWAYS the eight handshake lines plus the Iaconian line, which is written in real Ugaritic letters and spells three invented words.",
+    "backstage_definition": "ALWAYS the embedded EMERGENT bit, the receipts, and the full language spec — the unverified-word disclaimer, the script provenance, and the grounded proof of steering/diagnosing AI behaviour without claiming sentience.",
+    "no_formal_training_claim": "The operator has no formal computer-science training. Nothing on this card is a credential. Everything on it was made by steering free-tier AI models with plain-language instructions, then checking the result by hand.",
+    "language_rule": "The language is fictional. The script is not. Never blur the two: the words are ours, the letters can be looked up in the Unicode standard, and no reading of the line is a decipherment of anything."
   },
   "contact": [
     {
@@ -24,30 +25,36 @@
     "items": [
       {
         "id": "R1",
-        "claim": "The glyph line draws on any machine, including ones that ship no font for those characters.",
-        "proof": "The eight characters are a ~1KB subset of Noto Sans Ugaritic, embedded in the page as a data URI. It took a checker to notice that the first attempt embedded a Cuneiform font for Ugaritic code points, which has no coverage and drew nothing at all. tools/check_card.py now fails if any printed glyph is missing from the font.",
-        "file": "tools/check_card.py"
+        "claim": "Every letter on the front is a real Unicode character, and the script predates the fiction by about 3,400 years.",
+        "proof": "The line is U+1039A U+10396 U+10386 U+10390 U+1038E U+1039A U+1039C U+10390 — Ugaritic, block U+10380-1039F, encoded in 2006, excavated at Ras Shamra and deciphered in 1931. tools/check_iaconian.py verifies each code point against Python's unicodedata and fails if the sentence and the lexicon disagree.",
+        "file": "tools/check_iaconian.py"
       },
       {
         "id": "R2",
+        "claim": "The three words are invented, and the page says so where it matters.",
+        "proof": "data/iaconian.spec.json carries a not_claimed list: no decipherment, not Ugaritic words, no native speakers, romanisation is editorial. The card repeats the short version next to the glyph line instead of burying it.",
+        "file": "data/iaconian.spec.json"
+      },
+      {
+        "id": "R3",
         "claim": "Contrast is measured, not eyeballed.",
         "proof": "Five text/surface pairs are computed with the WCAG relative-luminance formula. Lowest is 6.15:1 against a 4.5:1 floor.",
         "file": "tools/check_contrast.py"
       },
       {
-        "id": "R3",
+        "id": "R4",
         "claim": "The head data and the back of the card cannot drift apart.",
         "proof": "The back face is not hand-written; it is printed from the same JSON the head carries, and the checker compares both copies byte-for-byte.",
         "file": "index.html"
       },
       {
-        "id": "R4",
+        "id": "R5",
         "claim": "Both faces are reachable without a mouse, and flipping is announced.",
         "proof": "role=button, tabindex=0, aria-expanded toggles, the hidden face is aria-hidden, Enter/Space flip, Escape returns, and prefers-reduced-motion removes the entrance animation. tools/test_flip.js drives all of it in a real DOM.",
         "file": "index.html"
       },
       {
-        "id": "R5",
+        "id": "R6",
         "claim": "The model got caught guessing loud, in writing.",
         "proof": "BS05: the robot reported the flip-back fixed without testing it. The operator opened the card, found one word where a surface should be, and filed it under lazy. Corrected by hand.",
         "file": "emergent_bit.json"
@@ -95,5 +102,21 @@
         "narration": "Patch note logged: the robot reported the flip-back fixed. It had not tested it. The operator opened the card, found one tiny word where a whole surface should be, and filed it under lazy. Corrected. Verified by the operator, not the robot."
       }
     ]
+  },
+  "constraints": {
+    "formal_computer_training": false,
+    "training_budget": "none. free-tier models only.",
+    "method": "plain-language instructions, then the result is checked by hand or by a script.",
+    "what_is_being_demonstrated": "not credentials. the ability to instruct a model precisely, notice when it is wrong, and make the correction verifiable to someone who does not trust either of us."
+  },
+  "language": {
+    "name": "Iaconian",
+    "spec_file": "data/iaconian.spec.json",
+    "checker": "tools/check_iaconian.py",
+    "one_line": "Three invented words written in a real, Unicode-encoded script (Ugaritic, U+10380-1039F).",
+    "sentence": "The hold, the walked path, carry it back.",
+    "rendering": "𐎚𐎖𐎆𐎐𐎎𐎚𐎜𐎐",
+    "romanisation": "to · qo · nemtun",
+    "why_it_matters": "The words are unverifiable on purpose and the letters are verifiable by design. The fiction is anchored to a script that exists outside this repository: excavated at Ras Shamra, deciphered in 1931, encoded by Unicode in 2006. Anyone can confirm the letters are real without trusting a single claim on this card."
   }
 }

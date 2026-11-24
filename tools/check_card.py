@@ -50,6 +50,22 @@ if glyphs:
     except ImportError:
         notes.append("fontTools not installed — glyph coverage skipped")
 
+# 2b. the page's glyph line must be the spec's glyph line ------------------
+spec_file = ROOT / "data" / "iaconian.spec.json"
+if spec_file.exists():
+    spec = json.loads(spec_file.read_text(encoding="utf-8"))
+    expected = spec["sentence"]["rendering"]
+    printed_lines = re.findall(r'<div class="glyphs"[^>]*>([^<]+)</div>', HTML)
+    check("page prints exactly one glyph line", len(printed_lines) == 1,
+          f"{len(printed_lines)} found")
+    check("page glyph line matches data/iaconian.spec.json",
+          len(printed_lines) == 1 and printed_lines[0] == expected,
+          "the page and the dictionary must not diverge")
+    check("spec's own code points render to its own string",
+          "".join(chr(int(c[2:], 16)) for c in spec["sentence"]["rendering_code_points"]) == expected)
+    check("romanisation on the page matches the spec",
+          all(e["romanisation"] in HTML for e in spec["lexicon"]))
+
 # 3. accessibility state ---------------------------------------------------
 check("card exposes aria-expanded", 'aria-expanded="false"' in HTML)
 check("hidden face removed from a11y tree", 'aria-hidden="true"' in HTML)
@@ -57,7 +73,13 @@ check("Escape returns to front", "Escape" in HTML)
 check("reduced motion honoured", "prefers-reduced-motion" in HTML)
 
 # 4. no network dependency -------------------------------------------------
-check("no external stylesheet/font/script", not re.search(r'(src|href)="https?://', HTML))
+# prose links to sources are fine and desired; loading an asset from elsewhere is not
+external_asset = re.search(r'src="https?://', HTML) or re.search(
+    r'<link[^>]+rel="stylesheet"[^>]+href="https?://', HTML) or "@import" in HTML
+check("no external stylesheet/font/script", not external_asset,
+      "fonts, styles and scripts must be inlined so nothing breaks offline")
+check("provenance links point outside the page", len(re.findall(r'href="https?://', HTML)) >= 2,
+      "the language claim should be checkable somewhere other than this repo")
 check("no runtime fetch()", "fetch(" not in HTML)
 
 # 5. share preview ---------------------------------------------------------

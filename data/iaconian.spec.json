@@ -1,0 +1,152 @@
+{
+  "language": "Iaconian",
+  "spec_version": "1.0.0",
+  "status": "constructed fictional language, anchored to a real script. not a decipherment of anything.",
+  "what_this_is": "Three words in a made-up language, written in a real and real Unicode-encoded script. The script is outside the fiction and did not come from it: it was excavated, published, encoded, and can be checked without opening this page. The words are ours. Anyone can verify the letters and nobody can verify the words, which is the honest shape of the thing.",
+  "script": {
+    "name": "Ugaritic",
+    "also_called": "Ugaritic cuneiform alphabet",
+    "unicode_block": "U+10380–U+1039F",
+    "unicode_version_added": "5.0 (2006)",
+    "code_points_assigned": 31,
+    "kind": "consonantal alphabet (abjad). vowels are not normally written.",
+    "direction": "left to right",
+    "attested": "tablets from Ras Shamra (Ugarit), on the Syrian coast, c. 15th–12th century BCE",
+    "decipherment": "deciphered in 1930–31 by Hans Bauer, Édouard Dhorme and Charles Virolleaud",
+    "fonts_needed": "almost none ship by default, which is why this page embeds one",
+    "note": "Ugaritic is not related to Cybertronian, Iacon, or any Transformers canon. The name 'Iaconian' on the card is the joke; the letters are the grounding."
+  },
+  "grammar": {
+    "syllable": "one consonant letter, optionally followed by WO or YOD as a glide",
+    "vowels": "unwritten. the romanisation below is our reading, not a property of the text.",
+    "words": "one or more syllables run together; the script also has a word divider (U+1039F)",
+    "anything_else": "deliberately nothing. three words, no morphology, no syntax beyond word order."
+  },
+  "lexicon": [
+    {
+      "token": "TO",
+      "syllables": [
+        "TO"
+      ],
+      "code_points": [
+        "U+1039A"
+      ],
+      "romanisation": "to",
+      "gloss": "the hold. that which is kept fixed and does not move.",
+      "why_these_letters": "the token is the letter whose Unicode name is TO; the word and the letter are the same object."
+    },
+    {
+      "token": "QO",
+      "syllables": [
+        "QOPA+WO"
+      ],
+      "code_points": [
+        "U+10396",
+        "U+10386"
+      ],
+      "romanisation": "qo",
+      "gloss": "a path that has been walked before. a line already crossed.",
+      "why_these_letters": "QOPA plus the glide WO, the only glide the grammar allows here."
+    },
+    {
+      "token": "NEMTUN",
+      "syllables": [
+        "NUN",
+        "MEM",
+        "TO",
+        "U",
+        "NUN"
+      ],
+      "code_points": [
+        "U+10390",
+        "U+1038E",
+        "U+1039A",
+        "U+1039C",
+        "U+10390"
+      ],
+      "romanisation": "nemtun",
+      "gloss": "to carry a thing back to the place it was found.",
+      "why_these_letters": "it opens and closes on the same letter, because the word means returning."
+    }
+  ],
+  "sentence": {
+    "tokens": [
+      "TO",
+      "QO",
+      "NEMTUN"
+    ],
+    "literal": "hold / walked-path / carry-back",
+    "reading": "The hold, the walked path, carry it back.",
+    "cipher_key": "none. there is no key, and no hidden message underneath.",
+    "rendering_code_points": [
+      "U+1039A",
+      "U+10396",
+      "U+10386",
+      "U+10390",
+      "U+1038E",
+      "U+1039A",
+      "U+1039C",
+      "U+10390"
+    ],
+    "rendering": "𐎚𐎖𐎆𐎐𐎎𐎚𐎜𐎐"
+  },
+  "anchors": [
+    {
+      "id": "A1",
+      "code_point": "U+1039A",
+      "unicode_name": "UGARITIC LETTER TO",
+      "in_fiction": "the letter that is also the word for a hold",
+      "checkable_by": "UnicodeData.txt, or any font that shows the block"
+    },
+    {
+      "id": "A2",
+      "code_point": "U+10396",
+      "unicode_name": "UGARITIC LETTER QOPA",
+      "in_fiction": "opens the word for a path already walked",
+      "checkable_by": "UnicodeData.txt"
+    },
+    {
+      "id": "A3",
+      "code_point": "U+10390",
+      "unicode_name": "UGARITIC LETTER NUN",
+      "in_fiction": "the letter the returning word opens and closes on",
+      "checkable_by": "UnicodeData.txt"
+    }
+  ],
+  "not_claimed": [
+    "not a decipherment, and not a translation of anyone's inscription",
+    "not Ugaritic: these are not Ugaritic words, in any attestation. the letters are Ugaritic, the words are not",
+    "no native speakers, no community, no authority. it is three words made today",
+    "the romanisation is ours and the vowels are an editorial choice",
+    "no claim that the sentence has been found anywhere outside this repository",
+    "no claim that Ugaritic relates to Cybertronian, Iacon, or any fiction. the name on the card is a joke"
+  ],
+  "provenance": [
+    {
+      "what": "the script and its Unicode encoding",
+      "where": "The Unicode Standard, block U+10380–U+1039F",
+      "url": "https://www.unicode.org/charts/PDF/U10380.pdf"
+    },
+    {
+      "what": "the archaeology and decipherment",
+      "where": "Ras Shamra / Ugarit publications, 1929–1931",
+      "url": "https://en.wikipedia.org/wiki/Ugaritic_alphabet"
+    },
+    {
+      "what": "a font that covers the block",
+      "where": "Noto Sans Ugaritic, SIL Open Font License 1.1",
+      "url": "https://fonts.google.com/noto/specimen/Noto+Sans+Ugaritic"
+    }
+  ],
+  "rendering_rules": {
+    "total_code_points": 8,
+    "distinct_code_points": 6,
+    "single_code_point_tokens": 1,
+    "repeated_code_points_forbidden": true
+  },
+  "how_to_verify_the_real_half": [
+    "open the Unicode chart for U+10380-1039F and confirm each letter's name",
+    "or run tools/check_iaconian.py, which reads Python's own unicodedata, offline",
+    "or install any font that covers the block and see the same shapes the page embeds"
+  ]
+}

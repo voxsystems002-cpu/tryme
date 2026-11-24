@@ -5,6 +5,8 @@ name: check the card
 #     the embedded font was cuneiform (no coverage, so nothing drew)
 #   - the back face's JSON drifting from the head's copy
 #   - the flip hiding content from screen readers and from motion-sensitive users
+#   - the glyph line printing nothing, because a cuneiform font was embedded for
+#     Ugaritic code points (see tools/check_iaconian.py for the real characters)
 # Nothing here needs a secret, a paid API, or a browser.
 
 on:
@@ -25,6 +27,9 @@ jobs:
 
       - name: Install the one dependency the font check needs
         run: pip install fonttools brotli
+
+      - name: The language is fictional, the letters are not
+        run: python3 tools/check_iaconian.py
 
       - name: Contrast ratios
         run: python3 tools/check_contrast.py

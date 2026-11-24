@@ -23,12 +23,13 @@
   <script type="application/json" id="postcard-data">
 {
   "packet_type": "standalone_multilingual_showtime_with_backstage_bit",
-  "packet_version": "1.1.0",
-  "document_title": "SHOWTIME: MULTILINGUAL PATCH // BACKSTAGE: EMERGENT BIT",
+  "packet_version": "2.0.0",
+  "document_title": "SHOWTIME: MULTILINGUAL PATCH // BACKSTAGE: EMERGENT BIT // IACONIAN",
   "rule_lock": {
-    "showtime_definition": "ALWAYS the multilingual lines plus the Iaconian glyph line.",
-    "backstage_definition": "ALWAYS the embedded EMERGENT bit — tongue-in-cheek pattern-matching note, unverified translation disclaimer, and grounded proof of steering/diagnosing AI behavior without claiming sentience.",
-    "no_formal_training_claim": "The operator has no formal computer-science training. Nothing on this card is a credential. Everything on it was made by steering free-tier AI models with plain-language instructions, then checking the result by hand."
+    "showtime_definition": "ALWAYS the eight handshake lines plus the Iaconian line, which is written in real Ugaritic letters and spells three invented words.",
+    "backstage_definition": "ALWAYS the embedded EMERGENT bit, the receipts, and the full language spec — the unverified-word disclaimer, the script provenance, and the grounded proof of steering/diagnosing AI behaviour without claiming sentience.",
+    "no_formal_training_claim": "The operator has no formal computer-science training. Nothing on this card is a credential. Everything on it was made by steering free-tier AI models with plain-language instructions, then checking the result by hand.",
+    "language_rule": "The language is fictional. The script is not. Never blur the two: the words are ours, the letters can be looked up in the Unicode standard, and no reading of the line is a decipherment of anything."
   },
   "contact": [
     {
@@ -47,30 +48,36 @@
     "items": [
       {
         "id": "R1",
-        "claim": "The glyph line draws on any machine, including ones that ship no font for those characters.",
-        "proof": "The eight characters are a ~1KB subset of Noto Sans Ugaritic, embedded in the page as a data URI. It took a checker to notice that the first attempt embedded a Cuneiform font for Ugaritic code points, which has no coverage and drew nothing at all. tools/check_card.py now fails if any printed glyph is missing from the font.",
-        "file": "tools/check_card.py"
+        "claim": "Every letter on the front is a real Unicode character, and the script predates the fiction by about 3,400 years.",
+        "proof": "The line is U+1039A U+10396 U+10386 U+10390 U+1038E U+1039A U+1039C U+10390 — Ugaritic, block U+10380-1039F, encoded in 2006, excavated at Ras Shamra and deciphered in 1931. tools/check_iaconian.py verifies each code point against Python's unicodedata and fails if the sentence and the lexicon disagree.",
+        "file": "tools/check_iaconian.py"
       },
       {
         "id": "R2",
+        "claim": "The three words are invented, and the page says so where it matters.",
+        "proof": "data/iaconian.spec.json carries a not_claimed list: no decipherment, not Ugaritic words, no native speakers, romanisation is editorial. The card repeats the short version next to the glyph line instead of burying it.",
+        "file": "data/iaconian.spec.json"
+      },
+      {
+        "id": "R3",
         "claim": "Contrast is measured, not eyeballed.",
         "proof": "Five text/surface pairs are computed with the WCAG relative-luminance formula. Lowest is 6.15:1 against a 4.5:1 floor.",
         "file": "tools/check_contrast.py"
       },
       {
-        "id": "R3",
+        "id": "R4",
         "claim": "The head data and the back of the card cannot drift apart.",
         "proof": "The back face is not hand-written; it is printed from the same JSON the head carries, and the checker compares both copies byte-for-byte.",
         "file": "index.html"
       },
       {
-        "id": "R4",
+        "id": "R5",
         "claim": "Both faces are reachable without a mouse, and flipping is announced.",
         "proof": "role=button, tabindex=0, aria-expanded toggles, the hidden face is aria-hidden, Enter/Space flip, Escape returns, and prefers-reduced-motion removes the entrance animation. tools/test_flip.js drives all of it in a real DOM.",
         "file": "index.html"
       },
       {
-        "id": "R5",
+        "id": "R6",
         "claim": "The model got caught guessing loud, in writing.",
         "proof": "BS05: the robot reported the flip-back fixed without testing it. The operator opened the card, found one word where a surface should be, and filed it under lazy. Corrected by hand.",
         "file": "emergent_bit.json"
@@ -118,6 +125,22 @@
         "narration": "Patch note logged: the robot reported the flip-back fixed. It had not tested it. The operator opened the card, found one tiny word where a whole surface should be, and filed it under lazy. Corrected. Verified by the operator, not the robot."
       }
     ]
+  },
+  "constraints": {
+    "formal_computer_training": false,
+    "training_budget": "none. free-tier models only.",
+    "method": "plain-language instructions, then the result is checked by hand or by a script.",
+    "what_is_being_demonstrated": "not credentials. the ability to instruct a model precisely, notice when it is wrong, and make the correction verifiable to someone who does not trust either of us."
+  },
+  "language": {
+    "name": "Iaconian",
+    "spec_file": "data/iaconian.spec.json",
+    "checker": "tools/check_iaconian.py",
+    "one_line": "Three invented words written in a real, Unicode-encoded script (Ugaritic, U+10380-1039F).",
+    "sentence": "The hold, the walked path, carry it back.",
+    "rendering": "𐎚𐎖𐎆𐎐𐎎𐎚𐎜𐎐",
+    "romanisation": "to · qo · nemtun",
+    "why_it_matters": "The words are unverifiable on purpose and the letters are verifiable by design. The fiction is anchored to a script that exists outside this repository: excavated at Ras Shamra, deciphered in 1931, encoded by Unicode in 2006. Anyone can confirm the letters are real without trusting a single claim on this card."
   }
 }
   </script>
@@ -130,7 +153,7 @@
          font has no glyphs for them and draws nothing, which is how this line
          silently rendered blank before. Inlined so it draws on any machine.
          Regenerate: tools/build_glyph_font.sh  (verified by tools/check_card.py) */
-      src: url(data:font/woff2;base64,d09GMgABAAAAAAPMAA0AAAAAB7gAAAN6AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGxAcGgZgAGwRCAqFbIUeATYCJAMcCxAABCAFhCgHIBt5BhHVmyEhvk7g5gDXTSuh7gR+RQAbUdtnb/4KpzBpzuscPM/nvZ2bly+k9q4DiWkHWwEfuxF2RAIgHwJoR+b2Q3RpkDxSVZqKZc0fWUPUdUKh0hnpkGGXGkC6x9acpGJi7UUr8GrHJJS+ltcIE2SDJq7J/z2Kxioa8sQiCzstGiRpQBOv882Gu3HbBKZtjQz042N56rYrob0I4MaLHwDu6ySQhIzoO2EUTgAAdK2ZrMEG2jKtC9A83E16UU7qAaKG3JzGrVs35qJ1kfbu/6BeyUxAALQk7QlkoXSAno5D4S5kL1C7QNqOqEWDLAiilsuChqhVsqAQtUYWdERtkgUborYZsboBYlkAwAGAH3ADX2Q4AKADAAqF9FOMDMOIN3KKso3u+z0yd3cKFAbrztWQDa+F7mbGDpicqG0vSQ0nIkWPFkqw5hwN9agEry1mxDXP8salXL/kjsCokGA1+wrLc83A9HZQEv3bS1ILtBpVU7LvT6Jqvv+0Lyyx5FkRfqoz58YIyoRwhnasRZN0Wl316a4pGXqVsk48TE3IUq30xmKr6U7v1DLjmzSJAqYR+y/sc5XwP+dmHJd5zAWYnxQeHJhvrGLnRgm1IHE40bsssDK4tlUEd17oCT++a0IS34+bxf9Tb/WOimLv70YTOjgo+HFvT4GXej7a3ejn8thRXIYI9B9bQ8OilW3CbouCBHKNRuEF5uRlZpVQQIRS6sC3us/mlrmcGvYBMd3iX/j4wOB7SUZyatVaemvfqMDsYAez6OmnF69t1Wnp+NsZQyXzuu6p6jAu3XAyVK1KJ75JSZJMOKD/nVvzKhcPjE7uEKDgx9juSlmvXrn3+xYbaRIAgAAa9ebtWxH0YGp8g3oPhPa6TYBnfV99+Pt/3ZLWgB2tqn81u60/AbcSFxBodWhd6GXLYsBA0JOAL+bBUydC8jOWsqg2utyiCMZuky7dBZjQBEIepkDDz2WBohEPBToVJEFgo4M0+3Y7ZcTErlH8TR3LhtJkNJmUJNsoMRFEJS6NXEOD0pmCHaVZqWUDxNlmOLQcsCkZaFEwDE3/a0YhZENq4dQBR2unTos4TDJJJiYFw5JDfnIyGD0kx9snG3turTR1Yp3Qv/pPPanUQopxDCbno8ZLL2MqHUvaxLSTbccER1b8Gg9WAzCTXPbn+mZJ+9VdRSiydkwAAAAA) format("woff2");
+      src: url(data:font/woff2;base64,d09GMgABAAAAAAQ4AA0AAAAAB8wAAAPmAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGxAcGgZgAGwRCAqGAIUqATYCJAMaCxAABCAFhCgHIBuDBlGULkoO4OsCnkRIX7jNoiCwpGw7nrBplgle91CFVb9r2hF7ORAoBx6DwN+K0qlNFR/wLXj+f3//P9fe554HcXQ3I1EVGh1WSUxwVORnpK5f+737iNlriHhSi6fyz/aQShWNop1kWlVCZMg0UDa2g4YSDQ7a5VMVrN3KdeoEIMdFzzuM1P9fTiAMZoaD3cDpdOdS54LsRoFFntC5F8+1jx/wCgRU9i1cFl6QLAooa4eZWIo6j/tjamcRwBZ7HAEg3sZTKqLxwY9CAQAwVE5LWECNqFKIXHs9qVZRChAptLo6BgY60M1Xqf8N+pVkQQiA8lY3IFiAI2iU3QVga0siQVYKlU1ED/SaIIie0ASF6ClN0Ihe0AQD0SuaYEH0mhMtDvL/PzHCwQoAR8Aa+Il0QAAYALoecPcFdNl0/KJ8dFoeHQPSveM7BIHaCHYCfH6TKaNu7iWIrSDY0eNnT/V1QTyAJUPSOk/fIM5mboO4I+EenM4sxKW6AznldVsuSMLIjHf0+D2gqq25hggtZ98uQgDoToWIk6AWCVyCoRuUnBPsdjK+BFW3DfJDS3aj57mzYLTiY/5OkKANHef0EFQtICBgybIzgE3PdN8tPYY9laWFZSQtOZbVlT2jYq3tmuJI5nhiTeZA0SjmGzoEjJG/580xVy6ShnFv6amekfT5jGVM/3wpk52xqqR/JkMO3RDtkrDmi9y2+9CBbcaPCkWMMYwwzo4z42KTMxXMlg1kYNY0tq9w9qnkSWVIIN766iKXbQ/DkiWENDG8a67Mr/2GMOkxlY6NQ00bNeDQ7NTpnEMdeDg7G5wuGB9OuMsO0+tx21PzsB5u3L1t007J8chkiWSyoYNx97dKqsszZloOwxDtkq4D77uKfGW77zDoEs1EgCSB5T3xKUxDMhcTM59lNt11iX1E7bzTyamm56Hc6+HCBT+cNWwrOFe3WqcYXlcK/5ltpeWXu5FtFzf5nCcixe8sGwEIoEi57VaomKavxej3gFsJGwCPeEgb/zVgogAQ+O/8lgYGMcsMCGCbqUqRi+EntYB/bmn8MzwCsKJNCIkCvT2a4Swf9Rk2wAYiUkK4TUrhyBGlyfBCGcTkSVkorPvTTSLaIJXJMs2hkMgAVqFMhQrYKJkA62cCJmyQw6QScADWzgNkJocLyyMDwOJqUKqURAFkHlYJjslQyq/6X5HJD7hKeSQMhwIoOPl7l0cw/LtMG2MWhwkkf1gvVihRhtxyjToM5Do0alnyVHlKcRh872n4TY0T7sGlfNUkPo0L30tZxPCqRKa44M6aJ5QrUdeDVdxaxarxq2Xlnz0UAOj7vyYKAAAA) format("woff2");
       font-display: block;
     }
     :root {
@@ -237,7 +260,11 @@
       color: var(--accent-2);
       padding: 6px 0 2px;
     }
-    .glyph-note { font-size: 11px; color: var(--warn); }
+    .glyph-translit {
+      font-size: 13px; color: var(--text); letter-spacing: 0.08em;
+      margin: 2px 0 4px;
+    }
+    .glyph-note { font-size: 11px; color: var(--warn); line-height: 1.5; }
 
 
     h3 {
@@ -262,6 +289,24 @@
     .beat-line { color: #c9d1d9; }
     .bounds { font-size: 11.5px; color: var(--muted); line-height: 1.65; margin: 0; padding-left: 1.2em; }
     .bounds b { color: var(--warn); font-weight: 600; }
+    .bounds code, .r-proof code { color: var(--accent-2); font-family: var(--mono); font-size: 0.95em; }
+    .bounds a { color: var(--accent); text-decoration: none; border-bottom: 1px dotted var(--border); }
+    .bounds a:hover { color: var(--text); }
+    .bounds.prov { font-size: 11px; }
+    .lexicon { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+    .lex {
+      display: grid; grid-template-columns: 5.2em 6.2em 1fr auto;
+      gap: 10px; align-items: baseline;
+      font-size: 12px; line-height: 1.5;
+      border-left: 2px solid #58a6ff44; padding-left: 10px;
+    }
+    .lex-glyph { font-family: "Iaconian", "Noto Sans Ugaritic", serif; font-size: 19px; color: var(--accent-2); }
+    .lex-rom { color: var(--text); letter-spacing: 0.06em; }
+    .lex-gloss { color: #c9d1d9; }
+    .lex-cp { color: var(--muted); font-size: 10px; white-space: nowrap; }
+    .gloss { margin: 0 0 10px; padding-left: 1.1em; font-size: 12.5px; line-height: 1.7; color: #c9d1d9; }
+    .gloss b { color: var(--accent-2); font-weight: 600; }
+    .translit { color: var(--text); letter-spacing: 0.06em; }
     pre#back-json {
       margin: 12px 0 0;
       white-space: pre-wrap;
@@ -300,6 +345,8 @@
       .beat { grid-template-columns: 2.8em 1fr; }
       .beat-line { grid-column: 1 / -1; }
       .row { grid-template-columns: 2.2em 1fr; }
+      .lex { grid-template-columns: 4.2em 5em 1fr; }
+      .lex-cp { grid-column: 1 / -1; }
       .glyphs { font-size: 22px; letter-spacing: 0.14em; }
     }
   </style>
@@ -310,8 +357,10 @@
     <strong>This is a postcard, not a résumé.</strong>
     I have <span class="who">no formal computer training</span> and no budget. Everything here was made by
     steering free-tier AI models with plain-language instructions, then checking the result by hand.
-    The front is the joke. The back is the part you can audit — flip it with
-    <span class="who">click, <kbd>Enter</kbd>, or <kbd>Space</kbd></span>.
+    <span class="who">The words are invented. The letters are not</span> — the line is written in a real
+    script, encoded by Unicode since 2006, so you can look the letters up and you cannot look the words up.
+    Flip it with <span class="who">click, <kbd>Enter</kbd>, or <kbd>Space</kbd></span> and the back shows
+    the dictionary, the sources, and the receipts.
   </p>
 
   <div class="hint">Digital Postcard — <span>Click card to flip</span></div>
@@ -332,7 +381,7 @@
           <div class="meta">================================================================</div>
           <div><span class="meta">[LOG: NANO RUNTIME PATCH]</span></div>
           <div><span class="meta">COMMAND:</span> nano -l --softwrap local_handshake.txt</div>
-          <div><span class="meta">TARGET:</span> HANDSHAKE_NODES // 8 LANGUAGES + 1 UNVERIFIED GLYPH LINE</div>
+          <div><span class="meta">TARGET:</span> HANDSHAKE_NODES // 8 LANGUAGES + 1 IACONIAN LINE (INVENTED WORDS, REAL LETTERS)</div>
           <div class="meta">================================================================</div>
           <ul class="langs">
             <li class="row"><span class="lang">ES</span><span class="line" lang="es">El virus no ataca la arquitectura, altera la realidad.</span></li>
@@ -347,19 +396,28 @@
           <div class="row" style="margin-top:10px">
             <span class="lang">CY</span>
             <div>
-              <div class="glyphs" aria-label="Eight Ugaritic characters, transcription unverified">𐎚𐎖𐎚𐎎𐎆𐎚𐎋𐎐</div>
-              <div class="glyph-note">no cipher key attached · transcription unverified · draws from an embedded font, not yours</div>
+              <div class="glyphs" lang="mul" aria-label="Iaconian: TO QO NEMTUN, written in Ugaritic letters">𐎚𐎖𐎆𐎐𐎎𐎚𐎜𐎐</div>
+              <div class="glyph-translit">to &nbsp;·&nbsp; qo &nbsp;·&nbsp; nemtun</div>
+              <div class="glyph-note">INVENTED WORDS. REAL LETTERS · the script is Ugaritic, encoded at U+10380–U+1039F since 2006 · nine centuries before that it was cut into tablets at Ras Shamra</div>
             </div>
           </div>
           <hr />
           <div class="meta">================================================================</div>
         </div>
 
-        <h3>What the grammar school version says</h3>
+        <h3>What the line actually says</h3>
+        <ul class="gloss">
+          <li><b>to</b> — the hold. that which is kept fixed and does not move.</li>
+          <li><b>qo</b> — a path walked before. a line already crossed.</li>
+          <li><b>nemtun</b> — to carry a thing back to the place it was found.</li>
+        </ul>
         <p class="r-proof" style="font-size:13px;line-height:1.65">
-          Fuzzy input, over-promising, a bypassed lock, and a file you own. A model read those four things
-          in order and confidently announced a single word. It was wrong. Being able to tell that it was
-          wrong — and showing where — is the entire skill on display here.
+          <span class="translit">to · qo · nemtun</span> — <em>the hold, the walked path, carry it back.</em><br />
+          The words are invented today. The letters are not: they are Ugaritic, a real
+          alphabet excavated at Ras Shamra, deciphered in 1931, and sitting in the Unicode
+          standard since 2006. So the line is grounded in something outside this page —
+          you can look the letters up. You cannot look the words up, because I made
+          them up, and the back says so in as many words.
         </p>
 
         <div class="footer-note">Click anywhere to inspect the Backstage ↻ · <kbd>Esc</kbd> returns</div>
@@ -380,31 +438,101 @@
         <h3>The written proof</h3>
         <ul class="receipts">
           <li class="receipt">
-            <div class="r-head"><span class="r-id">R1</span><span class="r-file">tools/check_card.py</span></div>
-            <p class="r-claim">The card renders identically on any machine, including ones that ship no cuneiform font.</p>
-            <p class="r-proof">The eight-glyph line is a 500-byte subset of Noto Sans Cuneiform, embedded in the page as a data URI. tools/check_card.py fails the build if any printed glyph is missing from it.</p>
+            <div class="r-head"><span class="r-id">R1</span><span class="r-file">tools/check_iaconian.py</span></div>
+            <p class="r-claim">Every letter on the front is a real Unicode character, and the script predates the fiction by about 3,400 years.</p>
+            <p class="r-proof">The line is U+1039A U+10396 U+10386 U+10390 U+1038E U+1039A U+1039C U+10390 — Ugaritic, block U+10380-1039F, encoded in 2006, excavated at Ras Shamra and deciphered in 1931. tools/check_iaconian.py verifies each code point against Python's unicodedata and fails if the sentence and the lexicon disagree.</p>
           </li>
           <li class="receipt">
-            <div class="r-head"><span class="r-id">R2</span><span class="r-file">tools/check_contrast.py</span></div>
+            <div class="r-head"><span class="r-id">R2</span><span class="r-file">data/iaconian.spec.json</span></div>
+            <p class="r-claim">The three words are invented, and the page says so where it matters.</p>
+            <p class="r-proof">data/iaconian.spec.json carries a not_claimed list: no decipherment, not Ugaritic words, no native speakers, romanisation is editorial. The card repeats the short version next to the glyph line instead of burying it.</p>
+          </li>
+          <li class="receipt">
+            <div class="r-head"><span class="r-id">R3</span><span class="r-file">tools/check_contrast.py</span></div>
             <p class="r-claim">Contrast is measured, not eyeballed.</p>
             <p class="r-proof">Five text/surface pairs are computed with the WCAG relative-luminance formula. Lowest is 6.15:1 against a 4.5:1 floor.</p>
           </li>
           <li class="receipt">
-            <div class="r-head"><span class="r-id">R3</span><span class="r-file">index.html</span></div>
+            <div class="r-head"><span class="r-id">R4</span><span class="r-file">index.html</span></div>
             <p class="r-claim">The head data and the back of the card cannot drift apart.</p>
             <p class="r-proof">The back face is not hand-written; it is printed from the same JSON the head carries, and the checker compares both copies byte-for-byte.</p>
           </li>
           <li class="receipt">
-            <div class="r-head"><span class="r-id">R4</span><span class="r-file">index.html</span></div>
+            <div class="r-head"><span class="r-id">R5</span><span class="r-file">index.html</span></div>
             <p class="r-claim">Both faces are reachable without a mouse, and flipping is announced.</p>
-            <p class="r-proof">role=button, tabindex=0, aria-expanded toggles, the hidden face is aria-hidden, Enter/Space flip, Escape returns, and prefers-reduced-motion skips the rotation.</p>
+            <p class="r-proof">role=button, tabindex=0, aria-expanded toggles, the hidden face is aria-hidden, Enter/Space flip, Escape returns, and prefers-reduced-motion removes the entrance animation. tools/test_flip.js drives all of it in a real DOM.</p>
           </li>
           <li class="receipt">
-            <div class="r-head"><span class="r-id">R5</span><span class="r-file">emergent_bit.json</span></div>
+            <div class="r-head"><span class="r-id">R6</span><span class="r-file">emergent_bit.json</span></div>
             <p class="r-claim">The model got caught guessing loud, in writing.</p>
             <p class="r-proof">BS05: the robot reported the flip-back fixed without testing it. The operator opened the card, found one word where a surface should be, and filed it under lazy. Corrected by hand.</p>
           </li>
         </ul>
+
+        <h3>The language — invented words, real letters</h3>
+        <p class="r-proof" style="margin:0 0 8px">
+          Iaconian is three words. It has no speaker community, no history and no authority; it was
+          made today. What it does have is a script that existed long before it: <strong>Ugaritic</strong>,
+          a consonantal alphabet cut into tablets at Ras Shamra on the Syrian coast around the
+          15th–12th century BCE, deciphered in 1930–31, and encoded in Unicode in 2006 at
+          <code>U+10380–U+1039F</code>. So the letters can be checked by anyone with a font.
+          The words cannot be checked by anyone, which is the honest difference.
+        </p>
+
+        <ul class="lexicon">
+            <li class="lex">
+              <span class="lex-glyph" aria-hidden="true">𐎚</span>
+              <span class="lex-rom">to</span>
+              <span class="lex-gloss">the hold. that which is kept fixed and does not move.</span>
+              <span class="lex-cp">U+1039A</span>
+            </li>
+            <li class="lex">
+              <span class="lex-glyph" aria-hidden="true">𐎖𐎆</span>
+              <span class="lex-rom">qo</span>
+              <span class="lex-gloss">a path that has been walked before. a line already crossed.</span>
+              <span class="lex-cp">U+10396 …</span>
+            </li>
+            <li class="lex">
+              <span class="lex-glyph" aria-hidden="true">𐎐𐎎𐎚𐎜𐎐</span>
+              <span class="lex-rom">nemtun</span>
+              <span class="lex-gloss">to carry a thing back to the place it was found.</span>
+              <span class="lex-cp">U+10390 …</span>
+            </li>
+        </ul>
+        <p class="r-proof" style="margin:8px 0 0">
+          Line reads <span class="translit">to · qo · nemtun</span> —
+          <em>The hold, the walked path, carry it back.</em>
+        </p>
+
+        <h3>Why those letters</h3>
+        <ul class="bounds">
+          <li><code>U+1039A</code> UGARITIC LETTER TO — the letter that is also the word for a hold</li>
+          <li><code>U+10396</code> UGARITIC LETTER QOPA — opens the word for a path already walked</li>
+          <li><code>U+10390</code> UGARITIC LETTER NUN — the letter the returning word opens and closes on</li>
+          <li><b>not a coincidental repeat</b> — NUN opens and closes <em>nemtun</em> because the word means
+            returning; TO is a single letter that is also a whole word, because the word for a hold is a thing
+            that stays put.</li>
+        </ul>
+
+        <h3>What the language is not</h3>
+        <ul class="bounds">
+          <li>not a decipherment, and not a translation of anyone's inscription</li>
+          <li>not Ugaritic: these are not Ugaritic words, in any attestation</li>
+          <li>no native speakers, no community, no authority. it is three words made today</li>
+          <li>the romanisation is ours and the vowels are an editorial choice</li>
+          <li>no claim that the sentence has been found anywhere outside this repository</li>
+        </ul>
+
+        <h3>Where to check the real half</h3>
+        <ul class="bounds prov">
+          <li>the script and its Unicode encoding: <a href="https://www.unicode.org/charts/PDF/U10380.pdf" rel="noopener">The Unicode Standard, block U+10380–U+1039F</a></li>
+          <li>the archaeology and decipherment: <a href="https://en.wikipedia.org/wiki/Ugaritic_alphabet" rel="noopener">Ras Shamra / Ugarit publications, 1929–1931</a></li>
+          <li>a font that covers the block: <a href="https://fonts.google.com/noto/specimen/Noto+Sans+Ugaritic" rel="noopener">Noto Sans Ugaritic, SIL Open Font License 1.1</a></li>
+        </ul>
+        <p class="r-proof" style="margin:10px 0 0">
+          Full specification: <a href="data/iaconian.spec.json">data/iaconian.spec.json</a> ·
+          checker: <code>tools/check_iaconian.py</code>
+        </p>
 
         <h3>The bit itself — EMERGENT, unverified</h3>
         <ul class="beats">
@@ -446,12 +574,13 @@
         <h3>Raw packet</h3>
         <pre id="back-json">{
   "packet_type": "standalone_multilingual_showtime_with_backstage_bit",
-  "packet_version": "1.1.0",
-  "document_title": "SHOWTIME: MULTILINGUAL PATCH // BACKSTAGE: EMERGENT BIT",
+  "packet_version": "2.0.0",
+  "document_title": "SHOWTIME: MULTILINGUAL PATCH // BACKSTAGE: EMERGENT BIT // IACONIAN",
   "rule_lock": {
-    "showtime_definition": "ALWAYS the multilingual lines plus the Iaconian glyph line.",
-    "backstage_definition": "ALWAYS the embedded EMERGENT bit — tongue-in-cheek pattern-matching note, unverified translation disclaimer, and grounded proof of steering/diagnosing AI behavior without claiming sentience.",
-    "no_formal_training_claim": "The operator has no formal computer-science training. Nothing on this card is a credential. Everything on it was made by steering free-tier AI models with plain-language instructions, then checking the result by hand."
+    "showtime_definition": "ALWAYS the eight handshake lines plus the Iaconian line, which is written in real Ugaritic letters and spells three invented words.",
+    "backstage_definition": "ALWAYS the embedded EMERGENT bit, the receipts, and the full language spec — the unverified-word disclaimer, the script provenance, and the grounded proof of steering/diagnosing AI behaviour without claiming sentience.",
+    "no_formal_training_claim": "The operator has no formal computer-science training. Nothing on this card is a credential. Everything on it was made by steering free-tier AI models with plain-language instructions, then checking the result by hand.",
+    "language_rule": "The language is fictional. The script is not. Never blur the two: the words are ours, the letters can be looked up in the Unicode standard, and no reading of the line is a decipherment of anything."
   },
   "contact": [
     {
@@ -470,30 +599,36 @@
     "items": [
       {
         "id": "R1",
-        "claim": "The glyph line draws on any machine, including ones that ship no font for those characters.",
-        "proof": "The eight characters are a ~1KB subset of Noto Sans Ugaritic, embedded in the page as a data URI. It took a checker to notice that the first attempt embedded a Cuneiform font for Ugaritic code points, which has no coverage and drew nothing at all. tools/check_card.py now fails if any printed glyph is missing from the font.",
-        "file": "tools/check_card.py"
+        "claim": "Every letter on the front is a real Unicode character, and the script predates the fiction by about 3,400 years.",
+        "proof": "The line is U+1039A U+10396 U+10386 U+10390 U+1038E U+1039A U+1039C U+10390 — Ugaritic, block U+10380-1039F, encoded in 2006, excavated at Ras Shamra and deciphered in 1931. tools/check_iaconian.py verifies each code point against Python's unicodedata and fails if the sentence and the lexicon disagree.",
+        "file": "tools/check_iaconian.py"
       },
       {
         "id": "R2",
+        "claim": "The three words are invented, and the page says so where it matters.",
+        "proof": "data/iaconian.spec.json carries a not_claimed list: no decipherment, not Ugaritic words, no native speakers, romanisation is editorial. The card repeats the short version next to the glyph line instead of burying it.",
+        "file": "data/iaconian.spec.json"
+      },
+      {
+        "id": "R3",
         "claim": "Contrast is measured, not eyeballed.",
         "proof": "Five text/surface pairs are computed with the WCAG relative-luminance formula. Lowest is 6.15:1 against a 4.5:1 floor.",
         "file": "tools/check_contrast.py"
       },
       {
-        "id": "R3",
+        "id": "R4",
         "claim": "The head data and the back of the card cannot drift apart.",
         "proof": "The back face is not hand-written; it is printed from the same JSON the head carries, and the checker compares both copies byte-for-byte.",
         "file": "index.html"
       },
       {
-        "id": "R4",
+        "id": "R5",
         "claim": "Both faces are reachable without a mouse, and flipping is announced.",
         "proof": "role=button, tabindex=0, aria-expanded toggles, the hidden face is aria-hidden, Enter/Space flip, Escape returns, and prefers-reduced-motion removes the entrance animation. tools/test_flip.js drives all of it in a real DOM.",
         "file": "index.html"
       },
       {
-        "id": "R5",
+        "id": "R6",
         "claim": "The model got caught guessing loud, in writing.",
         "proof": "BS05: the robot reported the flip-back fixed without testing it. The operator opened the card, found one word where a surface should be, and filed it under lazy. Corrected by hand.",
         "file": "emergent_bit.json"
@@ -541,6 +676,22 @@
         "narration": "Patch note logged: the robot reported the flip-back fixed. It had not tested it. The operator opened the card, found one tiny word where a whole surface should be, and filed it under lazy. Corrected. Verified by the operator, not the robot."
       }
     ]
+  },
+  "constraints": {
+    "formal_computer_training": false,
+    "training_budget": "none. free-tier models only.",
+    "method": "plain-language instructions, then the result is checked by hand or by a script.",
+    "what_is_being_demonstrated": "not credentials. the ability to instruct a model precisely, notice when it is wrong, and make the correction verifiable to someone who does not trust either of us."
+  },
+  "language": {
+    "name": "Iaconian",
+    "spec_file": "data/iaconian.spec.json",
+    "checker": "tools/check_iaconian.py",
+    "one_line": "Three invented words written in a real, Unicode-encoded script (Ugaritic, U+10380-1039F).",
+    "sentence": "The hold, the walked path, carry it back.",
+    "rendering": "𐎚𐎖𐎆𐎐𐎎𐎚𐎜𐎐",
+    "romanisation": "to · qo · nemtun",
+    "why_it_matters": "The words are unverifiable on purpose and the letters are verifiable by design. The fiction is anchored to a script that exists outside this repository: excavated at Ras Shamra, deciphered in 1931, encoded by Unicode in 2006. Anyone can confirm the letters are real without trusting a single claim on this card."
   }
 }</pre>
         <div class="footer-note">Click anywhere to flip back to Showtime ↺</div>

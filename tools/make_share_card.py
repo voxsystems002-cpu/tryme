@@ -68,13 +68,14 @@ def main(argv):
     d.text((84, 136), "SHOWTIME //", font=f_h1, fill=TEXT)
     d.text((84, 200), "BACKSTAGE", font=f_h1, fill=TEXT)
 
-    d.text((84, 288), "Eight languages. One glyph line nobody can verify.", font=f_body, fill=TEXT)
-    d.text((84, 324), "No formal computer training. No budget. Free-tier models,", font=f_body, fill=MUTED)
-    d.text((84, 356), "steered by hand, then checked.", font=f_body, fill=MUTED)
+    d.text((84, 282), "Invented words. Real letters.", font=f_body, fill=TEXT)
+    d.text((84, 318), "The line is Iaconian: three made-up words written in Ugaritic,", font=f_body, fill=MUTED)
+    d.text((84, 350), "a script encoded by Unicode in 2006.", font=f_body, fill=MUTED)
 
     d.text((84, 414), GLYPHS, font=f_glyph, fill=GREEN)
     glyph_w = d.textlength(GLYPHS, font=f_glyph)
-    d.text((84 + glyph_w + 24, 432), "<- embedded font, draws anywhere", font=f_small, fill=AMBER)
+    note = "<- look up the letters, not the words"
+    d.text((84 + glyph_w + 24, 432), note, font=f_small, fill=AMBER)
 
     box = [84, 486, W - 84, H - 84]
     d.rounded_rectangle(box, radius=12, outline=BORDER, width=1)
@@ -91,6 +92,17 @@ def main(argv):
     if y + b > box[3] - 8 or y < box[1] + 8:
         raise SystemExit(f"footer line does not fit the box: y={y}..{y + b}, box={box}")
     d.text((box[0] + 28, y), line, font=f_line, fill=TEXT)
+
+    # overflow guard: a share card that runs off its own edge is the same class
+    # of bug as a font that draws nothing, so fail loudly instead of shipping it
+    for text, fnt, x in [
+        ("SHOWTIME //", f_h1, 84), ("BACKSTAGE", f_h1, 84),
+        ("The line is Iaconian: three made-up words written in Ugaritic,", f_body, 84),
+        (note, f_small, 84 + glyph_w + 24),
+    ]:
+        right = x + d.textlength(text, font=fnt)
+        if right > W - 84:
+            raise SystemExit(f"line overflows the card by {right - (W - 84):.0f}px: {text!r}")
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
     img.save(OUT, optimize=True)
