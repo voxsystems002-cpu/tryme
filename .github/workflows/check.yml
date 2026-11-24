@@ -1,0 +1,48 @@
+name: check the card
+
+# These are the checks that caught real bugs in this page:
+#   - the glyph line rendering blank because the codepoints were Ugaritic but
+#     the embedded font was cuneiform (no coverage, so nothing drew)
+#   - the back face's JSON drifting from the head's copy
+#   - the flip hiding content from screen readers and from motion-sensitive users
+# Nothing here needs a secret, a paid API, or a browser.
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install the one dependency the font check needs
+        run: pip install fonttools brotli
+
+      - name: Contrast ratios
+        run: python3 tools/check_contrast.py
+
+      - name: Structure, glyph coverage, a11y state, share tags
+        run: python3 tools/check_card.py
+
+      - name: Flip behaviour in a real DOM
+        run: |
+          npm install --no-save jsdom
+          node tools/test_flip.js
+
+      - name: JavaScript still parses
+        run: |
+          python3 - <<'PY'
+          import pathlib, re
+          html = pathlib.Path("index.html").read_text(encoding="utf-8")
+          js = re.search(r"<script>\n(.*?)\n  </script>", html, re.S).group(1)
+          pathlib.Path("/tmp/card.js").write_text(js, encoding="utf-8")
+          PY
+          node --check /tmp/card.js

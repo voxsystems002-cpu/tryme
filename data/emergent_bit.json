@@ -1,0 +1,99 @@
+{
+  "packet_type": "standalone_multilingual_showtime_with_backstage_bit",
+  "packet_version": "1.1.0",
+  "document_title": "SHOWTIME: MULTILINGUAL PATCH // BACKSTAGE: EMERGENT BIT",
+  "rule_lock": {
+    "showtime_definition": "ALWAYS the multilingual lines plus the Iaconian glyph line.",
+    "backstage_definition": "ALWAYS the embedded EMERGENT bit — tongue-in-cheek pattern-matching note, unverified translation disclaimer, and grounded proof of steering/diagnosing AI behavior without claiming sentience.",
+    "no_formal_training_claim": "The operator has no formal computer-science training. Nothing on this card is a credential. Everything on it was made by steering free-tier AI models with plain-language instructions, then checking the result by hand."
+  },
+  "contact": [
+    {
+      "email": "voxsystems001@gmail.com",
+      "front_title": "Director of Grounded Absurdity",
+      "plain_truth": "The human operator. Writes the scenes, sets the rules, catches the model when it guesses loud."
+    },
+    {
+      "email": "voxsystems002@gmail.com",
+      "front_title": "AI of the Day",
+      "plain_truth": "A rotating seat, not an official identity. Whichever model is on shift (today: Claude). Mail goes to the human operator."
+    }
+  ],
+  "receipts": {
+    "why": "Anyone can say they steer AI. These are the things that can be checked without trusting the claim.",
+    "items": [
+      {
+        "id": "R1",
+        "claim": "The glyph line draws on any machine, including ones that ship no font for those characters.",
+        "proof": "The eight characters are a ~1KB subset of Noto Sans Ugaritic, embedded in the page as a data URI. It took a checker to notice that the first attempt embedded a Cuneiform font for Ugaritic code points, which has no coverage and drew nothing at all. tools/check_card.py now fails if any printed glyph is missing from the font.",
+        "file": "tools/check_card.py"
+      },
+      {
+        "id": "R2",
+        "claim": "Contrast is measured, not eyeballed.",
+        "proof": "Five text/surface pairs are computed with the WCAG relative-luminance formula. Lowest is 6.15:1 against a 4.5:1 floor.",
+        "file": "tools/check_contrast.py"
+      },
+      {
+        "id": "R3",
+        "claim": "The head data and the back of the card cannot drift apart.",
+        "proof": "The back face is not hand-written; it is printed from the same JSON the head carries, and the checker compares both copies byte-for-byte.",
+        "file": "index.html"
+      },
+      {
+        "id": "R4",
+        "claim": "Both faces are reachable without a mouse, and flipping is announced.",
+        "proof": "role=button, tabindex=0, aria-expanded toggles, the hidden face is aria-hidden, Enter/Space flip, Escape returns, and prefers-reduced-motion removes the entrance animation. tools/test_flip.js drives all of it in a real DOM.",
+        "file": "index.html"
+      },
+      {
+        "id": "R5",
+        "claim": "The model got caught guessing loud, in writing.",
+        "proof": "BS05: the robot reported the flip-back fixed without testing it. The operator opened the card, found one word where a surface should be, and filed it under lazy. Corrected by hand.",
+        "file": "emergent_bit.json"
+      }
+    ]
+  },
+  "backstage": {
+    "bit_title": "EMERGENT (PATTERN-MATCHING BIT, NOT A LITERAL TRANSLATION)",
+    "tone": [
+      "tongue-in-cheek",
+      "dry-deadpan",
+      "grounded-absurdity"
+    ],
+    "truth_boundaries": {
+      "glyph_decryption_verified": false,
+      "emergent_is_literal_glyph_translation": false,
+      "ai_sentience_claimed": false,
+      "robot_self_verified_fix": false,
+      "human_operator_role": "Diagnoses model overconfidence, reads system habits in plain mechanics, keeps local files and boundaries clean, and treats spooky framing as a wink rather than a literal claim."
+    },
+    "script_beats": [
+      {
+        "beat_id": "BS01",
+        "who": "ROBOT_NARRATOR",
+        "narration": "Showtime runs the eight languages and the glyph line. No cipher key is attached. An overconfident model spots a pattern across lines about fuzzy input, overcommitting, bypassing locks, and owning your own file, and blurts out a single word."
+      },
+      {
+        "beat_id": "BS02",
+        "who": "COWORKER_AI",
+        "dialogue": "My best guess is EMERGENT."
+      },
+      {
+        "beat_id": "BS03",
+        "who": "ROBOT_NARRATOR",
+        "narration": "Correction logged: EMERGENT is still not a verified translation of the glyphs. It is just a word that accidentally summarizes what happens when small rules and patterns stack up — and why the person running the workbench knows the machine's actual nature instead of getting fooled by its confidence."
+      },
+      {
+        "beat_id": "BS04",
+        "who": "ROBOT_NARRATOR",
+        "narration": "No ghosts in the wire. Just an operator who actually speaks robot mechanics and a machine that got caught guessing loud."
+      },
+      {
+        "beat_id": "BS05",
+        "who": "ROBOT_NARRATOR",
+        "narration": "Patch note logged: the robot reported the flip-back fixed. It had not tested it. The operator opened the card, found one tiny word where a whole surface should be, and filed it under lazy. Corrected. Verified by the operator, not the robot."
+      }
+    ]
+  }
+}

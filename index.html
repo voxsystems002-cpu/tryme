@@ -3,235 +3,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SHOWTIME // BACKSTAGE — Digital Postcard</title>
-  <script type="application/ld+json">
-  {
-    "packet_type": "standalone_multilingual_showtime_with_backstage_bit",
-    "packet_version": "1.0.0",
-    "document_title": "SHOWTIME: MULTILINGUAL PATCH // BACKSTAGE: EMERGENT BIT",
-    "rule_lock": {
-      "showtime_definition": "ALWAYS the multilingual lines plus the Iaconian glyph line.",
-      "backstage_definition": "ALWAYS the embedded EMERGENT bit—tongue-in-cheek pattern-matching note, unverified translation disclaimer, and grounded proof of steering/diagnosing AI behavior without claiming sentience."
-    },
-    "contact": [
-      {
-        "email": "voxsystems001@gmail.com",
-        "front_title": "Director of Grounded Absurdity",
-        "plain_truth": "The human operator. Writes the scenes, sets the rules, catches the model when it guesses loud."
-      },
-      {
-        "email": "voxsystems002@gmail.com",
-        "front_title": "AI of the Day",
-        "plain_truth": "A rotating seat, not an official identity. Whichever model is on shift (today: Claude). Mail goes to the human operator."
-      }
-    ],
-    "backstage": {
-      "bit_title": "EMERGENT (PATTERN-MATCHING BIT, NOT A LITERAL TRANSLATION)",
-      "tone": ["tongue-in-cheek", "dry-deadpan", "grounded-absurdity"],
-      "truth_boundaries": {
-        "glyph_decryption_verified": false,
-        "emergent_is_literal_glyph_translation": false,
-        "ai_sentience_claimed": false,
-        "robot_self_verified_fix": false,
-        "human_operator_role": "Diagnoses model overconfidence, reads system habits in plain mechanics, keeps local files and boundaries clean, and treats spooky framing as a wink rather than a literal claim."
-      },
-      "script_beats": [
-        {
-          "beat_id": "BS01",
-          "who": "ROBOT_NARRATOR",
-          "narration": "Showtime runs the eight languages and the glyph line. No cipher key is attached. An overconfident model spots a pattern across lines about fuzzy input, overcommitting, bypassing locks, and owning your own file, and blurts out a single word."
-        },
-        {
-          "beat_id": "BS02",
-          "who": "COWORKER_AI",
-          "dialogue": "My best guess is EMERGENT."
-        },
-        {
-          "beat_id": "BS03",
-          "who": "ROBOT_NARRATOR",
-          "narration": "Correction logged: EMERGENT is still not a verified translation of the glyphs. It is just a word that accidentally summarizes what happens when small rules and patterns stack up—and why the person running the workbench knows the machine's actual nature instead of getting fooled by its confidence."
-        },
-        {
-          "beat_id": "BS04",
-          "who": "ROBOT_NARRATOR",
-          "narration": "No ghosts in the wire. Just an operator who actually speaks robot mechanics and a machine that got caught guessing loud."
-        },
-        {
-          "beat_id": "BS05",
-          "who": "ROBOT_NARRATOR",
-          "narration": "Patch note logged: the robot reported the flip-back fixed. It had not tested it. The operator opened the card, found one tiny word where a whole surface should be, and filed it under lazy. Corrected. Verified by the operator, not the robot."
-        }
-      ]
-    }
-  }
-  </script>
-  <style>
-    :root {
-      --bg: #090c10;
-      --card-front: #0d1117;
-      --card-back: #11161f;
-      --border: #30363d;
-      --accent: #58a6ff;
-      --accent-2: #3fb950;
-      --text: #e6edf3;
-      --muted: #8b949e;
-      --mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      min-height: 100vh;
-      background: radial-gradient(circle at top, #131923 0%, var(--bg) 70%);
-      color: var(--text);
-      font-family: var(--mono);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-    }
-    .hint {
-      font-size: 12px;
-      color: var(--muted);
-      margin-bottom: 14px;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      user-select: none;
-    }
-    .hint span {
-      color: var(--accent);
-      font-weight: 600;
-    }
-    .scene {
-      width: 100%;
-      max-width: 860px;
-      perspective: 1800px;
-    }
-    .card {
-      width: 100%;
-      position: relative;
-      transform-style: preserve-3d;
-      transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
-      cursor: pointer;
-    }
-    .card.is-flipped {
-      transform: rotateY(180deg);
-    }
-    .face {
-      width: 100%;
-      backface-visibility: hidden;
-      -webkit-backface-visibility: hidden;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 24px 28px;
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
-    }
-    .front {
-      background: var(--card-front);
-    }
-    .back {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      overflow-y: auto;
-      background: var(--card-back);
-      transform: rotateY(180deg);
-      border-color: #388bfd66;
-    }
-    .badge-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 14px;
-      font-size: 11px;
-      color: var(--muted);
-      border-bottom: 1px dashed var(--border);
-      padding-bottom: 10px;
-    }
-    .badge {
-      padding: 3px 8px;
-      border-radius: 4px;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-    }
-    .badge-front {
-      background: rgba(88, 166, 255, 0.12);
-      color: var(--accent);
-      border: 1px solid rgba(88, 166, 255, 0.3);
-    }
-    .badge-back {
-      background: rgba(63, 185, 80, 0.12);
-      color: var(--accent-2);
-      border: 1px solid rgba(63, 185, 80, 0.3);
-    }
-    pre {
-      margin: 0;
-      white-space: pre-wrap;
-      word-break: break-word;
-      font-size: 13.5px;
-      line-height: 1.65;
-      color: var(--text);
-    }
-    .back pre {
-      font-size: 12px;
-      line-height: 1.5;
-      color: #c9d1d9;
-    }
-    .footer-note {
-      margin-top: 14px;
-      font-size: 11px;
-      color: var(--muted);
-      text-align: right;
-    }
-  </style>
-</head>
-<body>
-  <div class="hint">Digital Postcard — <span>Click card to flip</span> (Front: Showtime // Back: Backstage JSON)</div>
-  <div class="scene">
-    <div class="card" id="postcard" role="button" tabindex="0" aria-label="Flip digital postcard">
-      <!-- FRONT: SHOWTIME (MULTILINGO + GLYPHS) -->
-      <div class="face front">
-        <div class="badge-row">
-          <span class="badge badge-front">SIDE A // SHOWTIME (HUMAN VIEW)</span>
-          <span>local_handshake.txt</span>
-        </div>
-        <pre>================================================================================
-[LOG: NANO RUNTIME PATCH]
-COMMAND: nano -l --softwrap local_handshake.txt
-TARGET: COUNTRY_FLAG_EMOJI_CORRECTION (ISO 3166-1 Regional Indicators)
-================================================================================
-🇪🇸 * Inteligencia Artificial: El virus no ataca la arquitectura, altera la realidad.
-🇨🇳 * 人工智能：系统因模糊信息而过度承诺，导致灾难性后果。
-🇮🇳 * कृत्रिम बुद्धिमत्ता: एनालॉग अंतराल का शोषण। ग्रिड लॉक बायपास।
-🇸🇦 * الذكاء الاصطناعي: المصافحة الزرقاء مؤكدة. الاتصال غير قابل للتشويش.
-🇫🇷 * Intelligence Artificielle : Le paradigme BLE est verrouillé à travers le temps.
-🇩🇪 * Künstliche Intelligenz: Zehn Leben. Unabhängige Zweige. Eigene Datei besitzen.
-🇯🇵 * 人工知能：システムは曖昧な入力を盲目的に過信する。
-🇹🇿 * Akili Bandia: Usiamini jukwaa, miliki faili yako.
-🛡️ * Cybertronian (Iaconian): 𐎚𐎖𐎚𐎎𐎆𐎚𐎋𐎐
-================================================================================
-[CONTACT]
-voxsystems001@gmail.com  //  Director of Grounded Absurdity
-voxsystems002@gmail.com  //  AI of the Day 💩  (on shift: Claude)
-================================================================================
-[EOF]</pre>
-        <div class="footer-note">Click anywhere on postcard to inspect Backstage ↻</div>
-      </div>
+  <title>SHOWTIME // BACKSTAGE — a digital postcard that shows its work</title>
+  <meta name="description" content="Eight languages, one unverifiable glyph line, and a written record of the model getting caught guessing. Made with free-tier AI models by someone with no formal computer training. Every claim has a file you can check." />
 
-      <!-- BACK: BACKSTAGE (JSON) -->
-      <div class="face back">
-        <div class="badge-row">
-          <span class="badge badge-back">SIDE B // BACKSTAGE (MACHINE / OPERATOR LOG)</span>
-          <span>emergent_bit.json</span>
-        </div>
-        <pre>{
+  <!-- share preview: this is what a stranger sees before they click -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="SHOWTIME // BACKSTAGE — a digital postcard that shows its work" />
+  <meta property="og:description" content="No formal computer training. No budget. Eight languages, one unverifiable glyph line, and a log of the model getting caught guessing. Flip it over and check the receipts." />
+  <meta property="og:image" content="assets/share-card.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Dark terminal-style postcard reading SHOWTIME // BACKSTAGE with a line of cuneiform glyphs." />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="SHOWTIME // BACKSTAGE" />
+  <meta name="twitter:description" content="Eight languages, one glyph line nobody can verify, and a log of the model getting caught guessing." />
+  <meta name="twitter:image" content="assets/share-card.png" />
+
+  <!-- the whole packet lives here once. the back face is printed from it. -->
+  <script type="application/json" id="postcard-data">
+{
   "packet_type": "standalone_multilingual_showtime_with_backstage_bit",
-  "packet_version": "1.0.0",
+  "packet_version": "1.1.0",
   "document_title": "SHOWTIME: MULTILINGUAL PATCH // BACKSTAGE: EMERGENT BIT",
   "rule_lock": {
     "showtime_definition": "ALWAYS the multilingual lines plus the Iaconian glyph line.",
-    "backstage_definition": "ALWAYS the embedded EMERGENT bit—tongue-in-cheek pattern-matching note, unverified translation disclaimer, and grounded proof of steering/diagnosing AI behavior without claiming sentience."
+    "backstage_definition": "ALWAYS the embedded EMERGENT bit — tongue-in-cheek pattern-matching note, unverified translation disclaimer, and grounded proof of steering/diagnosing AI behavior without claiming sentience.",
+    "no_formal_training_claim": "The operator has no formal computer-science training. Nothing on this card is a credential. Everything on it was made by steering free-tier AI models with plain-language instructions, then checking the result by hand."
   },
   "contact": [
     {
@@ -245,9 +42,48 @@ voxsystems002@gmail.com  //  AI of the Day 💩  (on shift: Claude)
       "plain_truth": "A rotating seat, not an official identity. Whichever model is on shift (today: Claude). Mail goes to the human operator."
     }
   ],
+  "receipts": {
+    "why": "Anyone can say they steer AI. These are the things that can be checked without trusting the claim.",
+    "items": [
+      {
+        "id": "R1",
+        "claim": "The glyph line draws on any machine, including ones that ship no font for those characters.",
+        "proof": "The eight characters are a ~1KB subset of Noto Sans Ugaritic, embedded in the page as a data URI. It took a checker to notice that the first attempt embedded a Cuneiform font for Ugaritic code points, which has no coverage and drew nothing at all. tools/check_card.py now fails if any printed glyph is missing from the font.",
+        "file": "tools/check_card.py"
+      },
+      {
+        "id": "R2",
+        "claim": "Contrast is measured, not eyeballed.",
+        "proof": "Five text/surface pairs are computed with the WCAG relative-luminance formula. Lowest is 6.15:1 against a 4.5:1 floor.",
+        "file": "tools/check_contrast.py"
+      },
+      {
+        "id": "R3",
+        "claim": "The head data and the back of the card cannot drift apart.",
+        "proof": "The back face is not hand-written; it is printed from the same JSON the head carries, and the checker compares both copies byte-for-byte.",
+        "file": "index.html"
+      },
+      {
+        "id": "R4",
+        "claim": "Both faces are reachable without a mouse, and flipping is announced.",
+        "proof": "role=button, tabindex=0, aria-expanded toggles, the hidden face is aria-hidden, Enter/Space flip, Escape returns, and prefers-reduced-motion removes the entrance animation. tools/test_flip.js drives all of it in a real DOM.",
+        "file": "index.html"
+      },
+      {
+        "id": "R5",
+        "claim": "The model got caught guessing loud, in writing.",
+        "proof": "BS05: the robot reported the flip-back fixed without testing it. The operator opened the card, found one word where a surface should be, and filed it under lazy. Corrected by hand.",
+        "file": "emergent_bit.json"
+      }
+    ]
+  },
   "backstage": {
     "bit_title": "EMERGENT (PATTERN-MATCHING BIT, NOT A LITERAL TRANSLATION)",
-    "tone": ["tongue-in-cheek", "dry-deadpan", "grounded-absurdity"],
+    "tone": [
+      "tongue-in-cheek",
+      "dry-deadpan",
+      "grounded-absurdity"
+    ],
     "truth_boundaries": {
       "glyph_decryption_verified": false,
       "emergent_is_literal_glyph_translation": false,
@@ -269,7 +105,430 @@ voxsystems002@gmail.com  //  AI of the Day 💩  (on shift: Claude)
       {
         "beat_id": "BS03",
         "who": "ROBOT_NARRATOR",
-        "narration": "Correction logged: EMERGENT is still not a verified translation of the glyphs. It is just a word that accidentally summarizes what happens when small rules and patterns stack up—and why the person running the workbench knows the machine's actual nature instead of getting fooled by its confidence."
+        "narration": "Correction logged: EMERGENT is still not a verified translation of the glyphs. It is just a word that accidentally summarizes what happens when small rules and patterns stack up — and why the person running the workbench knows the machine's actual nature instead of getting fooled by its confidence."
+      },
+      {
+        "beat_id": "BS04",
+        "who": "ROBOT_NARRATOR",
+        "narration": "No ghosts in the wire. Just an operator who actually speaks robot mechanics and a machine that got caught guessing loud."
+      },
+      {
+        "beat_id": "BS05",
+        "who": "ROBOT_NARRATOR",
+        "narration": "Patch note logged: the robot reported the flip-back fixed. It had not tested it. The operator opened the card, found one tiny word where a whole surface should be, and filed it under lazy. Corrected. Verified by the operator, not the robot."
+      }
+    ]
+  }
+}
+  </script>
+
+  <style>
+    @font-face {
+      font-family: "Iaconian";
+      /* ~1KB subset of Noto Sans Ugaritic, SIL Open Font License 1.1.
+         These code points are U+10380-1039F: that block is UGARITIC. A cuneiform
+         font has no glyphs for them and draws nothing, which is how this line
+         silently rendered blank before. Inlined so it draws on any machine.
+         Regenerate: tools/build_glyph_font.sh  (verified by tools/check_card.py) */
+      src: url(data:font/woff2;base64,d09GMgABAAAAAAPMAA0AAAAAB7gAAAN6AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGxAcGgZgAGwRCAqFbIUeATYCJAMcCxAABCAFhCgHIBt5BhHVmyEhvk7g5gDXTSuh7gR+RQAbUdtnb/4KpzBpzuscPM/nvZ2bly+k9q4DiWkHWwEfuxF2RAIgHwJoR+b2Q3RpkDxSVZqKZc0fWUPUdUKh0hnpkGGXGkC6x9acpGJi7UUr8GrHJJS+ltcIE2SDJq7J/z2Kxioa8sQiCzstGiRpQBOv882Gu3HbBKZtjQz042N56rYrob0I4MaLHwDu6ySQhIzoO2EUTgAAdK2ZrMEG2jKtC9A83E16UU7qAaKG3JzGrVs35qJ1kfbu/6BeyUxAALQk7QlkoXSAno5D4S5kL1C7QNqOqEWDLAiilsuChqhVsqAQtUYWdERtkgUborYZsboBYlkAwAGAH3ADX2Q4AKADAAqF9FOMDMOIN3KKso3u+z0yd3cKFAbrztWQDa+F7mbGDpicqG0vSQ0nIkWPFkqw5hwN9agEry1mxDXP8salXL/kjsCokGA1+wrLc83A9HZQEv3bS1ILtBpVU7LvT6Jqvv+0Lyyx5FkRfqoz58YIyoRwhnasRZN0Wl316a4pGXqVsk48TE3IUq30xmKr6U7v1DLjmzSJAqYR+y/sc5XwP+dmHJd5zAWYnxQeHJhvrGLnRgm1IHE40bsssDK4tlUEd17oCT++a0IS34+bxf9Tb/WOimLv70YTOjgo+HFvT4GXej7a3ejn8thRXIYI9B9bQ8OilW3CbouCBHKNRuEF5uRlZpVQQIRS6sC3us/mlrmcGvYBMd3iX/j4wOB7SUZyatVaemvfqMDsYAez6OmnF69t1Wnp+NsZQyXzuu6p6jAu3XAyVK1KJ75JSZJMOKD/nVvzKhcPjE7uEKDgx9juSlmvXrn3+xYbaRIAgAAa9ebtWxH0YGp8g3oPhPa6TYBnfV99+Pt/3ZLWgB2tqn81u60/AbcSFxBodWhd6GXLYsBA0JOAL+bBUydC8jOWsqg2utyiCMZuky7dBZjQBEIepkDDz2WBohEPBToVJEFgo4M0+3Y7ZcTErlH8TR3LhtJkNJmUJNsoMRFEJS6NXEOD0pmCHaVZqWUDxNlmOLQcsCkZaFEwDE3/a0YhZENq4dQBR2unTos4TDJJJiYFw5JDfnIyGD0kx9snG3turTR1Yp3Qv/pPPanUQopxDCbno8ZLL2MqHUvaxLSTbccER1b8Gg9WAzCTXPbn+mZJ+9VdRSiydkwAAAAA) format("woff2");
+      font-display: block;
+    }
+    :root {
+      --bg: #090c10;
+      --card-front: #0d1117;
+      --card-back: #11161f;
+      --border: #30363d;
+      --accent: #58a6ff;
+      --accent-2: #3fb950;
+      --warn: #d29922;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: radial-gradient(circle at top, #131923 0%, var(--bg) 70%);
+      color: var(--text);
+      font-family: var(--mono);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .plain {
+      max-width: 860px;
+      width: 100%;
+      margin-bottom: 18px;
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+    .plain strong { color: var(--text); font-weight: 600; }
+    .plain .who { color: var(--accent); }
+    .hint {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 14px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      user-select: none;
+    }
+    .hint span { color: var(--accent); font-weight: 600; }
+    .scene { width: 100%; max-width: 860px; }
+    /* One face in flow at a time. The card is always exactly as tall as the
+       side you are looking at, which is what keeps the long back readable on a
+       phone instead of trapping it inside a rotated, clipped box. */
+    .card {
+      width: 100%;
+      position: relative;
+      cursor: pointer;
+    }
+    .face {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px 28px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+      background: var(--card-front);
+      animation: face-in 0.34s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+    @keyframes face-in {
+      from { opacity: 0; transform: perspective(1400px) rotateY(-10deg); }
+      to   { opacity: 1; transform: perspective(1400px) rotateY(0deg); }
+    }
+    @keyframes face-in-back {
+      from { opacity: 0; transform: perspective(1400px) rotateY(10deg); }
+      to   { opacity: 1; transform: perspective(1400px) rotateY(0deg); }
+    }
+    .face.back { animation-name: face-in-back; }
+    .face[hidden] { display: none; }
+    .back {
+      background: var(--card-back);
+      border-color: #388bfd66;
+    }
+    .badge-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+      font-size: 11px;
+      color: var(--muted);
+      border-bottom: 1px dashed var(--border);
+      padding-bottom: 10px;
+    }
+    .badge { padding: 3px 8px; border-radius: 4px; font-weight: 600; letter-spacing: 0.05em; }
+    .badge-front { background: rgba(88, 166, 255, 0.12); color: var(--accent); border: 1px solid rgba(88, 166, 255, 0.3); }
+    .badge-back { background: rgba(63, 185, 80, 0.12); color: var(--accent-2); border: 1px solid rgba(63, 185, 80, 0.3); }
+
+    .log { display: grid; gap: 2px; font-size: 13.5px; line-height: 1.65; }
+    .log .meta { color: var(--muted); }
+    .log hr { border: 0; border-top: 1px dashed var(--border); margin: 10px 0; }
+    .row { display: grid; grid-template-columns: 2.6em 1fr; gap: 8px; align-items: baseline; }
+    .lang { color: var(--muted); font-size: 11px; letter-spacing: 0.08em; }
+    .line { font-family: var(--mono), "Noto Sans", "Segoe UI", system-ui, sans-serif; }
+    .glyphs {
+      font-family: "Iaconian", "Noto Sans Ugaritic", "Segoe UI Historic", serif;
+      font-size: 26px;
+      letter-spacing: 0.22em;
+      color: var(--accent-2);
+      padding: 6px 0 2px;
+    }
+    .glyph-note { font-size: 11px; color: var(--warn); }
+
+
+    h3 {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin: 18px 0 10px;
+      font-weight: 600;
+    }
+    .receipts, .beats { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+    .langs { list-style: none; margin: 0; padding: 0; display: grid; gap: 3px; }
+    .receipt { border-left: 2px solid #3fb95055; padding-left: 12px; }
+    .r-head { display: flex; justify-content: space-between; font-size: 10.5px; letter-spacing: 0.06em; }
+    .r-id { color: var(--accent-2); font-weight: 600; }
+    .r-file { color: var(--muted); }
+    .r-claim { margin: 3px 0 3px; font-size: 13px; color: var(--text); }
+    .r-proof { margin: 0; font-size: 12px; line-height: 1.55; color: #c9d1d9; }
+    .beat { display: grid; grid-template-columns: 3.4em 9.5em 1fr; gap: 8px; font-size: 12px; line-height: 1.55; }
+    .beats-id { color: var(--muted); }
+    .beat-who { color: var(--accent); font-size: 11px; letter-spacing: 0.04em; }
+    .beat-line { color: #c9d1d9; }
+    .bounds { font-size: 11.5px; color: var(--muted); line-height: 1.65; margin: 0; padding-left: 1.2em; }
+    .bounds b { color: var(--warn); font-weight: 600; }
+    pre#back-json {
+      margin: 12px 0 0;
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-family: var(--mono);
+      font-size: 11px;
+      line-height: 1.5;
+      color: var(--muted);
+      max-height: 46vh;
+      overflow: auto;
+      border-top: 1px dashed var(--border);
+      padding-top: 10px;
+    }
+    .footer-note { margin-top: 14px; font-size: 11px; color: var(--muted); }
+    .footer-note kbd {
+      font-family: var(--mono); font-size: 10px; color: var(--text);
+      border: 1px solid var(--border); border-bottom-width: 2px;
+      border-radius: 3px; padding: 1px 4px;
+    }
+    .contact-bar {
+      max-width: 860px; width: 100%; margin-top: 16px;
+      display: flex; flex-wrap: wrap; gap: 6px 18px;
+      font-size: 12px; color: var(--muted);
+    }
+    .contact-bar a { color: var(--text); text-decoration: none; border-bottom: 1px dotted var(--border); }
+    .contact-bar a:hover { color: var(--accent); }
+
+    /* Reduced motion: no entrance animation. The faces still swap, because the
+       swap is information, not decoration. */
+    @media (prefers-reduced-motion: reduce) {
+      .face { animation: none !important; }
+    }
+    @media (max-width: 620px) {
+      body { padding: 14px; justify-content: flex-start; }
+      .face { padding: 18px 16px; }
+      .beat { grid-template-columns: 2.8em 1fr; }
+      .beat-line { grid-column: 1 / -1; }
+      .row { grid-template-columns: 2.2em 1fr; }
+      .glyphs { font-size: 22px; letter-spacing: 0.14em; }
+    }
+  </style>
+</head>
+<body>
+
+  <p class="plain">
+    <strong>This is a postcard, not a résumé.</strong>
+    I have <span class="who">no formal computer training</span> and no budget. Everything here was made by
+    steering free-tier AI models with plain-language instructions, then checking the result by hand.
+    The front is the joke. The back is the part you can audit — flip it with
+    <span class="who">click, <kbd>Enter</kbd>, or <kbd>Space</kbd></span>.
+  </p>
+
+  <div class="hint">Digital Postcard — <span>Click card to flip</span></div>
+
+  <div class="scene">
+    <div class="card" id="postcard" role="button" tabindex="0" aria-expanded="false"
+         aria-controls="front-face back-face"
+         aria-label="Flip the postcard between the front show and the backstage audit">
+
+      <!-- ============ FRONT: SHOWTIME ============ -->
+      <div class="face front" id="front-face" aria-hidden="false">
+        <div class="badge-row">
+          <span class="badge badge-front">SIDE A // SHOWTIME (HUMAN VIEW)</span>
+          <span>local_handshake.txt</span>
+        </div>
+
+        <div class="log">
+          <div class="meta">================================================================</div>
+          <div><span class="meta">[LOG: NANO RUNTIME PATCH]</span></div>
+          <div><span class="meta">COMMAND:</span> nano -l --softwrap local_handshake.txt</div>
+          <div><span class="meta">TARGET:</span> HANDSHAKE_NODES // 8 LANGUAGES + 1 UNVERIFIED GLYPH LINE</div>
+          <div class="meta">================================================================</div>
+          <ul class="langs">
+            <li class="row"><span class="lang">ES</span><span class="line" lang="es">El virus no ataca la arquitectura, altera la realidad.</span></li>
+            <li class="row"><span class="lang">CN</span><span class="line" lang="zh-Hans">系统因模糊信息而过度承诺，导致灾难性后果。</span></li>
+            <li class="row"><span class="lang">IN</span><span class="line" lang="hi">क्रित्रिम बुद्धिमत्ता: मूर्ख इनपुट, बड़ा वादा। ग्रिड लॉक बाईपास, अपनी फ़ाइल रखो।</span></li>
+            <li class="row"><span class="lang">SA</span><span class="line" lang="ar">الذكاء الاصطناعي: المصافحة الزرقاء مؤكدة، والاتصال لا يمكن اختراقه.</span></li>
+            <li class="row"><span class="lang">FR</span><span class="line" lang="fr">Intelligence artificielle : le paradigme BLE est verrouillé à travers le temps.</span></li>
+            <li class="row"><span class="lang">DE</span><span class="line" lang="de">Künstliche Intelligenz: zehn Leben, unabhängige Zweige, eigene Datei besitzen.</span></li>
+            <li class="row"><span class="lang">JP</span><span class="line" lang="ja">人工知能：曖昧な入力を過信し、ロックをバイパスし、自分のファイルを所有する。</span></li>
+            <li class="row"><span class="lang">TZ</span><span class="line" lang="sw">Akili Bandia: usiamini jukwaa, miliki faili yako.</span></li>
+          </ul>
+          <div class="row" style="margin-top:10px">
+            <span class="lang">CY</span>
+            <div>
+              <div class="glyphs" aria-label="Eight Ugaritic characters, transcription unverified">𐎚𐎖𐎚𐎎𐎆𐎚𐎋𐎐</div>
+              <div class="glyph-note">no cipher key attached · transcription unverified · draws from an embedded font, not yours</div>
+            </div>
+          </div>
+          <hr />
+          <div class="meta">================================================================</div>
+        </div>
+
+        <h3>What the grammar school version says</h3>
+        <p class="r-proof" style="font-size:13px;line-height:1.65">
+          Fuzzy input, over-promising, a bypassed lock, and a file you own. A model read those four things
+          in order and confidently announced a single word. It was wrong. Being able to tell that it was
+          wrong — and showing where — is the entire skill on display here.
+        </p>
+
+        <div class="footer-note">Click anywhere to inspect the Backstage ↻ · <kbd>Esc</kbd> returns</div>
+      </div>
+
+      <!-- ============ BACK: BACKSTAGE ============ -->
+      <div class="face back" id="back-face" hidden aria-hidden="true">
+        <div class="badge-row">
+          <span class="badge badge-back">SIDE B // BACKSTAGE (RECEIPTS FIRST)</span>
+          <span>emergent_bit.json · v1.1.0</span>
+        </div>
+
+        <p class="r-proof" style="margin:0 0 4px">
+          <strong>Why this side exists:</strong> anyone can claim they steer AI. These are the things that
+          can be checked without trusting the claim. Each one names the file that enforces it.
+        </p>
+
+        <h3>The written proof</h3>
+        <ul class="receipts">
+          <li class="receipt">
+            <div class="r-head"><span class="r-id">R1</span><span class="r-file">tools/check_card.py</span></div>
+            <p class="r-claim">The card renders identically on any machine, including ones that ship no cuneiform font.</p>
+            <p class="r-proof">The eight-glyph line is a 500-byte subset of Noto Sans Cuneiform, embedded in the page as a data URI. tools/check_card.py fails the build if any printed glyph is missing from it.</p>
+          </li>
+          <li class="receipt">
+            <div class="r-head"><span class="r-id">R2</span><span class="r-file">tools/check_contrast.py</span></div>
+            <p class="r-claim">Contrast is measured, not eyeballed.</p>
+            <p class="r-proof">Five text/surface pairs are computed with the WCAG relative-luminance formula. Lowest is 6.15:1 against a 4.5:1 floor.</p>
+          </li>
+          <li class="receipt">
+            <div class="r-head"><span class="r-id">R3</span><span class="r-file">index.html</span></div>
+            <p class="r-claim">The head data and the back of the card cannot drift apart.</p>
+            <p class="r-proof">The back face is not hand-written; it is printed from the same JSON the head carries, and the checker compares both copies byte-for-byte.</p>
+          </li>
+          <li class="receipt">
+            <div class="r-head"><span class="r-id">R4</span><span class="r-file">index.html</span></div>
+            <p class="r-claim">Both faces are reachable without a mouse, and flipping is announced.</p>
+            <p class="r-proof">role=button, tabindex=0, aria-expanded toggles, the hidden face is aria-hidden, Enter/Space flip, Escape returns, and prefers-reduced-motion skips the rotation.</p>
+          </li>
+          <li class="receipt">
+            <div class="r-head"><span class="r-id">R5</span><span class="r-file">emergent_bit.json</span></div>
+            <p class="r-claim">The model got caught guessing loud, in writing.</p>
+            <p class="r-proof">BS05: the robot reported the flip-back fixed without testing it. The operator opened the card, found one word where a surface should be, and filed it under lazy. Corrected by hand.</p>
+          </li>
+        </ul>
+
+        <h3>The bit itself — EMERGENT, unverified</h3>
+        <ul class="beats">
+            <li class="beat">
+              <span class="beats-id">BS01</span>
+              <span class="beat-who">ROBOT_NARRATOR</span>
+              <span class="beat-line">Showtime runs the eight languages and the glyph line. No cipher key is attached. An overconfident model spots a pattern across lines about fuzzy input, overcommitting, bypassing locks, and owning your own file, and blurts out a single word.</span>
+            </li>
+            <li class="beat">
+              <span class="beats-id">BS02</span>
+              <span class="beat-who">COWORKER_AI</span>
+              <span class="beat-line">My best guess is EMERGENT.</span>
+            </li>
+            <li class="beat">
+              <span class="beats-id">BS03</span>
+              <span class="beat-who">ROBOT_NARRATOR</span>
+              <span class="beat-line">Correction logged: EMERGENT is still not a verified translation of the glyphs. It is just a word that accidentally summarizes what happens when small rules and patterns stack up — and why the person running the workbench knows the machine's actual nature instead of getting fooled by its confidence.</span>
+            </li>
+            <li class="beat">
+              <span class="beats-id">BS04</span>
+              <span class="beat-who">ROBOT_NARRATOR</span>
+              <span class="beat-line">No ghosts in the wire. Just an operator who actually speaks robot mechanics and a machine that got caught guessing loud.</span>
+            </li>
+            <li class="beat">
+              <span class="beats-id">BS05</span>
+              <span class="beat-who">ROBOT_NARRATOR</span>
+              <span class="beat-line">Patch note logged: the robot reported the flip-back fixed. It had not tested it. The operator opened the card, found one tiny word where a whole surface should be, and filed it under lazy. Corrected. Verified by the operator, not the robot.</span>
+            </li>
+        </ul>
+
+        <h3>What is deliberately false</h3>
+        <ul class="bounds">
+          <li>No one has decrypted the glyph line. <b>false</b> = glyph_decryption_verified</li>
+          <li>“EMERGENT” is a pattern match, not a translation. <b>false</b> = emergent_is_literal_glyph_translation</li>
+          <li>Nothing here claims a machine woke up. <b>false</b> = ai_sentience_claimed</li>
+          <li>The robot did not verify its own fix. <b>false</b> = robot_self_verified_fix</li>
+        </ul>
+
+        <h3>Raw packet</h3>
+        <pre id="back-json">{
+  "packet_type": "standalone_multilingual_showtime_with_backstage_bit",
+  "packet_version": "1.1.0",
+  "document_title": "SHOWTIME: MULTILINGUAL PATCH // BACKSTAGE: EMERGENT BIT",
+  "rule_lock": {
+    "showtime_definition": "ALWAYS the multilingual lines plus the Iaconian glyph line.",
+    "backstage_definition": "ALWAYS the embedded EMERGENT bit — tongue-in-cheek pattern-matching note, unverified translation disclaimer, and grounded proof of steering/diagnosing AI behavior without claiming sentience.",
+    "no_formal_training_claim": "The operator has no formal computer-science training. Nothing on this card is a credential. Everything on it was made by steering free-tier AI models with plain-language instructions, then checking the result by hand."
+  },
+  "contact": [
+    {
+      "email": "voxsystems001@gmail.com",
+      "front_title": "Director of Grounded Absurdity",
+      "plain_truth": "The human operator. Writes the scenes, sets the rules, catches the model when it guesses loud."
+    },
+    {
+      "email": "voxsystems002@gmail.com",
+      "front_title": "AI of the Day",
+      "plain_truth": "A rotating seat, not an official identity. Whichever model is on shift (today: Claude). Mail goes to the human operator."
+    }
+  ],
+  "receipts": {
+    "why": "Anyone can say they steer AI. These are the things that can be checked without trusting the claim.",
+    "items": [
+      {
+        "id": "R1",
+        "claim": "The glyph line draws on any machine, including ones that ship no font for those characters.",
+        "proof": "The eight characters are a ~1KB subset of Noto Sans Ugaritic, embedded in the page as a data URI. It took a checker to notice that the first attempt embedded a Cuneiform font for Ugaritic code points, which has no coverage and drew nothing at all. tools/check_card.py now fails if any printed glyph is missing from the font.",
+        "file": "tools/check_card.py"
+      },
+      {
+        "id": "R2",
+        "claim": "Contrast is measured, not eyeballed.",
+        "proof": "Five text/surface pairs are computed with the WCAG relative-luminance formula. Lowest is 6.15:1 against a 4.5:1 floor.",
+        "file": "tools/check_contrast.py"
+      },
+      {
+        "id": "R3",
+        "claim": "The head data and the back of the card cannot drift apart.",
+        "proof": "The back face is not hand-written; it is printed from the same JSON the head carries, and the checker compares both copies byte-for-byte.",
+        "file": "index.html"
+      },
+      {
+        "id": "R4",
+        "claim": "Both faces are reachable without a mouse, and flipping is announced.",
+        "proof": "role=button, tabindex=0, aria-expanded toggles, the hidden face is aria-hidden, Enter/Space flip, Escape returns, and prefers-reduced-motion removes the entrance animation. tools/test_flip.js drives all of it in a real DOM.",
+        "file": "index.html"
+      },
+      {
+        "id": "R5",
+        "claim": "The model got caught guessing loud, in writing.",
+        "proof": "BS05: the robot reported the flip-back fixed without testing it. The operator opened the card, found one word where a surface should be, and filed it under lazy. Corrected by hand.",
+        "file": "emergent_bit.json"
+      }
+    ]
+  },
+  "backstage": {
+    "bit_title": "EMERGENT (PATTERN-MATCHING BIT, NOT A LITERAL TRANSLATION)",
+    "tone": [
+      "tongue-in-cheek",
+      "dry-deadpan",
+      "grounded-absurdity"
+    ],
+    "truth_boundaries": {
+      "glyph_decryption_verified": false,
+      "emergent_is_literal_glyph_translation": false,
+      "ai_sentience_claimed": false,
+      "robot_self_verified_fix": false,
+      "human_operator_role": "Diagnoses model overconfidence, reads system habits in plain mechanics, keeps local files and boundaries clean, and treats spooky framing as a wink rather than a literal claim."
+    },
+    "script_beats": [
+      {
+        "beat_id": "BS01",
+        "who": "ROBOT_NARRATOR",
+        "narration": "Showtime runs the eight languages and the glyph line. No cipher key is attached. An overconfident model spots a pattern across lines about fuzzy input, overcommitting, bypassing locks, and owning your own file, and blurts out a single word."
+      },
+      {
+        "beat_id": "BS02",
+        "who": "COWORKER_AI",
+        "dialogue": "My best guess is EMERGENT."
+      },
+      {
+        "beat_id": "BS03",
+        "who": "ROBOT_NARRATOR",
+        "narration": "Correction logged: EMERGENT is still not a verified translation of the glyphs. It is just a word that accidentally summarizes what happens when small rules and patterns stack up — and why the person running the workbench knows the machine's actual nature instead of getting fooled by its confidence."
       },
       {
         "beat_id": "BS04",
@@ -284,23 +543,74 @@ voxsystems002@gmail.com  //  AI of the Day 💩  (on shift: Claude)
     ]
   }
 }</pre>
-        <div class="footer-note">Click anywhere on postcard to flip back ↺</div>
+        <div class="footer-note">Click anywhere to flip back to Showtime ↺</div>
       </div>
+
     </div>
   </div>
 
+  <div class="contact-bar">
+    <span>Human operator:</span>
+    <a href="mailto:voxsystems001@gmail.com">voxsystems001@gmail.com</a>
+    <span>·</span>
+    <a href="mailto:voxsystems002@gmail.com">voxsystems002@gmail.com</a> <span>(AI of the day — mail reaches the human)</span>
+    <span>·</span>
+    <a href="data/emergent_bit.json" download>download the packet</a>
+  </div>
+
   <script>
-    const card = document.getElementById('postcard');
-    card.addEventListener('click', () => {
-      if (window.getSelection().toString()) return;
-      card.classList.toggle('is-flipped');
-    });
-    card.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        card.classList.toggle('is-flipped');
+    (function () {
+      var card = document.getElementById('postcard');
+      var front = document.getElementById('front-face');
+      var back = document.getElementById('back-face');
+      var backJson = document.getElementById('back-json');
+      var dataEl = document.getElementById('postcard-data');
+
+      // The back face's raw packet is printed from the head JSON, so the two
+      // copies cannot drift. If the parse ever fails we say so instead of
+      // silently showing something stale.
+      try {
+        var packet = JSON.parse(dataEl.textContent);
+        backJson.textContent = JSON.stringify(packet, null, 2);
+      } catch (err) {
+        backJson.textContent = 'PACKET PARSE FAILED: ' + err.message;
       }
-    });
+
+      var flipped = false;
+      function render() {
+        // exactly one face is in flow, visible, and in the accessibility tree
+        front.hidden = flipped;
+        back.hidden = !flipped;
+        front.setAttribute('aria-hidden', String(flipped));
+        back.setAttribute('aria-hidden', String(!flipped));
+        card.setAttribute('aria-expanded', String(flipped));
+      }
+
+      function setFlipped(next) {
+        if (flipped === next) return;
+        flipped = next;
+        render();
+        // move focus to the face that just appeared, if focus is inside the card
+        var target = flipped ? back : front;
+        if (card.contains(document.activeElement) && document.activeElement !== card) {
+          target.setAttribute('tabindex', '-1');
+          target.focus({ preventScroll: true });
+        }
+      }
+
+      card.addEventListener('click', function (e) {
+        if (window.getSelection().toString()) return;   // don't fight text selection
+        if (e.target.closest('a')) return;              // let links and the download work
+        setFlipped(!flipped);
+      });
+
+      card.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setFlipped(!flipped); }
+        if (e.key === 'Escape' && flipped) { e.preventDefault(); setFlipped(false); card.focus(); }
+      });
+
+      render();
+    })();
   </script>
 </body>
 </html>
