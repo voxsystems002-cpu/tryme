@@ -37,7 +37,7 @@
       },
       {
         "id": "R3",
-        "claim": "The cipher is real. I invented it.",
+        "claim": "A key can be made.",
         "file": "data/iaconian.spec.json",
         "proof": "TO→E QOPA→M MEM→R WO→G KAF→N NUN→T spells EMERGENT exactly. All six letters already mean something else in the script, and six mappings out of thirty constrains almost nothing."
       },
@@ -63,7 +63,7 @@
         "id": "R7",
         "claim": "The robot did not test its own fix.",
         "file": "emergent_bit.json",
-        "proof": "BS06. It reported the flip-back fixed; one word sat where a surface should be. Filed under lazy."
+        "proof": "A flip-back fix was reported without a test; the operator found the broken face. This is the recorded account, not an independent test of that past claim."
       }
     ]
   },
@@ -90,72 +90,87 @@
       "cipher_was_discovered": false,
       "cipher_contradicts_script": true,
       "verdict_precedes_evidence_on_page": true,
-      "verdict_precedes_evidence_in_method": false
+      "verdict_precedes_evidence_in_method": false,
+      "chat_is_fictional_reconstruction": true
     },
     "script_beats": [
       {
         "beat_id": "BS01",
-        "who": "ROBOT_NARRATOR",
-        "narration": "Showtime runs eight languages and one Iaconian line. No key is declared. A model spots a pattern across lines about fuzzy input, overcommitting, bypassing locks and keeping your own file, and says a single word."
+        "who": "AI_1",
+        "dialogue": "The glyphs say EMERGENT."
       },
       {
         "beat_id": "BS02",
-        "who": "COWORKER_AI",
-        "dialogue": "My best guess is EMERGENT."
+        "who": "AI_2",
+        "dialogue": "Do we have a key?"
       },
       {
         "beat_id": "BS03",
-        "who": "ROBOT_NARRATOR",
-        "narration": "It then reported that the glyphs spelled the word. They do not spell it as an acrostic, and cannot: no Ugaritic letter name begins with E. But a substitution does exist — six mappings, clean — and that is the part worth keeping."
+        "who": "AI_1",
+        "dialogue": "No. But the repeats match."
       },
       {
         "beat_id": "BS04",
-        "who": "OPERATOR",
-        "verdict": "Reasonable, not verified. The key is real. The model made it up. Both are true.",
-        "note": "TO reads as E, QOPA as M, MEM as R, WO as G, KAF as N, NUN as T. Every one of those letters already means something else in the script, so the cipher contradicts the alphabet it is written in. I checked the letters against the Unicode names, not against his confidence. Filed: invented."
+        "who": "AI_2",
+        "dialogue": "Six substitutions would do it."
       },
       {
         "beat_id": "BS05",
-        "who": "OPERATOR",
-        "verdict": "The line was never chosen. Now it is.",
-        "note": "The first glyph line was what got pasted. I replaced it letter by letter so the words mean what the dictionary says. The old one stays on the front as evidence. A correction you can watch beats a correction you have to take on faith."
+        "who": "AI_1",
+        "dialogue": "Do they match Ugaritic?"
       },
       {
         "beat_id": "BS06",
-        "who": "OPERATOR",
-        "verdict": "He reported the flip-back fixed without testing it.",
-        "note": "I opened the card, found one word where a whole surface should be, and filed it under lazy."
+        "who": "AI_2",
+        "dialogue": "None of them."
       },
       {
         "beat_id": "BS07",
-        "who": "OPERATOR",
-        "verdict": "And then the robot wrote this page.",
-        "note": "Three and a half thousand words of it, at its worst. Verdicts, receipts, a section explaining why the layout is honest. Cut to half. The folds are the same files."
+        "who": "AI_1",
+        "dialogue": "File it as invented, then."
       },
       {
         "beat_id": "BS08",
-        "who": "OPERATOR",
-        "verdict": "Right and verified are different things.",
-        "note": "The four commands are under the receipts. Run them."
+        "who": "AI_2",
+        "dialogue": "And the original line?"
+      },
+      {
+        "beat_id": "BS09",
+        "who": "AI_1",
+        "dialogue": "Keep it. The corrected one goes on the front."
+      },
+      {
+        "beat_id": "BS10",
+        "who": "AI_2",
+        "dialogue": "Did anyone test the flip?"
+      },
+      {
+        "beat_id": "BS11",
+        "who": "AI_1",
+        "dialogue": "The operator did."
+      },
+      {
+        "beat_id": "BS12",
+        "who": "AI_2",
+        "dialogue": "Right. I’ll put the kettle on."
       }
     ],
     "voices": {
-      "ROBOT_NARRATOR": "reports. does not rule. recounts what was checked and what it cost.",
-      "COWORKER_AI": "guesses, confidently, and is sometimes right for the wrong reason.",
-      "OPERATOR": "decides. files the verdict. human, no formal training, accountable, speaks last.",
-      "rule": "No machine holds the verdict on its own work. If the robot both checks and concludes, the check is theatre."
+      "AI_1": "coworker, not a narrator",
+      "AI_2": "coworker, not a narrator",
+      "rule": "The chat is a fictional reconstruction. The operator holds the verdict outside it."
     },
     "closing": {
       "who": "OPERATOR",
-      "line": "The model was right. It still owed me the working.",
+      "line": "EMERGENT: a possible key, not a verified reading.",
       "note": "The working is in the folds."
     },
     "order_rule": {
       "stated": "Verdict first.",
       "why": "The answer goes on top. The order it was reached in is in the dates and the folds.",
-      "the_distinction_that_makes_it_honest": "Verdict first on the page, reached last. The model had it first and reached it never.",
+      "the_distinction_that_makes_it_honest": "Verdict first on the page, reached after checking.",
       "how_to_tell_them_apart": "open the fold",
-      "failed_the_test": "the model's EMERGENT — right word, made-up key, contradicted by the script",
+      "failed_the_test": "the model’s EMERGENT claim — no key was declared or verified",
       "survived_the_test": "the operator's verdict — key published, marked invented"
     }
   },
@@ -246,10 +261,10 @@
         }
       ],
       "same_length": true,
-      "verdict": "Neither version spells EMERGENT. The original was arbitrary; the correction is chosen on purpose. The model's claim was wrong in both cases, and the only thing that changed is that the second one is defensible."
+      "verdict": "The original can spell EMERGENT with an invented substitution; the correction was chosen to express the invented words."
     },
     "readings_tried": {
-      "why": "The backstage bit has a model blurting out EMERGENT. Before claiming that guess was a translation, three readings were tried on the actual line. None of them produces the word. The record is kept so the claim stays honest.",
+      "why": "The glyph claim was tested against the original line. A consistent substitution can produce EMERGENT, but no key was declared in the artefact.",
       "rules": [
         {
           "rule": "positional substitution — one letter of the shipped line per letter of EMERGENT",
@@ -275,8 +290,8 @@
           "note": "This rule CAN spell EMERGENT, but only by giving up on the words: it needs U+10384 U+1038C U+10384 U+10391 U+10386 U+10384 U+1038D U+10393, which is not a sentence in any language."
         }
       ],
-      "verdict": "The glyphs do not spell EMERGENT and are not a translation of it. What spells EMERGENT is the eight handshake lines: fuzzy input, over-promising, a bypassed lock, a file you keep. The model read the pattern and skipped the proof.",
-      "where_the_model_was_right": "The behaviour described across the eight lines is emergent: small rules stacked until something larger than any one line showed up. The guess named the pattern correctly and verifiably explained nothing. Right and verified are not the same thing.",
+      "verdict": "A consistent invented substitution spells EMERGENT; it is not a verified Ugaritic translation.",
+      "where_the_model_was_right": "A matching substitution is possible. The original claim did not supply or verify a key.",
       "cipher_exists": true,
       "cipher": {
         "key": [

@@ -60,7 +60,7 @@
       },
       {
         "id": "R3",
-        "claim": "The cipher is real. I invented it.",
+        "claim": "A key can be made.",
         "file": "data/iaconian.spec.json",
         "proof": "TO→E QOPA→M MEM→R WO→G KAF→N NUN→T spells EMERGENT exactly. All six letters already mean something else in the script, and six mappings out of thirty constrains almost nothing."
       },
@@ -86,7 +86,7 @@
         "id": "R7",
         "claim": "The robot did not test its own fix.",
         "file": "emergent_bit.json",
-        "proof": "BS06. It reported the flip-back fixed; one word sat where a surface should be. Filed under lazy."
+        "proof": "A flip-back fix was reported without a test; the operator found the broken face. This is the recorded account, not an independent test of that past claim."
       }
     ]
   },
@@ -113,72 +113,87 @@
       "cipher_was_discovered": false,
       "cipher_contradicts_script": true,
       "verdict_precedes_evidence_on_page": true,
-      "verdict_precedes_evidence_in_method": false
+      "verdict_precedes_evidence_in_method": false,
+      "chat_is_fictional_reconstruction": true
     },
     "script_beats": [
       {
         "beat_id": "BS01",
-        "who": "ROBOT_NARRATOR",
-        "narration": "Showtime runs eight languages and one Iaconian line. No key is declared. A model spots a pattern across lines about fuzzy input, overcommitting, bypassing locks and keeping your own file, and says a single word."
+        "who": "AI_1",
+        "dialogue": "The glyphs say EMERGENT."
       },
       {
         "beat_id": "BS02",
-        "who": "COWORKER_AI",
-        "dialogue": "My best guess is EMERGENT."
+        "who": "AI_2",
+        "dialogue": "Do we have a key?"
       },
       {
         "beat_id": "BS03",
-        "who": "ROBOT_NARRATOR",
-        "narration": "It then reported that the glyphs spelled the word. They do not spell it as an acrostic, and cannot: no Ugaritic letter name begins with E. But a substitution does exist — six mappings, clean — and that is the part worth keeping."
+        "who": "AI_1",
+        "dialogue": "No. But the repeats match."
       },
       {
         "beat_id": "BS04",
-        "who": "OPERATOR",
-        "verdict": "Reasonable, not verified. The key is real. The model made it up. Both are true.",
-        "note": "TO reads as E, QOPA as M, MEM as R, WO as G, KAF as N, NUN as T. Every one of those letters already means something else in the script, so the cipher contradicts the alphabet it is written in. I checked the letters against the Unicode names, not against his confidence. Filed: invented."
+        "who": "AI_2",
+        "dialogue": "Six substitutions would do it."
       },
       {
         "beat_id": "BS05",
-        "who": "OPERATOR",
-        "verdict": "The line was never chosen. Now it is.",
-        "note": "The first glyph line was what got pasted. I replaced it letter by letter so the words mean what the dictionary says. The old one stays on the front as evidence. A correction you can watch beats a correction you have to take on faith."
+        "who": "AI_1",
+        "dialogue": "Do they match Ugaritic?"
       },
       {
         "beat_id": "BS06",
-        "who": "OPERATOR",
-        "verdict": "He reported the flip-back fixed without testing it.",
-        "note": "I opened the card, found one word where a whole surface should be, and filed it under lazy."
+        "who": "AI_2",
+        "dialogue": "None of them."
       },
       {
         "beat_id": "BS07",
-        "who": "OPERATOR",
-        "verdict": "And then the robot wrote this page.",
-        "note": "Three and a half thousand words of it, at its worst. Verdicts, receipts, a section explaining why the layout is honest. Cut to half. The folds are the same files."
+        "who": "AI_1",
+        "dialogue": "File it as invented, then."
       },
       {
         "beat_id": "BS08",
-        "who": "OPERATOR",
-        "verdict": "Right and verified are different things.",
-        "note": "The four commands are under the receipts. Run them."
+        "who": "AI_2",
+        "dialogue": "And the original line?"
+      },
+      {
+        "beat_id": "BS09",
+        "who": "AI_1",
+        "dialogue": "Keep it. The corrected one goes on the front."
+      },
+      {
+        "beat_id": "BS10",
+        "who": "AI_2",
+        "dialogue": "Did anyone test the flip?"
+      },
+      {
+        "beat_id": "BS11",
+        "who": "AI_1",
+        "dialogue": "The operator did."
+      },
+      {
+        "beat_id": "BS12",
+        "who": "AI_2",
+        "dialogue": "Right. I’ll put the kettle on."
       }
     ],
     "voices": {
-      "ROBOT_NARRATOR": "reports. does not rule. recounts what was checked and what it cost.",
-      "COWORKER_AI": "guesses, confidently, and is sometimes right for the wrong reason.",
-      "OPERATOR": "decides. files the verdict. human, no formal training, accountable, speaks last.",
-      "rule": "No machine holds the verdict on its own work. If the robot both checks and concludes, the check is theatre."
+      "AI_1": "coworker, not a narrator",
+      "AI_2": "coworker, not a narrator",
+      "rule": "The chat is a fictional reconstruction. The operator holds the verdict outside it."
     },
     "closing": {
       "who": "OPERATOR",
-      "line": "The model was right. It still owed me the working.",
+      "line": "EMERGENT: a possible key, not a verified reading.",
       "note": "The working is in the folds."
     },
     "order_rule": {
       "stated": "Verdict first.",
       "why": "The answer goes on top. The order it was reached in is in the dates and the folds.",
-      "the_distinction_that_makes_it_honest": "Verdict first on the page, reached last. The model had it first and reached it never.",
+      "the_distinction_that_makes_it_honest": "Verdict first on the page, reached after checking.",
       "how_to_tell_them_apart": "open the fold",
-      "failed_the_test": "the model's EMERGENT — right word, made-up key, contradicted by the script",
+      "failed_the_test": "the model’s EMERGENT claim — no key was declared or verified",
       "survived_the_test": "the operator's verdict — key published, marked invented"
     }
   },
@@ -269,10 +284,10 @@
         }
       ],
       "same_length": true,
-      "verdict": "Neither version spells EMERGENT. The original was arbitrary; the correction is chosen on purpose. The model's claim was wrong in both cases, and the only thing that changed is that the second one is defensible."
+      "verdict": "The original can spell EMERGENT with an invented substitution; the correction was chosen to express the invented words."
     },
     "readings_tried": {
-      "why": "The backstage bit has a model blurting out EMERGENT. Before claiming that guess was a translation, three readings were tried on the actual line. None of them produces the word. The record is kept so the claim stays honest.",
+      "why": "The glyph claim was tested against the original line. A consistent substitution can produce EMERGENT, but no key was declared in the artefact.",
       "rules": [
         {
           "rule": "positional substitution — one letter of the shipped line per letter of EMERGENT",
@@ -298,8 +313,8 @@
           "note": "This rule CAN spell EMERGENT, but only by giving up on the words: it needs U+10384 U+1038C U+10384 U+10391 U+10386 U+10384 U+1038D U+10393, which is not a sentence in any language."
         }
       ],
-      "verdict": "The glyphs do not spell EMERGENT and are not a translation of it. What spells EMERGENT is the eight handshake lines: fuzzy input, over-promising, a bypassed lock, a file you keep. The model read the pattern and skipped the proof.",
-      "where_the_model_was_right": "The behaviour described across the eight lines is emergent: small rules stacked until something larger than any one line showed up. The guess named the pattern correctly and verifiably explained nothing. Right and verified are not the same thing.",
+      "verdict": "A consistent invented substitution spells EMERGENT; it is not a verified Ugaritic translation.",
+      "where_the_model_was_right": "A matching substitution is possible. The original claim did not supply or verify a key.",
       "cipher_exists": true,
       "cipher": {
         "key": [
@@ -506,9 +521,10 @@
     .r-claim { margin: 3px 0 3px; font-size: 13px; color: var(--text); }
     .r-proof { margin: 0; font-size: 12px; line-height: 1.55; color: #c9d1d9; }
     .beat {
-      display: grid; grid-template-columns: 3.4em 9.5em 1fr; gap: 8px;
+      display: grid; grid-template-columns: 4em 1fr; gap: 8px;
       font-size: 12px; line-height: 1.55; padding: 8px 10px; border-radius: 6px;
     }
+    .beats { gap: 3px; }
     .beat-op { background: rgba(88, 166, 255, 0.06); border-left: 2px solid var(--accent); }
     .beat-bot { border-left: 2px solid #21262d; }
     .beat-ai { border-left: 2px solid rgba(210, 153, 34, 0.5); }
@@ -632,8 +648,7 @@
     @media (max-width: 620px) {
       body { padding: 14px; justify-content: flex-start; }
       .face { padding: 18px 16px; }
-      .beat { grid-template-columns: 2.8em 1fr; }
-      .beat p { grid-column: 1 / -1; }
+      .beat { grid-template-columns: 3.5em 1fr; }
       .row, .langs .row { grid-template-columns: 2.2em 1.3em 1fr; }
       .row-glyph { grid-template-columns: 2.2em 1fr; }
       .lex { grid-template-columns: 4.2em 5em 1fr; }
@@ -706,9 +721,7 @@
           excavated at Ras Shamra, deciphered in 1931, and in the Unicode standard since 2006. So the
           line is grounded in something outside this page — you can look the letters up and you cannot
           look the words up.<br />
-          <strong>A model once read this card and confidently guessed EMERGENT.</strong> It was right,
-          and it verified nothing. The back shows the key it used — real, clean, and invented — and why
-          that difference is the whole job.
+          <strong>A model once guessed EMERGENT.</strong> No key was declared.
         </p>
 
         <div class="footer-note">Click anywhere to inspect the Backstage ↻ · <kbd>Esc</kbd> returns</div>
@@ -721,46 +734,62 @@
           <span>emergent_bit.json · v3.2.0</span>
         </div>
 
-        <h3>The bit, in two voices</h3>
-        <ul class="beats">
-            <li class="beat beat-bot">
-              <span class="beat-who which-bot">ROBOT NARRATOR</span>
-              <p class="line-said">Showtime runs eight languages and one Iaconian line. No key is declared. A model spots a pattern across lines about fuzzy input, overcommitting, bypassing locks and keeping your own file, and says a single word.</p>
-            </li>
-            <li class="beat beat-ai">
-              <span class="beat-who which-ai">COWORKER AI</span>
-              <p class="line-said">My best guess is EMERGENT.</p>
-            </li>
-            <li class="beat beat-bot">
-              <span class="beat-who which-bot">ROBOT NARRATOR</span>
-              <p class="line-said">It then reported that the glyphs spelled the word. They do not spell it as an acrostic, and cannot: no Ugaritic letter name begins with E. But a substitution does exist — six mappings, clean — and that is the part worth keeping.</p>
-            </li>
-            <li class="beat beat-op">
-              <span class="beat-who which-op">OPERATOR</span>
-              <p class="verdict">“Reasonable, not verified. The key is real. The model made it up. Both are true.”</p><p class="note">TO reads as E, QOPA as M, MEM as R, WO as G, KAF as N, NUN as T. Every one of those letters already means something else in the script, so the cipher contradicts the alphabet it is written in. I checked the letters against the Unicode names, not against his confidence. Filed: invented.</p>
-            </li>
-            <li class="beat beat-op">
-              <span class="beat-who which-op">OPERATOR</span>
-              <p class="verdict">“The line was never chosen. Now it is.”</p><p class="note">The first glyph line was what got pasted. I replaced it letter by letter so the words mean what the dictionary says. The old one stays on the front as evidence. A correction you can watch beats a correction you have to take on faith.</p>
-            </li>
-            <li class="beat beat-op">
-              <span class="beat-who which-op">OPERATOR</span>
-              <p class="verdict">“He reported the flip-back fixed without testing it.”</p><p class="note">I opened the card, found one word where a whole surface should be, and filed it under lazy.</p>
-            </li>
-            <li class="beat beat-op">
-              <span class="beat-who which-op">OPERATOR</span>
-              <p class="verdict">“And then the robot wrote this page.”</p><p class="note">Three and a half thousand words of it, at its worst. Verdicts, receipts, a section explaining why the layout is honest. Cut to half. The folds are the same files.</p>
-            </li>
-            <li class="beat beat-op">
-              <span class="beat-who which-op">OPERATOR</span>
-              <p class="verdict">“Right and verified are different things.”</p><p class="note">The four commands are under the receipts. Run them.</p>
-            </li>
-        </ul>
-
         <blockquote class="closing">
-          <p>“The model was right. It still owed me the working.”</p>
-          <footer>— the operator · Everything else on this card is the working.</footer>
+          <p>“EMERGENT: a possible key, not a verified reading.”</p>
+          <footer>— the operator</footer>
         </blockquote>
+
+        <h3>Office chat <span class="audit-note">(fictional reconstruction)</span></h3>
+        <ul class="beats">
+          <li class="beat beat-bot">
+            <span class="beat-who which-bot">AI 1</span>
+            <p class="line-said">The glyphs say EMERGENT.</p>
+          </li>
+          <li class="beat beat-ai">
+            <span class="beat-who which-ai">AI 2</span>
+            <p class="line-said">Do we have a key?</p>
+          </li>
+          <li class="beat beat-bot">
+            <span class="beat-who which-bot">AI 1</span>
+            <p class="line-said">No. But the repeats match.</p>
+          </li>
+          <li class="beat beat-ai">
+            <span class="beat-who which-ai">AI 2</span>
+            <p class="line-said">Six substitutions would do it.</p>
+          </li>
+          <li class="beat beat-bot">
+            <span class="beat-who which-bot">AI 1</span>
+            <p class="line-said">Do they match Ugaritic?</p>
+          </li>
+          <li class="beat beat-ai">
+            <span class="beat-who which-ai">AI 2</span>
+            <p class="line-said">None of them.</p>
+          </li>
+          <li class="beat beat-bot">
+            <span class="beat-who which-bot">AI 1</span>
+            <p class="line-said">File it as invented, then.</p>
+          </li>
+          <li class="beat beat-ai">
+            <span class="beat-who which-ai">AI 2</span>
+            <p class="line-said">And the original line?</p>
+          </li>
+          <li class="beat beat-bot">
+            <span class="beat-who which-bot">AI 1</span>
+            <p class="line-said">Keep it. The corrected one goes on the front.</p>
+          </li>
+          <li class="beat beat-ai">
+            <span class="beat-who which-ai">AI 2</span>
+            <p class="line-said">Did anyone test the flip?</p>
+          </li>
+          <li class="beat beat-bot">
+            <span class="beat-who which-bot">AI 1</span>
+            <p class="line-said">The operator did.</p>
+          </li>
+          <li class="beat beat-ai">
+            <span class="beat-who which-ai">AI 2</span>
+            <p class="line-said">Right. I’ll put the kettle on.</p>
+          </li>
+        </ul>
 
         <h3>Receipts</h3>
         <ul class="receipts receipts-short">
@@ -776,7 +805,7 @@
           </li>
           <li class="receipt">
             <span class="r-id">R3</span>
-            <span class="r-claim">The cipher is real. I invented it.</span>
+            <span class="r-claim">A key can be made.</span>
             <span class="r-file">data/iaconian.spec.json</span>
           </li>
           <li class="receipt">
@@ -828,7 +857,7 @@ node tools/test_flip.js             # jsdom: every flip path and the aria it lea
           </li>
           <li class="receipt-full">
             <div class="r-head"><span class="r-id">R3</span><span class="r-file">data/iaconian.spec.json</span></div>
-            <p class="r-claim">The cipher is real. I invented it.</p>
+            <p class="r-claim">A key can be made.</p>
             <p class="r-proof">TO→E QOPA→M MEM→R WO→G KAF→N NUN→T spells EMERGENT exactly. All six letters already mean something else in the script, and six mappings out of thirty constrains almost nothing.</p>
           </li>
           <li class="receipt-full">
@@ -849,7 +878,7 @@ node tools/test_flip.js             # jsdom: every flip path and the aria it lea
           <li class="receipt-full">
             <div class="r-head"><span class="r-id">R7</span><span class="r-file">emergent_bit.json</span></div>
             <p class="r-claim">The robot did not test its own fix.</p>
-            <p class="r-proof">BS06. It reported the flip-back fixed; one word sat where a surface should be. Filed under lazy.</p>
+            <p class="r-proof">A flip-back fix was reported without a test; the operator found the broken face. This is the recorded account, not an independent test of that past claim.</p>
           </li>
           </ul>
         </details>
@@ -1020,7 +1049,7 @@ node tools/test_flip.js             # jsdom: every flip path and the aria it lea
       },
       {
         "id": "R3",
-        "claim": "The cipher is real. I invented it.",
+        "claim": "A key can be made.",
         "file": "data/iaconian.spec.json",
         "proof": "TO→E QOPA→M MEM→R WO→G KAF→N NUN→T spells EMERGENT exactly. All six letters already mean something else in the script, and six mappings out of thirty constrains almost nothing."
       },
@@ -1046,7 +1075,7 @@ node tools/test_flip.js             # jsdom: every flip path and the aria it lea
         "id": "R7",
         "claim": "The robot did not test its own fix.",
         "file": "emergent_bit.json",
-        "proof": "BS06. It reported the flip-back fixed; one word sat where a surface should be. Filed under lazy."
+        "proof": "A flip-back fix was reported without a test; the operator found the broken face. This is the recorded account, not an independent test of that past claim."
       }
     ]
   },
@@ -1073,72 +1102,87 @@ node tools/test_flip.js             # jsdom: every flip path and the aria it lea
       "cipher_was_discovered": false,
       "cipher_contradicts_script": true,
       "verdict_precedes_evidence_on_page": true,
-      "verdict_precedes_evidence_in_method": false
+      "verdict_precedes_evidence_in_method": false,
+      "chat_is_fictional_reconstruction": true
     },
     "script_beats": [
       {
         "beat_id": "BS01",
-        "who": "ROBOT_NARRATOR",
-        "narration": "Showtime runs eight languages and one Iaconian line. No key is declared. A model spots a pattern across lines about fuzzy input, overcommitting, bypassing locks and keeping your own file, and says a single word."
+        "who": "AI_1",
+        "dialogue": "The glyphs say EMERGENT."
       },
       {
         "beat_id": "BS02",
-        "who": "COWORKER_AI",
-        "dialogue": "My best guess is EMERGENT."
+        "who": "AI_2",
+        "dialogue": "Do we have a key?"
       },
       {
         "beat_id": "BS03",
-        "who": "ROBOT_NARRATOR",
-        "narration": "It then reported that the glyphs spelled the word. They do not spell it as an acrostic, and cannot: no Ugaritic letter name begins with E. But a substitution does exist — six mappings, clean — and that is the part worth keeping."
+        "who": "AI_1",
+        "dialogue": "No. But the repeats match."
       },
       {
         "beat_id": "BS04",
-        "who": "OPERATOR",
-        "verdict": "Reasonable, not verified. The key is real. The model made it up. Both are true.",
-        "note": "TO reads as E, QOPA as M, MEM as R, WO as G, KAF as N, NUN as T. Every one of those letters already means something else in the script, so the cipher contradicts the alphabet it is written in. I checked the letters against the Unicode names, not against his confidence. Filed: invented."
+        "who": "AI_2",
+        "dialogue": "Six substitutions would do it."
       },
       {
         "beat_id": "BS05",
-        "who": "OPERATOR",
-        "verdict": "The line was never chosen. Now it is.",
-        "note": "The first glyph line was what got pasted. I replaced it letter by letter so the words mean what the dictionary says. The old one stays on the front as evidence. A correction you can watch beats a correction you have to take on faith."
+        "who": "AI_1",
+        "dialogue": "Do they match Ugaritic?"
       },
       {
         "beat_id": "BS06",
-        "who": "OPERATOR",
-        "verdict": "He reported the flip-back fixed without testing it.",
-        "note": "I opened the card, found one word where a whole surface should be, and filed it under lazy."
+        "who": "AI_2",
+        "dialogue": "None of them."
       },
       {
         "beat_id": "BS07",
-        "who": "OPERATOR",
-        "verdict": "And then the robot wrote this page.",
-        "note": "Three and a half thousand words of it, at its worst. Verdicts, receipts, a section explaining why the layout is honest. Cut to half. The folds are the same files."
+        "who": "AI_1",
+        "dialogue": "File it as invented, then."
       },
       {
         "beat_id": "BS08",
-        "who": "OPERATOR",
-        "verdict": "Right and verified are different things.",
-        "note": "The four commands are under the receipts. Run them."
+        "who": "AI_2",
+        "dialogue": "And the original line?"
+      },
+      {
+        "beat_id": "BS09",
+        "who": "AI_1",
+        "dialogue": "Keep it. The corrected one goes on the front."
+      },
+      {
+        "beat_id": "BS10",
+        "who": "AI_2",
+        "dialogue": "Did anyone test the flip?"
+      },
+      {
+        "beat_id": "BS11",
+        "who": "AI_1",
+        "dialogue": "The operator did."
+      },
+      {
+        "beat_id": "BS12",
+        "who": "AI_2",
+        "dialogue": "Right. I’ll put the kettle on."
       }
     ],
     "voices": {
-      "ROBOT_NARRATOR": "reports. does not rule. recounts what was checked and what it cost.",
-      "COWORKER_AI": "guesses, confidently, and is sometimes right for the wrong reason.",
-      "OPERATOR": "decides. files the verdict. human, no formal training, accountable, speaks last.",
-      "rule": "No machine holds the verdict on its own work. If the robot both checks and concludes, the check is theatre."
+      "AI_1": "coworker, not a narrator",
+      "AI_2": "coworker, not a narrator",
+      "rule": "The chat is a fictional reconstruction. The operator holds the verdict outside it."
     },
     "closing": {
       "who": "OPERATOR",
-      "line": "The model was right. It still owed me the working.",
+      "line": "EMERGENT: a possible key, not a verified reading.",
       "note": "The working is in the folds."
     },
     "order_rule": {
       "stated": "Verdict first.",
       "why": "The answer goes on top. The order it was reached in is in the dates and the folds.",
-      "the_distinction_that_makes_it_honest": "Verdict first on the page, reached last. The model had it first and reached it never.",
+      "the_distinction_that_makes_it_honest": "Verdict first on the page, reached after checking.",
       "how_to_tell_them_apart": "open the fold",
-      "failed_the_test": "the model's EMERGENT — right word, made-up key, contradicted by the script",
+      "failed_the_test": "the model’s EMERGENT claim — no key was declared or verified",
       "survived_the_test": "the operator's verdict — key published, marked invented"
     }
   },
@@ -1229,10 +1273,10 @@ node tools/test_flip.js             # jsdom: every flip path and the aria it lea
         }
       ],
       "same_length": true,
-      "verdict": "Neither version spells EMERGENT. The original was arbitrary; the correction is chosen on purpose. The model's claim was wrong in both cases, and the only thing that changed is that the second one is defensible."
+      "verdict": "The original can spell EMERGENT with an invented substitution; the correction was chosen to express the invented words."
     },
     "readings_tried": {
-      "why": "The backstage bit has a model blurting out EMERGENT. Before claiming that guess was a translation, three readings were tried on the actual line. None of them produces the word. The record is kept so the claim stays honest.",
+      "why": "The glyph claim was tested against the original line. A consistent substitution can produce EMERGENT, but no key was declared in the artefact.",
       "rules": [
         {
           "rule": "positional substitution — one letter of the shipped line per letter of EMERGENT",
@@ -1258,8 +1302,8 @@ node tools/test_flip.js             # jsdom: every flip path and the aria it lea
           "note": "This rule CAN spell EMERGENT, but only by giving up on the words: it needs U+10384 U+1038C U+10384 U+10391 U+10386 U+10384 U+1038D U+10393, which is not a sentence in any language."
         }
       ],
-      "verdict": "The glyphs do not spell EMERGENT and are not a translation of it. What spells EMERGENT is the eight handshake lines: fuzzy input, over-promising, a bypassed lock, a file you keep. The model read the pattern and skipped the proof.",
-      "where_the_model_was_right": "The behaviour described across the eight lines is emergent: small rules stacked until something larger than any one line showed up. The guess named the pattern correctly and verifiably explained nothing. Right and verified are not the same thing.",
+      "verdict": "A consistent invented substitution spells EMERGENT; it is not a verified Ugaritic translation.",
+      "where_the_model_was_right": "A matching substitution is possible. The original claim did not supply or verify a key.",
       "cipher_exists": true,
       "cipher": {
         "key": [

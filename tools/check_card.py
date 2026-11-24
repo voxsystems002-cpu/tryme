@@ -63,6 +63,8 @@ if spec_file.exists():
           "the page and the dictionary must not diverge")
     check("spec's own code points render to its own string",
           "".join(chr(int(c[2:], 16)) for c in spec["sentence"]["rendering_code_points"]) == expected)
+    check("packet cipher and correction match the spec",
+          a["language"]["correction"] == spec["correction"] and a["language"]["readings_tried"] == spec["readings_tried"])
     check("romanisation on the page matches the spec",
           all(e["romanisation"] in HTML for e in spec["lexicon"]))
 
@@ -84,26 +86,22 @@ if art.exists():
     check("front's log header comes from the artefact",
           all(h in HTML for h in header), " / ".join(header))
 
-# 2d. the human must hold the verdict ---------------------------------------
-# The failure mode this page is about: the machine narrates, audits and then
-# concludes on its own work. So the script is checked like any other claim.
-import json as _json
-pkt = _json.loads(re.search(r'<script type="application/json" id="postcard-data">(.*?)</script>',
-                            HTML, re.S).group(1))
+# 2d. A staged chat between peers, with the verdict outside the chat --------
+pkt = json.loads(re.search(r'<script type="application/json" id="postcard-data">(.*?)</script>',
+                           HTML, re.S).group(1))
 beats = pkt["backstage"]["script_beats"]
-speakers = {}
-for b in beats:
-    speakers[b["who"]] = speakers.get(b["who"], 0) + 1
-check("the operator speaks", speakers.get("OPERATOR", 0) > 0, f"{speakers}")
-check("the operator outnumbers the robot", 
-      speakers.get("OPERATOR", 0) >= speakers.get("ROBOT_NARRATOR", 0),
-      f"operator {speakers.get('OPERATOR',0)} vs robot {speakers.get('ROBOT_NARRATOR',0)}")
-check("the operator speaks last", beats[-1]["who"] == "OPERATOR", beats[-1]["beat_id"])
-check("the operator holds every verdict",
-      all(b["who"] == "OPERATOR" for b in beats if "verdict" in b),
-      "no machine rules on its own work")
-check("the closing statement is the human's", pkt["backstage"]["closing"]["who"] == "OPERATOR")
-check("voices are declared with their powers", "voices" in pkt["backstage"])
+check("office chat has two alternating AI coworkers",
+      len(beats) >= 2 and {b["who"] for b in beats} == {"AI_1", "AI_2"}
+      and all(x["who"] != y["who"] for x, y in zip(beats, beats[1:])))
+check("chat is identified as fictional", pkt["backstage"]["truth_boundaries"].get("chat_is_fictional_reconstruction") is True
+      and "fictional reconstruction" in HTML)
+check("the verdict belongs to the operator", pkt["backstage"]["closing"]["who"] == "OPERATOR"
+      and pkt["backstage"]["closing"]["line"] in HTML
+      and HTML.index(pkt["backstage"]["closing"]["line"], HTML.index("<body>")) < HTML.index("<h3>Office chat"))
+import html as _html
+chat = re.search(r'<h3>Office chat.*?</h3>\s*<ul class="beats">(.*?)</ul>', HTML, re.S)
+visible = re.findall(r'<span class="beat-who which-(?:bot|ai)">(AI [12])</span>\s*<p class="line-said">(.*?)</p>', chat.group(1), re.S) if chat else []
+check("visible chat matches the packet", [ (speaker.replace(" ", "_"), _html.unescape(text)) for speaker, text in visible ] == [(b["who"], b["dialogue"]) for b in beats])
 
 # the page puts the verdict on top; that is only honest if it was reached last.
 # Assert the distinction, not the layout.

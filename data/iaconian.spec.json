@@ -152,7 +152,7 @@
     "or install any font that covers the block and see the same shapes the page embeds"
   ],
   "readings_tried": {
-    "why": "The backstage bit has a model blurting out EMERGENT. Before claiming that guess was a translation, three readings were tried on the actual line. None of them produces the word. The record is kept so the claim stays honest.",
+    "why": "The glyph claim was tested against the original line. A consistent substitution can produce EMERGENT, but no key was declared in the artefact.",
     "rules": [
       {
         "rule": "positional substitution — one letter of the shipped line per letter of EMERGENT",
@@ -178,8 +178,8 @@
         "note": "This rule CAN spell EMERGENT, but only by giving up on the words: it needs U+10384 U+1038C U+10384 U+10391 U+10386 U+10384 U+1038D U+10393, which is not a sentence in any language."
       }
     ],
-    "verdict": "The glyphs do not spell EMERGENT and are not a translation of it. What spells EMERGENT is the eight handshake lines: fuzzy input, over-promising, a bypassed lock, a file you keep. The model read the pattern and skipped the proof.",
-    "where_the_model_was_right": "The behaviour described across the eight lines is emergent: small rules stacked until something larger than any one line showed up. The guess named the pattern correctly and verifiably explained nothing. Right and verified are not the same thing.",
+    "verdict": "A consistent invented substitution spells EMERGENT; it is not a verified Ugaritic translation.",
+    "where_the_model_was_right": "A matching substitution is possible. The original claim did not supply or verify a key.",
     "cipher_exists": true,
     "cipher": {
       "key": [
@@ -306,6 +306,6 @@
       }
     ],
     "same_length": true,
-    "verdict": "Neither version spells EMERGENT. The original was arbitrary; the correction is chosen on purpose. The model's claim was wrong in both cases, and the only thing that changed is that the second one is defensible."
+    "verdict": "The original can spell EMERGENT with an invented substitution; the correction was chosen to express the invented words."
   }
 }

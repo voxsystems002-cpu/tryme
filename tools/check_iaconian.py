@@ -94,7 +94,8 @@ if rt:
                        if unicodedata.name(chr(cp), None)})
     check("no Ugaritic letter name begins with E, so an acrostic cannot spell EMERGENT",
           "E" not in initials, "".join(initials))
-    check("verdict states what did spell it", "handshake" in rt["verdict"])
+    check("verdict distinguishes substitution from translation",
+          "substitution" in rt["verdict"] and "not a verified" in rt["verdict"])
 
     # a substitution key genuinely exists; the claim that it does must be true,
     # and the claim that it was discovered must stay false

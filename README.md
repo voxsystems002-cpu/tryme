@@ -18,7 +18,7 @@ The back leads with the verdict so you don't have to read three thousand words
 to find out what the answer is. That is only legitimate because the verdict was
 reached *last*, after the checking.
 
-The model did the reverse: it produced the answer, then built a key to fit it.
+The model produced the answer without a verified key. A fitting key was constructed later.
 Same output shape, opposite order of operations. **The fold is the test** — a
 verdict reached after the test survives having its evidence pulled apart; one
 reached before it needs you to stop looking.
@@ -30,21 +30,9 @@ rather than asserted.
 
 ## Who speaks
 
-The backstage is a script, not a monologue. Three voices, declared in the packet:
-
-| voice | does |
-|---|---|
-| `ROBOT_NARRATOR` | reports what was checked and what it cost |
-| `COWORKER_AI` | guesses confidently, sometimes correctly for the wrong reason |
-| `OPERATOR` | decides. files the verdict. human. speaks last |
-
-The rule the page is built on: **no machine holds the verdict on its own work.**
-If the robot both checks and concludes, the check is theatre. That rule is
-enforced — `tools/check_card.py` fails if the operator doesn't outnumber the
-robot, speak last, and hold every `verdict` beat.
-
-The working lives in `<details>`: the back reads at ~440 words and folds out to
-~3,300. Evidence should not have to shout at someone who has already believed you.
+The backstage office chat is a fictional reconstruction: two AI coworkers,
+back and forth. The operator's verdict sits outside the chat. The receipts and
+working remain folded below it.
 
 ## The language: fictional, but anchored
 
@@ -72,8 +60,7 @@ trial is the real artifact, not a paraphrase. The correction is a four-letter
 edit, shown as a keyed table on the back.
 
 A substitution key **does** spell it — and that distinction is load-bearing. The backstage bit has a
-model guess that word; three readings were tried on the real line, and the
-negative results are committed:
+model guess that word; the readings tried on the real line are committed:
 
 | rule | gives |
 |---|---|
