@@ -105,6 +105,16 @@ check("the operator holds every verdict",
 check("the closing statement is the human's", pkt["backstage"]["closing"]["who"] == "OPERATOR")
 check("voices are declared with their powers", "voices" in pkt["backstage"])
 
+# the page puts the verdict on top; that is only honest if it was reached last.
+# Assert the distinction, not the layout.
+order = pkt["backstage"].get("order_rule", {})
+check("the page states its own ordering rule", bool(order.get("stated")))
+check("verdict-first is a presentation choice, not the method",
+      pkt["backstage"]["truth_boundaries"].get("verdict_precedes_evidence_on_page") is True
+      and pkt["backstage"]["truth_boundaries"].get("verdict_precedes_evidence_in_method") is False)
+check("the page says how to tell the two apart", bool(order.get("how_to_tell_them_apart")),
+      "the fold is the test")
+
 # and the working must be foldable, or the verdict drowns in the audit
 check("the audit is folded, not dumped", HTML.count('<details class="audit"') >= 3)
 check("nothing is folded open by default", 'class="audit" open' not in HTML)

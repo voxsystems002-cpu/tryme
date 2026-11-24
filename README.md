@@ -12,6 +12,22 @@ verify. Back: the receipts — what was claimed, and the file that enforces it.
 Made with free-tier AI models, plain-language steering, and no formal computer
 training. Nothing here is a credential. The checks below are the argument.
 
+## Verdict first — reached last
+
+The back leads with the verdict so you don't have to read three thousand words
+to find out what the answer is. That is only legitimate because the verdict was
+reached *last*, after the checking.
+
+The model did the reverse: it produced the answer, then built a key to fit it.
+Same output shape, opposite order of operations. **The fold is the test** — a
+verdict reached after the test survives having its evidence pulled apart; one
+reached before it needs you to stop looking.
+
+Recorded in the packet under `backstage.order_rule`, with the truth boundaries
+`verdict_precedes_evidence_on_page: true` and
+`verdict_precedes_evidence_in_method: false`, so the distinction is checked
+rather than asserted.
+
 ## Who speaks
 
 The backstage is a script, not a monologue. Three voices, declared in the packet:

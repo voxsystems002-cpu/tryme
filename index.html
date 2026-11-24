@@ -23,7 +23,7 @@
   <script type="application/json" id="postcard-data">
 {
   "packet_type": "standalone_multilingual_showtime_with_backstage_bit",
-  "packet_version": "3.0.0",
+  "packet_version": "3.1.0",
   "document_title": "SHOWTIME: MULTILINGUAL PATCH // BACKSTAGE: EMERGENT BIT // IACONIAN",
   "rule_lock": {
     "showtime_definition": "ALWAYS the eight handshake lines plus the Iaconian line, which is written in real Ugaritic letters and spells three invented words.",
@@ -111,7 +111,9 @@
       "model_claim_was_true": false,
       "cipher_exists": true,
       "cipher_was_discovered": false,
-      "cipher_contradicts_script": true
+      "cipher_contradicts_script": true,
+      "verdict_precedes_evidence_on_page": true,
+      "verdict_precedes_evidence_in_method": false
     },
     "script_beats": [
       {
@@ -170,6 +172,14 @@
       "who": "OPERATOR",
       "line": "The model was right. It still owed me the working.",
       "note": "Everything else on this card is the working."
+    },
+    "order_rule": {
+      "stated": "Verdict first.",
+      "why": "You should not have to read three thousand words to find out what the answer is. The verdict is on top because the working is yours to check, not mine to recite.",
+      "the_distinction_that_makes_it_honest": "Verdict first on the page is only legitimate because the verdict was reached last. The model did the opposite: it produced the answer, then built a key to fit it. Same shape of output, opposite order of operations.",
+      "how_to_tell_them_apart": "Open the fold. A verdict that was reached after the test survives its evidence being pulled apart. One that came before it needs you to stop looking.",
+      "failed_the_test": "the model's EMERGENT — right word, made-up key, contradicted by the script",
+      "survived_the_test": "the operator's verdict — key published, marked invented, contradicted on purpose"
     }
   },
   "constraints": {
@@ -508,6 +518,13 @@
     .verdict { margin: 0 0 3px; color: var(--text); font-size: 13px; }
     .line-said { margin: 0; color: #c9d1d9; }
     .note { margin: 0; color: #c9d1d9; font-size: 11.5px; }
+    .order-note {
+      margin: 0 0 12px; font-size: 11.5px; line-height: 1.65; color: #c9d1d9;
+      border: 1px dashed #30363d; border-radius: 6px; padding: 10px 12px;
+      background: rgba(88, 166, 255, 0.04);
+    }
+    .order-note strong { color: var(--accent); }
+    .order-tell { display: block; margin-top: 6px; color: var(--muted); }
     .closing {
       margin: 16px 0 0; padding: 12px 14px;
       border-left: 3px solid var(--accent-2);
@@ -703,9 +720,18 @@
       <!-- ============ BACK: BACKSTAGE ============ -->
       <div class="face back" id="back-face" hidden aria-hidden="true">
         <div class="badge-row">
-          <span class="badge badge-back">SIDE B // BACKSTAGE (VERDICT FIRST)</span>
+          <span class="badge badge-back">SIDE B // BACKSTAGE (VERDICT FIRST, REACHED LAST)</span>
           <span>emergent_bit.json · v3.0.0</span>
         </div>
+
+        <p class="order-note">
+          <strong>Verdict first.</strong> You shouldn't have to read three thousand words to find out
+          what the answer is. But this verdict is on top because it was reached <em>last</em> — after
+          the checking. The model did the reverse: it produced the answer, then built a key to fit it.
+          Same output shape, opposite order of operations.
+          <span class="order-tell">The fold is the test: a verdict reached after the test survives having
+          its evidence pulled apart. One reached before it needs you to stop looking.</span>
+        </p>
 
         <h3>The bit, in two voices</h3>
         <ul class="beats">
@@ -957,7 +983,7 @@
           <summary>Raw packet <span class="audit-note">(the whole JSON, for machines and sceptics)</span></summary>
           <pre id="back-json">{
   "packet_type": "standalone_multilingual_showtime_with_backstage_bit",
-  "packet_version": "3.0.0",
+  "packet_version": "3.1.0",
   "document_title": "SHOWTIME: MULTILINGUAL PATCH // BACKSTAGE: EMERGENT BIT // IACONIAN",
   "rule_lock": {
     "showtime_definition": "ALWAYS the eight handshake lines plus the Iaconian line, which is written in real Ugaritic letters and spells three invented words.",
@@ -1045,7 +1071,9 @@
       "model_claim_was_true": false,
       "cipher_exists": true,
       "cipher_was_discovered": false,
-      "cipher_contradicts_script": true
+      "cipher_contradicts_script": true,
+      "verdict_precedes_evidence_on_page": true,
+      "verdict_precedes_evidence_in_method": false
     },
     "script_beats": [
       {
@@ -1104,6 +1132,14 @@
       "who": "OPERATOR",
       "line": "The model was right. It still owed me the working.",
       "note": "Everything else on this card is the working."
+    },
+    "order_rule": {
+      "stated": "Verdict first.",
+      "why": "You should not have to read three thousand words to find out what the answer is. The verdict is on top because the working is yours to check, not mine to recite.",
+      "the_distinction_that_makes_it_honest": "Verdict first on the page is only legitimate because the verdict was reached last. The model did the opposite: it produced the answer, then built a key to fit it. Same shape of output, opposite order of operations.",
+      "how_to_tell_them_apart": "Open the fold. A verdict that was reached after the test survives its evidence being pulled apart. One that came before it needs you to stop looking.",
+      "failed_the_test": "the model's EMERGENT — right word, made-up key, contradicted by the script",
+      "survived_the_test": "the operator's verdict — key published, marked invented, contradicted on purpose"
     }
   },
   "constraints": {
